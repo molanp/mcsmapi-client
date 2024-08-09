@@ -8,7 +8,7 @@ English|[简体中文](README_zh-cn.md)
 
 ## Introduction
 
-`mcsmapi-client` is a Pypi packagr based on [MCSManager](https://github.com/MCSManager/MCSManager), designed to simplify interaction with MCSM API.
+`mcsmapi-client` is a Pypi package based on [MCSManager](https://github.com/MCSManager/MCSManager), designed to simplify interaction with MCSM API.
 
 Through this library, you can easily access and operate various functions provided by MCSM.
 

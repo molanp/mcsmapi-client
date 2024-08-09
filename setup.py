@@ -8,7 +8,7 @@ setup(
         "requests"
     ],
     author='molanp',
-    author_email='你的邮箱',
+    author_email='',
     description='A Pypi package based on MCSManager, designed to simplify interaction with MCSM API.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

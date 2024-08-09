@@ -8,7 +8,7 @@
 
 ## 简介
 
-`mcsmapi-client` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Python 封装库，旨在简化与MCSM API的交互。
+`mcsmapi-client` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
 
 通过这个库，您可以更轻松地访问和操作MCSM提供的各种功能。
 
