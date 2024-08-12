@@ -2,29 +2,29 @@
 
 ![Supported MCSManager Versions](https://img.shields.io/badge/Supported%20MCSManager%20Versions-10.2.1,10.1.0-blue)
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
-![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi_client)
+![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi)
 
 简体中文|[English](README.md)
 
 ## 简介
 
-`mcsmapi-client` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
+`mcsmapi` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
 
 通过这个库，您可以更轻松地访问和操作MCSM提供的各种功能。
 
 ## 安装
 
-您可以使用 `pip` 安装 `mcsmapi-client`：
+您可以使用 `pip` 安装 `mcsmapi`：
 
 ```bash
-pip install mcsmapi_client
+pip install mcsmapi
 ```
 
 ## 使用方法
 
 ### 示例代码
 
-以下是如何使用 `mcsmapi-client` 的一些示例：
+以下是如何使用 `mcsmapi` 的一些示例：
 
 ```python
 from mcsmapi import overview
