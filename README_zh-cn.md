@@ -2,7 +2,7 @@
 
 ![Supported MCSManager Versions](https://img.shields.io/badge/Supported%20MCSManager%20Versions-10.2.1,10.1.0-blue)
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
-![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi-client)
+![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi_client)
 
 简体中文|[English](README.md)
 
@@ -17,7 +17,7 @@
 您可以使用 `pip` 安装 `mcsmapi-client`：
 
 ```bash
-pip install mcsmapi-client
+pip install mcsmapi_client
 ```
 
 ## 使用方法
@@ -27,24 +27,30 @@ pip install mcsmapi-client
 以下是如何使用 `mcsmapi-client` 的一些示例：
 
 ```python
-from mcsmapi_client import Overview
+from mcsmapi import overview
 
-# 创建面板 API 客户端实例
-client = Overview(url="https://example.com/api", apikey="your_api_key")
+# 如果有apikey，使用apikey验证
+client = Overview(url=" https://example.com/",apikey="your_api_key")
 
+# 如果没有apikey，使用账号密码验证
+client = Overview(url=" https://example.com/")
+# 登录
+client.login(username="your_username",password="your_password")
 
-response = client.get_data()
-print(response)
+# 获取数据
+response = client.getData()
+print(response.json())
 ```
 
 ### 支持的功能
 
-- [x] 仪表盘数据(`Overview`)
-- [x] 用户管理(`Users`)
-- [x] 实例管理(`Instance`)
-- [ ] 节点管理(``)
-- [ ] 文件管理(``)
-- [ ] 镜像管理(``)
+- [x] 登录 (`(func) login`)
+- [x] 仪表盘数据(`(cls) Overview`)
+- [x] 用户管理(`(cls) Users`)
+- [x] 实例管理(`(cls) Instance`)
+- [x] 节点管理(`(cls) Daemon`)
+- [x] 文件管理(`(cls) File`)
+- [x] 镜像管理(`(cls) Image`)
 
 ## 支持的 MCSM 版本
 
