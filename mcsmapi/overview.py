@@ -30,6 +30,6 @@ class Overview:
         Retrieves overview data from the API.
 
         Returns:
-            dict: The overview data as returned by the API.
+            requests.Response: The overview data as returned by the API.
         """
         return self.client.send("GET", "overview")

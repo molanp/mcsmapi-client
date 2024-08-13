@@ -36,7 +36,7 @@ class Users:
             role (str, optional): The role to filter by. Defaults to "".
 
         Returns:
-            dict: The list of users as returned by the API.
+            requests.Response: The list of users as returned by the API.
         """
         return self.client.send("GET", "auth/search", params={
             "userName": username, "page": page, "page_size": page_size, "role": role})
@@ -51,7 +51,7 @@ class Users:
             permission (int, optional): The permission level for the new user. Defaults to 1.
 
         Returns:
-            dict: The response from the API after creating the user.
+            requests.Response: The response from the API after creating the user.
         """
         return self.client.send("POST", "auth", data={
             "username": username, "password": password, "permission": permission})
@@ -65,7 +65,7 @@ class Users:
             config (dict, optional): The configuration updates for the user. Defaults to {}.
 
         Returns:
-            dict: The response from the API after updating the user.
+            requests.Response: The response from the API after updating the user.
         """
         return self.client.send("PUT", "auth", data={
             "uuid": uuid, "config": config})
@@ -78,6 +78,6 @@ class Users:
             uuids (list, optional): A list of UUIDs of the users to delete. Defaults to [].
 
         Returns:
-            dict: The response from the API after deleting the users.
+            requests.Response: The response from the API after deleting the users.
         """
         return self.client.send("DELETE", "auth", data=uuids)

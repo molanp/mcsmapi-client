@@ -25,7 +25,7 @@ class Image:
             daemonId (str): ID of the Docker daemon.
 
         Returns:
-            dict: Response data containing the list of Docker images.
+            requests.Response: Response data containing the list of Docker images.
         """
 
         return self.client.send("GET", "environment/image", params={
@@ -43,7 +43,7 @@ class Image:
             daemonId (str): ID of the Docker daemon.
 
         Returns:
-            dict: Response data containing the list of Docker containers.
+            requests.Response: Response data containing the list of Docker containers.
         """
 
         return self.client.send("GET", "environment/containers", params={
@@ -61,7 +61,7 @@ class Image:
             daemonId (str): ID of the Docker daemon.
 
         Returns:
-            dict: Response data containing the list of Docker network modes.
+            requests.Response: Response data containing the list of Docker network modes.
         """
 
         return self.client.send("GET", "environment/network", params={
@@ -79,7 +79,7 @@ class Image:
             tag (str): Tag for the Docker image.
 
         Returns:
-            dict: Response data indicating the status of the build process.
+            requests.Response: Response data indicating the status of the build process.
         """
         return self.client.send("POST", "environment/image", params={
             "daemonId": daemonId
@@ -97,7 +97,7 @@ class Image:
             daemonId (str): ID of the Docker daemon.
 
         Returns:
-            dict: Response data containing the build progress information.
+            requests.Response: Response data containing the build progress information.
         """
         return self.client.send("GET", "environment/image/progress", params={
             "daemonId": daemonId
