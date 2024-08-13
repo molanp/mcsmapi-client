@@ -4,7 +4,7 @@
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi)
 
-简体中文|[English](README.md)
+简体中文|[English](https://github.com/molanp/mcsmapi/blob/main/README.md)
 
 ## 简介
 
