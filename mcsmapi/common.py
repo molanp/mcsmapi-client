@@ -1,5 +1,11 @@
 import requests
 
+class ValidateError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+    def __str__(self):
+        return self.message
 
 class ApiClient:
     def __init__(self, url, apikey=None, timeout=None):
@@ -27,8 +33,9 @@ def support_login(cls):
     def login(self, username, password):
         seq = self.client.send(
             "POST", "auth/login", data={"username": username, "password": password})
+        if seq.status_code != 200: raise ValidateError(seq.json().get("data"))
         self.client.cookies = seq.cookies
-        self.client.token = seq.json()["data"]
+        self.client.token = seq.json().get("data")
 
     setattr(cls, 'login', login)
     return cls

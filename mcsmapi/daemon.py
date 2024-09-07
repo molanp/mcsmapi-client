@@ -4,7 +4,7 @@ import requests
 
 @support_login
 class Daemon:
-    def __init__(self, url: str, apikey: str = None):
+    def __init__(self, url: str, apikey: str | None = None):
         """
         Initialize a new Daemon instance.
 
@@ -51,15 +51,23 @@ class Daemon:
         return self.client.send(
             "DELETE", "service/remote_service", params={"uuid": uuid})
 
-    def tryConnect(self, uuid: str) -> requests.Response:
+    def tryConnect(self, uuid: str, return_bool: bool = False) -> requests.Response | bool:
         """
         Try to connect to a remote service by its UUID.
 
         :param uuid: UUID of the remote service to connect to.
-        :return: Response data from the server.
+        :param return_bool: Whether to return only the connection status boolean, defaults to `False`.
+        :return: A boolean of the response data or node can status returned by the server.
         """
-        return self.client.send(
+        data = self.client.send(
             "GET", "service/link_remote_service", params={"uuid": uuid})
+        if return_bool == True:
+            if data.status_code != 200:
+                return False
+            else:
+                return True
+        else:
+            return data
 
     def updateDaemonConnectConfig(self, uuid: str, ip: str, port: int, remarks: str, apiKey: str, available: bool = False, prefix: str = "") -> requests.Response:
         """

@@ -4,71 +4,44 @@
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi)
 
-English|[简体中文](https://github.com/molanp/mcsmapi/blob/main/README_zh-cn.md)
+Simplified Chinese|[English](https://github.com/molanp/mcsmapi/blob/main/README.md)
 
 ## Introduction
 
-`mcsmapi` is a Pypi package based on [MCSManager](https://github.com/MCSManager/MCSManager), designed to simplify interaction with MCSM API.
+`mcsmapi` is a Pypi package based on [MCSManager](https://github.com/MCSManager/MCSManager) designed to simplify interaction with the MCSM API.
 
-Through this library, you can easily access and operate various functions provided by MCSM.
+With this library, you can more easily access and manipulate the various features provided by MCSM.
 
 ## Installation
 
-You can use `pip` to install `mcsmapi`:
+You can install `mcsmapi` using `pip`:
 
 ```bash
 pip install mcsmapi
 ```
 
-## Usage method
+## Supported functions
 
-### Example code
-
-Here are some examples of how to use `mcsmapi`:
-
-```python
-from mcsmapi import overview
-
-# if you have a apikey, you can use this method
-client = Overview(url=" https://example.com/",apikey="your_api_key")
-
-# if you do not have a apikey, you can use this method
-client = Overview(url=" https://example.com/")
-# login
-client.login(username="your_username",password="your_password")
-
-# Get dashboard data
-response = client.getData()
-print(response.json())
-```
-
-### Supported functions
-
-- [x] Login (`(func) login`)
-- [x] Dashboard Data (`(cls) Overview`)
-- [x] User Management (`(cls) Users`)
-- [x] Instance Management (`(cls) Instance`)
-- [x] Daemon Management (`(cls) Daemon`)
-- [x] File Management (`(cls) File`)
-- [x] Image Management (`(cls) Image`)
+- [x] login ([login](/doc/en/login.md))
+- [x] Dashboard data ([Overview](/doc/en/overview.md))
+- [x] User Management ([Users](/doc/en/users.md))
+- [x] Instance Management (`Instance`)
+- [x] Node Management ([Daemon](/doc/en/daemon.md))
+- [x] File Management (`File`)
+- [x] Image Management (`Image`)
 
 ## Supported MCSM versions
 
-The current version of MCSMAPI client supports the following MCSM versions:
+| MCSM Version | Support Status | Compatible Versions|
+|:---:| :---: | :---: |
+| 10.1.0 ~ 10.2.1 | ✅ | 0.1.1 |
 
-- 10.2.1
-- 10.1.0
+## Contribute
 
-## Compatible Python versions
-
-- Python version 3.7 and above.
-
-## Contribution
-
-If you find any issues or have improvement suggestions, please feel free to submit [Issue](https://github.com/molanp/mcsmapi-client/issues) or create a [Pull Request](https://github.com/molanp/mcsmapi-client/pulls).
+If you find any issues or have suggestions for improvements, feel free to submit an [Issue](https://github.com/molanp/mcsmapi/issues) or create a [Pull Request](https://github.com/molanp/mcsmapi/pulls).
 
 ## License
 
-[MIT License](https://opensource.org/licenses/MIT).
+`mcsmapi` uses the [MIT license](https://opensource.org/licenses/MIT).
 
-Please refer to [LICENSE](LICENSE) File for more information.
+See the [LICENSE](LICENSE) file for more information.

@@ -4,7 +4,7 @@ import requests
 
 @support_login
 class Instance:
-    def __init__(self, url: str, apikey: str = None):
+    def __init__(self, url: str, apikey: str | None = None):
         """
         Initializes a new Instance object.
 
@@ -197,7 +197,7 @@ class Instance:
         return self.client.send("POST", "protected_instance/command", params={
             "uuid": instanceUuid, "daemonId": daemonId, "command": command})
 
-    def getOutput(self, instanceUuid: str, daemonId: str, size: int = None) -> requests.Response:
+    def getOutput(self, instanceUuid: str, daemonId: str, size: int | None = None) -> requests.Response:
         """
         Retrieves output log from an instance.
 
@@ -211,7 +211,7 @@ class Instance:
         """
         params = {"uuid": instanceUuid, "daemonId": daemonId}
         if size is not None:
-            params["size"] = size
+            params["size"] = str(size)
         return self.client.send(
             "GET", "protected_instance/outputlog", params=params)
 

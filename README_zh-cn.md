@@ -20,55 +20,28 @@
 pip install mcsmapi
 ```
 
-## 使用方法
+## 支持的功能
 
-### 示例代码
-
-以下是如何使用 `mcsmapi` 的一些示例：
-
-```python
-from mcsmapi import overview
-
-# 如果有apikey，使用apikey验证
-client = Overview(url=" https://example.com/",apikey="your_api_key")
-
-# 如果没有apikey，使用账号密码验证
-client = Overview(url=" https://example.com/")
-# 登录
-client.login(username="your_username",password="your_password")
-
-# 获取数据
-response = client.getData()
-print(response.json())
-```
-
-### 支持的功能
-
-- [x] 登录 (`(func) login`)
-- [x] 仪表盘数据(`(cls) Overview`)
-- [x] 用户管理(`(cls) Users`)
-- [x] 实例管理(`(cls) Instance`)
-- [x] 节点管理(`(cls) Daemon`)
-- [x] 文件管理(`(cls) File`)
-- [x] 镜像管理(`(cls) Image`)
+- [x] 登录 ([login](doc/zh-cn/login.md))
+- [x] 仪表盘数据([Overview](/doc/zh-cn/overview.md))
+- [x] 用户管理([Users](doc/zh-cn/users.md))
+- [x] 实例管理(`Instance`)
+- [x] 节点管理([Daemon](doc/zh-cn/daemon.md))
+- [x] 文件管理(`File`)
+- [x] 镜像管理(`Image`)
 
 ## 支持的 MCSM 版本
 
-当前版本的 `mcsmapi-client` 支持以下 `MCSM` 版本：
-
-- 10.2.1
-- 10.1.0
-
-## 兼容的 Python 版本
-
-- Python 3.7 及以上版本。
+| MCSM 版本 | 支持状态 | 兼容版本 |
+| :---: | :---: | :---: |
+| 10.1.0 - 10.2.1 | ✅ | 0.1.1 |
 
 ## 贡献
 
-如果您发现任何问题或有改进建议，欢迎提交 [Issue](https://github.com/molanp/mcsmapi-client/issues) 或者创建 [Pull Request](https://github.com/molanp/mcsmapi-client/pulls)。
+如果您发现任何问题或有改进建议，欢迎提交 [Issue](https://github.com/molanp/mcsmapi/issues) 或者创建 [Pull Request](https://github.com/molanp/mcsmapi/pulls)。
 
 ## 许可
 
-`mcsmapi-client` 使用 [MIT 许可证](https://opensource.org/licenses/MIT)。
+`mcsmapi` 使用 [MIT 许可证](https://opensource.org/licenses/MIT)。
 
 请参阅 [LICENSE](LICENSE) 文件以获取更多信息。

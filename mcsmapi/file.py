@@ -1,3 +1,4 @@
+import aiofiles
 from .common import support_login, ApiClient
 import aiohttp
 import requests
@@ -6,7 +7,7 @@ import os
 
 @support_login
 class File:
-    def __init__(self, url: str, apikey: str = None):
+    def __init__(self, url: str, apikey: str | None = None):
         """
         Initialize a new File instance.
 
@@ -116,7 +117,7 @@ class File:
             async with session.get(f"http://{addr}/download/{password}/{file_name}") as response:
                 if response.status == 200:
                     file_path = os.path.join(download_to_path, file_name)
-                    async with open(file_path, "wb") as f:
+                    async with aiofiles.open(file_path, "wb") as f:
                         await f.write(await response.read())
                     return file_path
                 else:

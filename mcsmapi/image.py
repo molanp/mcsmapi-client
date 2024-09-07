@@ -4,7 +4,7 @@ import requests
 
 @support_login
 class Image:
-    def __init__(self, url: str, apikey: str = None):
+    def __init__(self, url: str, apikey: str | None = None):
         """
         Initializes a new Image instance.
 

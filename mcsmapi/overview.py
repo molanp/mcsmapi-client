@@ -15,7 +15,7 @@ class Overview:
         apikey (str, optional): The API key for authentication. Defaults to None.
     """
 
-    def __init__(self, url: str, apikey: str = None):
+    def __init__(self, url: str, apikey: str | None = None):
         """
         Initializes a new instance of the Overview class.
 
