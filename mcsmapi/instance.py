@@ -46,13 +46,13 @@ class Instance:
         return self.client.send("GET", "instance ", params={
             "uuid": instanceUuid, "daemonId": daemonId})
 
-    def create(self, daemonId: str, InstanceConfig: requests.Response) -> requests.Response:
+    def create(self, daemonId: str, InstanceConfig: dict) -> requests.Response:
         """
         Creates a new instance.
 
         Args:
             daemonId (str): ID of the daemon.
-            InstanceConfig (requests.Response): Configuration for the new instance.
+            InstanceConfig (dict): Configuration for the new instance.
 
         Returns:
             requests.Response: Response data indicating the creation status.
@@ -60,14 +60,14 @@ class Instance:
         return self.client.send("POST", "instance", params={
             "daemonId": daemonId}, data=InstanceConfig)
 
-    def updateConfig(self, instanceUuid: str, daemonId: str, InstanceConfig: requests.Response) -> requests.Response:
+    def updateConfig(self, instanceUuid: str, daemonId: str, InstanceConfig: dict) -> requests.Response:
         """
         Updates the configuration of an existing instance.
 
         Args:
             instanceUuid (str): UUID of the instance.
             daemonId (str): ID of the daemon.
-            InstanceConfig (requests.Response): Updated configuration for the instance.
+            InstanceConfig (rdict): Updated configuration for the instance.
 
         Returns:
             requests.Response: Response data indicating the update status.
