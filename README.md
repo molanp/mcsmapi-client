@@ -34,7 +34,7 @@ pip install mcsmapi
 
 | MCSM Version | Support Status | Compatible Versions|
 |:---:| :---: | :---: |
-| 10.1.0 ~ 10.2.1 | ✅ | 0.1.1 |
+| 10.1.0 ~ 10.4.2 | ✅ | 0.1.1 |
 
 ## Contribute
 
