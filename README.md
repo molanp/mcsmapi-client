@@ -1,47 +1,68 @@
 # MCSM API Client
 
-![Supported MCSManager Versions](https://img.shields.io/badge/Supported%20MCSManager%20Versions-10.4.2~10.1.0-blue)
+![Supported MCSManager Versions](https://img.shields.io/badge/Supported%20MCSManager%20Versions-10.x-blue)
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi)
 
-English|[Simplified Chinese](https://github.com/molanp/mcsmapi/blob/main/README_zh-cn.md)
+简体中文|[English](https://github.com/molanp/mcsmapi/blob/main/README.md)
 
-## Introduction
+## 简介
 
-`mcsmapi` is a Pypi package based on [MCSManager](https://github.com/MCSManager/MCSManager) designed to simplify interaction with the MCSM API.
+`mcsmapi` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
 
-With this library, you can more easily access and manipulate the various features provided by MCSM.
+通过这个库，您可以更轻松地访问和操作MCSM提供的各种功能。
 
-## Installation
+## 安装
 
-You can install `mcsmapi` using `pip`:
+您可以使用 `pip` 安装 `mcsmapi`：
 
 ```bash
 pip install mcsmapi
 ```
 
-## Supported functions
+## 支持的功能
 
-- [x] login ([login](/doc/en/login.md))
-- [x] Dashboard data ([Overview](/doc/en/overview.md))
-- [x] User Management ([Users](/doc/en/users.md))
-- [x] Instance Management (`Instance`)
-- [x] Node Management ([Daemon](/doc/en/daemon.md))
-- [x] File Management (`File`)
-- [x] Image Management (`Image`)
+- [x] 仪表盘数据([Overview](/doc/overview.md))
+- [x] 用户管理([Users](doc/users.md))
+- [ ] 实例管理(`Instance`)
+- [ ] 节点管理(`Daemon`)
+- [ ] 文件管理(`File`)
+- [ ] 镜像管理(`Image`)
 
-## Supported MCSM versions
+## 支持的 MCSM 版本
 
-| MCSM Version | Support Status | Compatible Versions|
-|:---:| :---: | :---: |
-| 10.1.0 ~ 10.4.2 | ✅ | 0.1.1 |
+| MCSM 版本 | 支持状态 |
+| :---: | :---: |
+| 10.x | ✅ |
 
-## Contribute
+### 快速示例
 
-If you find any issues or have suggestions for improvements, feel free to submit an [Issue](https://github.com/molanp/mcsmapi/issues) or create a [Pull Request](https://github.com/molanp/mcsmapi/pulls).
+```python
+from mcsmapi import MCSMAPI
 
-## License
+# 初始化
+mcsm = MCSMAPIAPI("https://example.com")
 
-`mcsmapi` uses the [MIT license](https://opensource.org/licenses/MIT).
+# 使用账号密码登录(API权限取决于账号权限)
+mcsm.login("username", "password")
 
-See the [LICENSE](LICENSE) file for more information.
+# 使用apikey登录(API权限取决于apikey权限)
+mcsm.login_with_apikey("apikey")
+
+# 获取仪表盘数据
+overview = mcsm.overview()
+
+# 获取 MCSM 版本
+mcsm_version = mcsm.overview().version
+
+```
+
+## 贡献
+
+如果您发现任何问题或有改进建议，欢迎提交 [Issue](https://github.com/molanp/mcsmapi/issues) 或者创建 [Pull Request](https://github.com/molanp/mcsmapi/pulls)。
+
+## 许可
+
+`mcsmapi` 使用 [MIT 许可证](https://opensource.org/licenses/MIT)。
+
+请参阅 [LICENSE](LICENSE) 文件以获取更多信息。
