@@ -15,7 +15,7 @@ def crash_handler(func):
         try:
             response = func(*args, **kwargs)
             response.raise_for_status()
-            return response
+            return response.json()["data"]
         except requests.exceptions.HTTPError as e:
             raise MCSMError(response.status_code, response.json().get("data")) from e
     return wrapper

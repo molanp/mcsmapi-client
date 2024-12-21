@@ -13,6 +13,7 @@ class MCSMAPI:
             f"{split_url.scheme}://{split_url.netloc}", ""
         )
         self.apikey = None
+        self.authentication = None
         self.timeout = timeout
         self.token = None
         self.session = requests.Session()
@@ -36,16 +37,18 @@ class MCSMAPI:
             params=params,
             data=data,
             timeout=self.timeout,
-        ).json()["data"]
+        )
 
     def login(self, username, password):
         self.token = self.__send(
             "POST", ApiPool.LOGIN, data={"username": username, "password": password}
         )
+        self.authentication = "account"
         return self
 
     def login_with_apikey(self, apikey):
         self.apikey = apikey
+        self.authentication = "apikey"
         return self
 
     def overview(self):
