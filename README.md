@@ -4,8 +4,6 @@
 ![Python Version](https://img.shields.io/badge/Python%20Version-%3E%3D3.7-blue)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/mcsmapi)
 
-简体中文|[English](https://github.com/molanp/mcsmapi/blob/main/README.md)
-
 ## 简介
 
 `mcsmapi` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
@@ -41,7 +39,7 @@ pip install mcsmapi
 from mcsmapi import MCSMAPI
 
 # 初始化
-mcsm = MCSMAPIAPI("https://example.com")
+mcsm = MCSMAPI("https://example.com")
 
 # 使用账号密码登录(API权限取决于账号权限)
 mcsm.login("username", "password")
