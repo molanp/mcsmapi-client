@@ -1,11 +1,9 @@
 import urllib.parse
-from .model import Overview
 import requests
 from .exceptions import crash_handler
 from .APIs.APIPool import ApiPool
 from .APIs.Users import Users
-
-
+from .model import Overview
 class MCSMAPI:
     def __init__(self, url, timeout=10):
         split_url = urllib.parse.urlsplit(url)
@@ -53,6 +51,6 @@ class MCSMAPI:
 
     def overview(self):
         return Overview(self.__send("GET", ApiPool.OVERVIEW))
-    
+
     def users(self):
         return Users(self.__send)

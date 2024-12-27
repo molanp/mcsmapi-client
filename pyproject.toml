@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcsmapi"
+version = "0.1.1"
+description = "A Pypi package based on MCSManager, designed to simplify interaction with MCSM API."
+readme = "README.md"
+readme-content-type = "text/markdown"
+authors = [
+    { name = "molanp", email = "molanpp@outlook.com" }
+]
+urls = { "Source" = "https://github.com/molanp/mcsmapi" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+    "requests",
+]
