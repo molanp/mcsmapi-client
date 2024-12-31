@@ -19,7 +19,7 @@ Represents system overview information.
 - `remoteCount` (dict): Remote connection count, both online and total.
   - `available` (int): Number of online connections.
   - `total` (int): Total number of connections.
-- `remoteList` (list): List of remote connections.
+- `remoteList` ([Daemon](Daemon.md)): A list of remote connections object, instantiated by the `Daemon` class.
 
 ---
 

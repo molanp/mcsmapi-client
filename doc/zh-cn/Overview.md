@@ -19,7 +19,7 @@
 - `remoteCount` (dict): 远程连接在线数量和总数量。
     - `available` (int): 在线数量
     - `total` (int): 总数量
-- `remoteList` (list): 远程连接列表。
+- `remoteList` ([Daemon](Daemon.md)): 远程连接列表对象，由`Daemon`类初始化。
 
 
 # SystemInfo 类

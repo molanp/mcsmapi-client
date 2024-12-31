@@ -6,6 +6,9 @@
 
 English|[Chinese Simplified](README_zh-cn.md)
 
+> [!important]
+> This project is in the development phase and the PYPI package has not yet been released.
+
 ## Introduction
 
 `mcsmapi` is a PyPI package based on [MCSManager](https://github.com/MCSManager/MCSManager), designed to simplify interactions with the MCSM API.
@@ -22,10 +25,10 @@ pip install mcsmapi
 
 ## Supported Features
 
-- [x] Dashboard data ([Overview](doc/en/overview.md))
-- [x] User management ([Users](doc/en/users.md))
+- [x] Dashboard data ([Overview](doc/en/Overview.md))
+- [x] User management ([Users](doc/en/Users.md))
 - [ ] Instance management (`Instance`)
-- [ ] Node management (`Daemon`)
+- [ ] Node management ([Daemon](doc/en/Daemon.md))
 - [ ] File management (`File`)
 - [ ] Image management (`Image`)
 
