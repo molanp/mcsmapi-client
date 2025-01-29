@@ -59,7 +59,7 @@ Update user information.
 > [!Important]
 > If you need to update non-instance configuration data, first use the `search` method to fetch the full user details, modify the necessary fields, and pass the updated data as the `config` parameter to the `update` method.
 > 
-> When updating instance resources for the user, only the corresponding instance list should be passed.
+> When updating a user's instance resources, just pass in the corresponding instance list
 
 **Parameters:**
 - `uuid` (str): The unique identifier (UUID) of the user.

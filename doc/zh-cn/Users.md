@@ -35,7 +35,7 @@ users_manager.search()
 
 ### create
 
-创建新用户的方法。该方法接受用户名、密码和权限等级作为参数。如果成功创建用户，将返回用户的唯一标识符UUID或True，由MCSM版本决定。
+创建新用户的方法。该方法接受用户名、密码和权限等级作为参数。如果成功创建用户，将返回用户的唯一标识符 UUID 或`True`，由 MCSM 版本决定。
 
 **参数:**
 - `username` (str): 用户名，字符串类型。
@@ -43,7 +43,7 @@ users_manager.search()
 - `permission` (int): 权限等级，整数类型，默认值为1。
 
 **返回:**
-- `str|bool`: 成功时返回用户UUID或True
+- `str|bool`: 成功时返回用户 UUID 或`True`
 
 **代码示例:**
 ```python
@@ -57,14 +57,14 @@ users_manager.create("username", "password")
 > [!Important]
 > 如果需要更新用户非实例类配置，请先使用search获取对应用户的全部信息，然后根据需要修改对应的数据，作为`config`参数传入update方法。
 >
-> 更新用户的实例资源时，只穿入对应的实例列表即可
+> 更新用户的实例资源时，只传入对应的实例列表即可
 
 **参数:**
 - `uuid` (str): 用户的唯一标识符UUID。
-- `config` (dict | None): 配置字典，包含要更新的用户信息。默认为None。
+- `config` (dict | None): 配置字典，包含要更新的用户信息。默认为`None`。
 
 **返回:**
-- `bool`: 成功时返回True
+- `bool`: 成功时返回`True`
 
 **代码示例:**
 ```python
@@ -76,7 +76,7 @@ users_manager.update("b7b5bc87eb454b52bbccc7f6c99dc333")
 删除用户的方法。
 
 **参数:**
-- `uuids` (list | None): 包含要删除的用户UUID的列表。默认为None。
+- `uuids` (list | None): 包含要删除的用户 UUID 的列表。默认为`None`。
 
 **返回:**
 - `bool`: 成功时返回True

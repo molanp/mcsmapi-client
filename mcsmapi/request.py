@@ -43,9 +43,7 @@ class Request:
         if not isinstance(endpoint, str):
             endpoint = str(endpoint)
         
-        url = urllib.parse.urljoin(self.mcsm_url, endpoint)  # 构建 URL
-
-        # 如果存在 apikey 和 token，加入请求参数
+        url = urllib.parse.urljoin(self.mcsm_url, endpoint) # type: ignore
         if Request.apikey is not None:
             params["apikey"] = Request.apikey
         if Request.token is not None:

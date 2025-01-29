@@ -1,60 +1,65 @@
-# `Overview` Class
+# Overview Class
 
-Represents system overview information.
+Class representing system overview information.
 
-### **Attributes:**
+**Attributes:**
 - `version` (str): MCSM version.
-- `specifiedDaemonVersion` (str): The specified daemon version.
-- `system` (SystemInfo): A system information object, instantiated by the `SystemInfo` class.
-- `record` (dict): Log records.
-  - `logined` (int): Number of successful logins to the panel.
-  - `loginFailed` (int): Number of failed login attempts.
-  - `banips` (int): Number of temporarily banned IP addresses.
-  - `illegalAccess` (int): Number of blocked illegal access attempts.
-- `process` (dict): Process information.
-  - `cpu` (int): CPU usage percentage.
-  - `memory` (int): Memory usage percentage.
-  - `cwd` (str): Current working directory.
-- `chart` (dict): Chart data.
-- `remoteCount` (dict): Remote connection count, both online and total.
-  - `available` (int): Number of online connections.
-  - `total` (int): Total number of connections.
-- `remoteList` ([Daemon](Daemon.md)): A list of remote connections object, instantiated by the `Daemon` class.
+- `specifiedDaemonVersion` (str): Specified daemon version.
+- `system` (SystemInfo): System information object.
+- `record` (RecordInfo): Record information object.
+- `process` (ProcessInfo): Process information object.
+- `chart` (dict): Chart information.
+- `remoteCount` (RemoteCountInfo): Number of remote connections.
+- `remoteList` ([Daemon](Daemon.md)): Remote connection list object, initialized by `Daemon` class.
 
----
 
-# `SystemInfo` Class
+## SystemInfo Class
 
-Represents system information.
+Class representing panel system information.
 
-### **Parameters:**
-- `system_data` (dict): A dictionary containing system information.
+**Properties:**
+- `type` (str): System type.
+- `version` (str): System version.
+- `platform` (str): System platform.
 
-### **Attributes:**
-- `type` (str): The type of the system.
-- `version` (str): The version of the system.
-- `platform` (str): The platform of the system.
+## RecordInfo Class
 
----
+Class for panel record information.
 
-## Code Example
-```python
+**Properties:**
+- `logined` (int): The number of successful panel logins.
+- `loginFailed` (int): Number of failed login attempts.
+- `banips` (int): Number of IPs temporarily blocked.
+- `illegalAccess` (int): Number of blocked accesses
+
+## ProcessInfo Class
+
+Class representing information about the panel's processes.
+
+**Properties:**
+- `cpu` (int): CPU utilization.
+- `memory` (int): Memory utilization.
+- `cwd` (str): Current working directory.
+
+## RemoteCountInfo class
+
+Class representing the number of remote connections to the panel.
+
+**Attributes:**
+- `available` (int): Number of online connections.
+- `total` (int): Total number of connections.
+
+## Code example
+``python
 from mcsmapi import MCSMAPI
 
-# Initialize MCSM API client and log in with API key
-mcsm = MCSMAPI("https://example.com").login_with_apikey("apikey")
-
-# Initialize Overview class
+mcsm = MCSMAPI(“https://example.com”).login_with_apikey(“apikey”)
+# Initialize the Overview class
 overview = mcsm.overview()
 
-# Get MCSM version
+# Get the MCSM version
 mcsm_version = mcsm.overview().mcsm_version
 
-# Get platform architecture
+# Get the platform architecture
 platform = mcsm.overview().system.platform
-```
-
-### **Explanation:**
-- The `Overview` class provides various system-related details, such as MCSM version, daemon version, system stats (like CPU and memory usage), remote connection stats, and more.
-- The `SystemInfo` class gives you detailed information about the system, such as the type, version, and platform.
-- In the provided example, the `mcsmapi` library is used to connect to a server and fetch overview information, including the version of MCSM and system platform architecture.
+``
