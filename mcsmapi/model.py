@@ -8,9 +8,9 @@ class Overview:
         self.specifiedDaemonVersion = raw_data["specifiedDaemonVersion"]
         self.system = self.SystemInfo(raw_data["system"])
         self.record = self.RecordInfo(raw_data["record"])
-        self.process = raw_data["process"]
+        self.process = self.ProcessInfo(raw_data["process"])
         self.chart = raw_data["chart"]
-        self.remoteCount = raw_data["remoteCount"]
+        self.remoteCount = self.RemoteCountInfo(raw_data["remoteCount"])
         self.remoteList = Daemon(raw_data["remote"])
 
     class SystemInfo:
