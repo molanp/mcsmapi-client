@@ -3,6 +3,7 @@ import requests
 import urllib.parse
 from mcsmapi.exceptions import MCSMError
 
+
 class Request:
     mcsm_url = ""
     timeout = 5
@@ -43,7 +44,7 @@ class Request:
             data = {}
         if not isinstance(endpoint, str):
             endpoint = str(endpoint)
-        
+
         url = urllib.parse.urljoin(self.mcsm_url, endpoint)
         if Request.apikey is not None:
             params["apikey"] = Request.apikey
@@ -52,7 +53,7 @@ class Request:
             params["token"] = Request.token
             data["token"] = Request.token
 
-        response =  Request.session.request(
+        response = Request.session.request(
             method.upper(),
             url,
             params=params,
@@ -63,6 +64,31 @@ class Request:
             response.raise_for_status()
             return response.json()["data"]
         except requests.exceptions.HTTPError as e:
-            raise MCSMError(response.status_code, response.json().get("data", response.text)) from e
+            raise MCSMError(
+                response.status_code, response.json().get("data", response.text)
+            ) from e
+
+    async def upload(self, endpoint, file: bytes) -> Any:
+        """上传文件"""
+        if not isinstance(endpoint, str):
+            endpoint = str(endpoint)
+
+        url = urllib.parse.urljoin(self.mcsm_url, endpoint)
+
+        response = Request.session.request(
+            "POST",
+            url,
+            files={"file": file},
+            timeout=self.timeout,
+        )
+        try:
+            response.raise_for_status()
+            return response.json()["data"]
+        except requests.exceptions.HTTPError as e:
+            raise MCSMError(
+                response.status_code, response.json().get("data", response.text)
+            ) from e
+
 
 send = Request().send
+upload = Request().upload
