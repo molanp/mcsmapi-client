@@ -1,47 +1,56 @@
-from dataclasses import dataclass
-from typing import Any, Dict, List
-from mcsmapi.apis.daemon import Daemon
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
+from mcsmapi.models.daemon import DaemonModel
 
-@dataclass
-class SystemInfo:
-    type: str
-    version: str
-    platform: str
 
-@dataclass
-class RecordInfo:
-    logined: int
-    loginFailed: int
-    banips: List[str]
-    illegalAccess: int
+class SystemUser(BaseModel):
+    uid: int = 0
+    gid: int = 0
+    username: str = ""
+    homedir: str = ""
+    shell: Optional[str] = None
 
-@dataclass
-class ProcessInfo:
-    cpuUsage: float
-    memoryUsage: float
-    cwd: str
 
-@dataclass
-class RemoteCountInfo:
-    total: int
-    available: int
+class SystemInfo(BaseModel):
+    user: SystemUser = SystemUser()
+    time: int = 0
+    totalmem: int = 0
+    freemem: int = 0
+    type: str = ""
+    version: str = ""
+    node: str = ""
+    hostname: str = ""
+    loadavg: List[float] = []
+    platform: str = ""
+    release: str = ""
+    uptime: int = 0
+    cpu: float = 0
 
-class OverviewModel:
-    def __init__(self, raw_data: Dict[str, Any]):
-        """
-        Initialize the Overview class with raw data.
 
-        :param raw_data: A dictionary containing the raw data.
-        """
-        try:
-            self.raw = raw_data
-            self.version = raw_data["version"]
-            self.specifiedDaemonVersion = raw_data["specifiedDaemonVersion"]
-            self.system = SystemInfo(**raw_data["system"])
-            self.record = RecordInfo(**raw_data["record"])
-            self.process = ProcessInfo(**raw_data["process"])
-            self.chart = raw_data["chart"]
-            self.remoteCount = RemoteCountInfo(**raw_data["remoteCount"])
-            self.remoteList = Daemon(raw_data["remote"])
-        except KeyError as e:
-            raise ValueError(f"Missing key in raw_data: {e}") from e
+class RecordInfo(BaseModel):
+    logined: int = 0
+    illegalAccess: int = 0
+    banips: int = 0
+    loginFailed: int = 0
+
+
+class ProcessInfo(BaseModel):
+    cpu: int = 0
+    memory: int = 0
+    cwd: str = ""
+
+
+class RemoteCountInfo(BaseModel):
+    total: int = 0
+    available: int = 0
+
+
+class OverviewModel(BaseModel):
+    version: str = ""
+    specifiedDaemonVersion: str = ""
+    system: SystemInfo = SystemInfo()
+    record: RecordInfo= RecordInfo()
+    process: ProcessInfo= ProcessInfo()
+    chart: Dict[str, Any]
+    remoteCount: RemoteCountInfo = RemoteCountInfo()
+    remote: List[DaemonModel] = []

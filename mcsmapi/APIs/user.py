@@ -4,11 +4,6 @@ from mcsmapi.models.user import SearchUserModel
 
 
 class Users:
-    """管理 API 中与用户相关的操作
-
-    提供通过 API 交互搜索、创建、更新和删除用户帐户的方法
-    """
-
     def search(
         self, username: str = "", page: int = 1, page_size: int = 20, role: str = ""
     ) -> SearchUserModel:
@@ -25,7 +20,7 @@ class Users:
         """
         result = send(
             "GET",
-            ApiPool.USERS,
+            f"{ApiPool.AUTH}/search",
             params={
                 "userName": username,
                 "page": page,

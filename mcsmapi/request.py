@@ -39,14 +39,18 @@ class Request:
         """发送 HTTP 请求"""
         if params is None:
             params = {}
+        if data is None:
+            data = {}
         if not isinstance(endpoint, str):
             endpoint = str(endpoint)
         
         url = urllib.parse.urljoin(self.mcsm_url, endpoint)
         if Request.apikey is not None:
             params["apikey"] = Request.apikey
+            data["apikey"] = Request.apikey
         if Request.token is not None:
             params["token"] = Request.token
+            data["token"] = Request.token
 
         response =  Request.session.request(
             method.upper(),

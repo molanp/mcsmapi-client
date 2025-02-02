@@ -1,75 +1,72 @@
-from dataclasses import dataclass, field
 from typing import List, Dict, Optional
+from pydantic import BaseModel
 
 
-@dataclass
-class DockerConfig:
+class DockerConfig(BaseModel):
     containerName: str = ""
-    image: str = ""
+    image: str = "mcsm-ubuntu:22.04"
     memory: int = 1024  # in MB
-    ports: List[str] = field(default_factory=list)
-    extraVolumes: List[str] = field(default_factory=list)
+    ports: List[str] = ["25565:25565/tcp"]
+    extraVolumes: List[str] = []
     maxSpace: Optional[int] = None
     network: Optional[str] = None
     io: Optional[str] = None
     networkMode: str = "bridge"
-    networkAliases: List[str] = field(default_factory=list)
+    networkAliases: List[str] = []
     cpusetCpus: str = ""
     cpuUsage: int = 100
     workingDir: str = ""
-    env: List[str] = field(default_factory=list)
+    env: List[str] = []
 
 
-@dataclass
-class TerminalOption:
+class TerminalOption(BaseModel):
     haveColor: bool = False
     pty: bool = True
 
 
-@dataclass
-class EventTask:
+class EventTask(BaseModel):
     autoStart: bool = False
     autoRestart: bool = True
     ignore: bool = False
 
 
-@dataclass
-class PingConfig:
+class PingConfig(BaseModel):
     ip: str = ""
     port: int = 25565
     type: int = 1
 
 
-@dataclass
-class InstanceConfig:
-    nickname: str = ""
-    startCommand: str = ""
-    stopCommand: str = ""
+class InstanceConfig(BaseModel):
+    nickname: str = "New Name"
+    startCommand: str = "cmd.exe"
+    stopCommand: str = "^C"
     cwd: str = ""
     ie: str = "gbk"  # 输入编码
     oe: str = "gbk"  # 输出编码
     createDatetime: int = 0
     lastDatetime: int = 0
     type: str = "universal"
-    tag: List[str] = field(default_factory=list)
+    tag: List[str] = []
     endTime: int = 0
     fileCode: str = "gbk"
-    processType: str = ""
-    updateCommand: str = ""
-    actionCommandList: List[str] = field(default_factory=list)
+    processType: str = "docker"
+    updateCommand: str = "shutdown -s"
+    actionCommandList: List[str] = []
     crlf: int = 2
-    docker: DockerConfig = field(default_factory=DockerConfig)
+    docker: DockerConfig = DockerConfig()
     enableRcon: bool = True
     rconPassword: str = ""
     rconPort: int = 2557
     rconIp: str = ""
-    terminalOption: TerminalOption = field(default_factory=TerminalOption)
-    eventTask: EventTask = field(default_factory=EventTask)
-    pingConfig: PingConfig = field(default_factory=PingConfig)
+    terminalOption: TerminalOption = TerminalOption()
+    eventTask: EventTask = EventTask()
+    pingConfig: PingConfig = PingConfig()
+
+    class Config:
+        arbitrary_types_allowed = True
 
 
-@dataclass
-class ProcessInfo:
+class ProcessInfo(BaseModel):
     cpu: int = 0
     memory: int = 0
     ppid: int = 0
@@ -79,35 +76,45 @@ class ProcessInfo:
     timestamp: int = 0
 
 
-@dataclass
-class InstanceInfo:
+class InstanceInfo(BaseModel):
     currentPlayers: int = -1
     fileLock: int = 0
     maxPlayers: int = -1
     openFrpStatus: bool = False
-    playersChart: List[Dict] = field(default_factory=list)
+    playersChart: List[Dict] = []
     version: str = ""
 
 
-@dataclass
-class InstanceDetail:
-    config: InstanceConfig = field(default_factory=InstanceConfig)
-    info: InstanceInfo = field(default_factory=InstanceInfo)
+class InstanceDetail(BaseModel):
+    config: InstanceConfig = InstanceConfig()
+    info: InstanceInfo = InstanceInfo()
     instanceUuid: str = ""
-    processInfo: ProcessInfo = field(default_factory=ProcessInfo)
+    processInfo: ProcessInfo = ProcessInfo()
     space: int = 0
     started: int = 0  # 启动次数
     status: int = 0  # -1 = 忙碌, 0 = 停止, 1 = 停止中, 2 = 启动中, 3 = 运行中
 
+    class Config:
+        arbitrary_types_allowed = True
 
-@dataclass
-class InstanceDetailList:
+
+class InstanceCreateResult(BaseModel):
+    instanceUuid: str = ""
+    config: InstanceConfig = InstanceConfig()
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class InstanceSearchList(BaseModel):
     pageSize: int = 0
     maxPage: int = 0
-    data: List[InstanceDetail] = field(default_factory=list)
+    data: List[InstanceDetail] = []
+
+    class Config:
+        arbitrary_types_allowed = True
 
 
-@dataclass
-class UserInstancesList:
+class UserInstancesList(BaseModel):
     instanceUuid: str = ""
     daemonId: str = ""

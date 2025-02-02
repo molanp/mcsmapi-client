@@ -7,7 +7,7 @@
 English|[Chinese Simplified](README_zh-cn.md)
 
 > [!important]
-> This project is in the development phase and the PYPI package has not yet been released.
+> We need your help, the documentation for this project has not been written yet, if you are willing, please submit pr to help us write the documentation.
 
 ## Introduction
 
@@ -26,9 +26,9 @@ pip install mcsmapi
 ## Supported Features
 
 - [x] Dashboard data ([Overview](doc/en/Overview.md))
-- [x] User management ([Users](doc/en/Users.md))
-- [ ] Instance management (`Instance`)
-- [ ] Node management ([Daemon](doc/en/Daemon.md))
+- [x] User management ([Users](doc/en/User.md))
+- [x] Instance management (`Instance`)
+- [x] Daemon management ([Daemon](doc/en/Daemon.md))
 - [ ] File management (`File`)
 - [ ] Image management (`Image`)
 

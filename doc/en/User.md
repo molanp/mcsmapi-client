@@ -1,4 +1,7 @@
-# `Users` Class
+> [!important]
+> This document is out of date and needs to be updated.
+
+# `User` Class
 
 This class manages user-related operations in the API. It provides methods to search, create, update, and delete user accounts via the API.
 
@@ -10,7 +13,7 @@ from mcsmapi import MCSMAPI
 # Log in using an API key (API permissions depend on the provided API key)
 mcsm = MCSMAPI("https://example.com").login_with_apikey("apikey")
 
-users_manager = mcsm.users()
+users_manager = mcsm.user()
 ```
 
 ---

@@ -13,7 +13,7 @@
 通过这个库，您可以更轻松地访问和操作MCSM提供的各种功能。
 
 > [!important]
-> 此项目处于开发阶段，尚未发布pypi包
+> 我们需要你的帮助，此项目的文档尚未编写，如您有意愿，请提交pr来帮助我们编写文档
 
 ## 安装
 
@@ -26,9 +26,9 @@ pip install mcsmapi
 ## 支持的功能
 
 - [x] 仪表盘数据([Overview](doc/zh-cn/Overview.md))
-- [x] 用户管理([Users](doc/zh-cn/Users.md))
-- [ ] 实例管理(`Instance`)
-- [ ] 节点管理([Daemon](doc/zh-cn/Daemon.md))
+- [x] 用户管理([Users](doc/zh-cn/User.md))
+- [x] 实例管理(`Instance`)
+- [x] 节点管理([Daemon](doc/zh-cn/Daemon.md))
 - [ ] 文件管理(`File`)
 - [ ] 镜像管理(`Image`)
 

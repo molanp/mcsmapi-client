@@ -1,3 +1,6 @@
+> [!important]
+> This document is out of date and needs to be updated.
+
 # Overview class Class
 
 representing system overview information.
@@ -11,7 +14,7 @@ representing system overview information.
 - `process` (ProcessInfo): Process information object.
 - `chart` (dict): Chart information.
 - `remoteCount` (RemoteCountInfo): Number of remote connections.
-- `remoteList` (Daemon): Remote connection list object, initialized by `Daemon` class.
+- `remote` (Daemon): Remote connection list object, initialized by `Daemon` class.
 
 ## The SystemInfo class
 
