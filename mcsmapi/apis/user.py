@@ -1,6 +1,6 @@
-from mcsmapi.pool import ApiPool
-from mcsmapi.request import send
-from mcsmapi.models.user import SearchUserModel
+from ..pool import ApiPool
+from ..request import send
+from ..models.user import SearchUserModel
 
 
 class Users:

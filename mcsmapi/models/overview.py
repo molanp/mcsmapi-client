@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 from pydantic import BaseModel
 from mcsmapi.models.daemon import DaemonModel
 
@@ -34,6 +34,11 @@ class RecordInfo(BaseModel):
     loginFailed: int = 0
 
 
+class ChartInfo(BaseModel):
+    system: List[Dict[str, float]] = []
+    request: List[Dict[str, int]] = []
+
+
 class ProcessInfo(BaseModel):
     cpu: int = 0
     memory: int = 0
@@ -49,8 +54,8 @@ class OverviewModel(BaseModel):
     version: str = ""
     specifiedDaemonVersion: str = ""
     system: SystemInfo = SystemInfo()
-    record: RecordInfo= RecordInfo()
-    process: ProcessInfo= ProcessInfo()
-    chart: Dict[str, Any]
+    record: RecordInfo = RecordInfo()
+    process: ProcessInfo = ProcessInfo()
+    chart: ChartInfo = ChartInfo()
     remoteCount: RemoteCountInfo = RemoteCountInfo()
     remote: List[DaemonModel] = []

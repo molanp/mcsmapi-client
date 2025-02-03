@@ -1,6 +1,6 @@
-from mcsmapi.pool import ApiPool
-from mcsmapi.request import send
-from mcsmapi.models.daemon import DaemonConfig
+from ..pool import ApiPool
+from ..request import send
+from ..models.daemon import DaemonConfig
 
 
 class Daemon:

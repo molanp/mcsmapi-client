@@ -1,6 +1,6 @@
-from mcsmapi.pool import ApiPool
-from mcsmapi.request import send
-from mcsmapi.models.instance import (
+from ..pool import ApiPool
+from ..request import send
+from ..models.instance import (
     InstanceSearchList,
     InstanceDetail,
     InstanceCreateResult,

@@ -1,6 +1,6 @@
-from mcsmapi.pool import ApiPool
-from mcsmapi.request import send
-from mcsmapi.models.overview import OverviewModel
+from ..pool import ApiPool
+from ..request import send
+from ..models.overview import OverviewModel
 
 
 class Overview:

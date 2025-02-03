@@ -1,7 +1,7 @@
 from typing import Any
 import requests
 import urllib.parse
-from mcsmapi.exceptions import MCSMError
+from .exceptions import MCSMError
 
 
 class Request:
