@@ -3,7 +3,7 @@ from ..request import send
 from ..models.user import SearchUserModel
 
 
-class Users:
+class User:
     def search(
         self, username: str = "", page: int = 1, page_size: int = 20, role: str = ""
     ) -> SearchUserModel:

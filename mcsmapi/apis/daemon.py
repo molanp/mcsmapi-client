@@ -1,3 +1,4 @@
+from typing import Any
 from ..pool import ApiPool
 from ..request import send
 from ..models.daemon import DaemonConfig
@@ -33,7 +34,7 @@ class Daemon:
         return send(
             "DELETE", f"{ApiPool.SERVICE}/remote_service", params={"uuid": daemonId}
         )
-    
+
     def link(self, daemonId: str) -> bool:
         """
         连接一个节点。
@@ -47,8 +48,8 @@ class Daemon:
         return send(
             "GET", f"{ApiPool.SERVICE}/link_remote_service", params={"uuid": daemonId}
         )
-    
-    def update(self, daemonId: str, config: dict) -> bool:
+
+    def update(self, daemonId: str, config: dict[str, Any]) -> bool:
         """
         更新一个节点的配置。
 

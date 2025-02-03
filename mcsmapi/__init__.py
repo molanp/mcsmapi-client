@@ -1,7 +1,9 @@
 import urllib.parse
 from .models.overview import OverviewModel
 from .pool import ApiPool
-from .apis.user import Users
+from .apis.file import File
+from .apis.user import User
+from .apis.image import Image
 from .apis.daemon import Daemon
 from .apis.instance import Instance
 from .apis.overview import Overview
@@ -39,8 +41,14 @@ class MCSMAPI:
     def instance(self) -> Instance:
         return Instance()
 
-    def users(self) -> Users:
-        return Users()
+    def user(self) -> User:
+        return User()
 
     def daemon(self) -> Daemon:
         return Daemon()
+
+    def file(self) -> File:
+        return File()
+
+    def image(self) -> Image:
+        return Image()

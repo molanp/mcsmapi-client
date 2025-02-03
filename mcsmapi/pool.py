@@ -10,3 +10,5 @@ class ApiPool(Enum):
     INSTANCE = "api/instance"
     PROTECTED_INSTANCE = "api/protected_instance"
     SERVICE = "api/service"
+    FILE = "api/files"
+    IMAGE = "api/environment"

@@ -36,7 +36,7 @@ class Request:
         self.mcsm_url = mcsm_url or Request.mcsm_url
         self.timeout = timeout or Request.timeout
 
-    def send(self, method, endpoint, params=None, data=None) -> Any:
+    def send(self, method: str, endpoint: Any, params=None, data=None) -> Any:
         """发送 HTTP 请求"""
         if params is None:
             params = {}
@@ -68,22 +68,19 @@ class Request:
                 response.status_code, response.json().get("data", response.text)
             ) from e
 
-    async def upload(self, endpoint, file: bytes) -> Any:
+    async def upload(self, url: str, file: bytes) -> bool:
         """上传文件"""
-        if not isinstance(endpoint, str):
-            endpoint = str(endpoint)
-
-        url = urllib.parse.urljoin(self.mcsm_url, endpoint)
 
         response = Request.session.request(
             "POST",
             url,
+            headers={"Content-Type": "multipart/form-data"},
             files={"file": file},
             timeout=self.timeout,
         )
         try:
             response.raise_for_status()
-            return response.json()["data"]
+            return True
         except requests.exceptions.HTTPError as e:
             raise MCSMError(
                 response.status_code, response.json().get("data", response.text)

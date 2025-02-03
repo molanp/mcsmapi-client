@@ -47,6 +47,44 @@ class DaemonModel(BaseModel):
     available: bool = False
     remarks: str = ""
 
+
+    def delete(self) -> bool:
+        """
+        删除该节点。
+
+        返回:
+        - bool: 删除成功后返回True
+        """
+        from ..apis.daemon import Daemon
+
+        return Daemon().delete(self.uuid)
+
+    def link(self) -> bool:
+        """
+        链接该节点。
+
+        返回:
+        - bool: 链接成功后返回True
+        """
+        from ..apis.daemon import Daemon
+
+        return Daemon().link(self.uuid)
+
+    def updateConfig(self, config: dict) -> bool:
+        """
+        更新该节点的配置。
+
+        参数:
+        - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
+
+        返回:
+        - bool: 更新成功后返回True
+        """
+        from ..apis.daemon import Daemon
+
+        return Daemon().update(self.uuid, config)
+
+
 class DaemonConfig(BaseModel):
     ip: str = "localhost"
     port: int = 24444

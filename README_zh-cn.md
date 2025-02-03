@@ -26,11 +26,11 @@ pip install mcsmapi
 ## 支持的功能
 
 - [x] 仪表盘数据([Overview](doc/zh-cn/Overview.md))
-- [x] 用户管理([Users](doc/zh-cn/User.md))
+- [x] 用户管理([User](doc/zh-cn/User.md))
 - [x] 实例管理(`Instance`)
-- [x] 节点管理([Daemon](doc/zh-cn/Daemon.md))
-- [ ] 文件管理(`File`)
-- [ ] 镜像管理(`Image`)
+- [x] 节点管理(`Daemon`)
+- [x] 文件管理(`File`)
+- [x] 镜像管理(`Image`)
 
 ## 支持的 MCSM 版本
 

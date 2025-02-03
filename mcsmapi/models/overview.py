@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
 from pydantic import BaseModel
-from mcsmapi.models.daemon import DaemonModel
+from .daemon import DaemonModel
 
 
 class SystemUser(BaseModel):
@@ -25,6 +25,7 @@ class SystemInfo(BaseModel):
     release: str = ""
     uptime: int = 0
     cpu: float = 0
+
 
 
 class RecordInfo(BaseModel):
@@ -58,4 +59,5 @@ class OverviewModel(BaseModel):
     process: ProcessInfo = ProcessInfo()
     chart: ChartInfo = ChartInfo()
     remoteCount: RemoteCountInfo = RemoteCountInfo()
-    remote: List[DaemonModel] = []
+    remote: List["DaemonModel"] = []
+

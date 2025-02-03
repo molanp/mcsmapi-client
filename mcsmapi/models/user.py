@@ -1,6 +1,6 @@
 from typing import List
-from mcsmapi.models.instance import UserInstancesList
 from pydantic import BaseModel
+from ..models.instance import UserInstancesList
 
 
 class UserModel(BaseModel):
@@ -16,7 +16,8 @@ class UserModel(BaseModel):
     isInit: bool = False
     secret: str = ""
     open2FA: bool = False
-    instances: List[UserInstancesList] = []
+    instances: List["UserInstancesList"] = []
+
 
 
 class SearchUserModel(BaseModel):
@@ -25,3 +26,4 @@ class SearchUserModel(BaseModel):
     page_size: int = 0
     max_page: int = 0
     data: List[UserModel] = []
+

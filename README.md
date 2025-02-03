@@ -26,11 +26,11 @@ pip install mcsmapi
 ## Supported Features
 
 - [x] Dashboard data ([Overview](doc/en/Overview.md))
-- [x] User management ([Users](doc/en/User.md))
+- [x] User management ([User](doc/en/User.md))
 - [x] Instance management (`Instance`)
-- [x] Daemon management ([Daemon](doc/en/Daemon.md))
-- [ ] File management (`File`)
-- [ ] Image management (`Image`)
+- [x] Daemon management (`Daemon`)
+- [x] File management (`File`)
+- [x] Image management (`Image`)
 
 ## Supported MCSM Versions
 

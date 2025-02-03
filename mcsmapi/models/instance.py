@@ -1,22 +1,6 @@
-from typing import List, Dict, Optional
+from typing import List, Dict
 from pydantic import BaseModel
-
-
-class DockerConfig(BaseModel):
-    containerName: str = ""
-    image: str = "mcsm-ubuntu:22.04"
-    memory: int = 1024  # in MB
-    ports: List[str] = ["25565:25565/tcp"]
-    extraVolumes: List[str] = []
-    maxSpace: Optional[int] = None
-    network: Optional[str] = None
-    io: Optional[str] = None
-    networkMode: str = "bridge"
-    networkAliases: List[str] = []
-    cpusetCpus: str = ""
-    cpuUsage: int = 100
-    workingDir: str = ""
-    env: List[str] = []
+from .image import DockerConfig
 
 
 class TerminalOption(BaseModel):
@@ -53,7 +37,7 @@ class InstanceConfig(BaseModel):
     updateCommand: str = "shutdown -s"
     actionCommandList: List[str] = []
     crlf: int = 2
-    docker: DockerConfig = DockerConfig()
+    docker: "DockerConfig" = DockerConfig()
     enableRcon: bool = True
     rconPassword: str = ""
     rconPort: int = 2557
@@ -62,8 +46,6 @@ class InstanceConfig(BaseModel):
     eventTask: EventTask = EventTask()
     pingConfig: PingConfig = PingConfig()
 
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class ProcessInfo(BaseModel):
@@ -94,16 +76,12 @@ class InstanceDetail(BaseModel):
     started: int = 0  # 启动次数
     status: int = 0  # -1 = 忙碌, 0 = 停止, 1 = 停止中, 2 = 启动中, 3 = 运行中
 
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class InstanceCreateResult(BaseModel):
     instanceUuid: str = ""
     config: InstanceConfig = InstanceConfig()
 
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class InstanceSearchList(BaseModel):
@@ -111,8 +89,6 @@ class InstanceSearchList(BaseModel):
     maxPage: int = 0
     data: List[InstanceDetail] = []
 
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class UserInstancesList(BaseModel):

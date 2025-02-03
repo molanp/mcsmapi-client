@@ -227,7 +227,7 @@ class Instance:
             params={"daemonId": daemonId, "uuid": uuid, "task_name": "update"},
         )
 
-    def send_command(self, daemonId: str, uuid: str, command: str) -> str:
+    def command(self, daemonId: str, uuid: str, command: str) -> str:
         """
         向实例发送命令。
         参数:
