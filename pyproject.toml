@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcsmapi"
-version = "0.1.1"
-description = "A Pypi package based on MCSManager, designed to simplify interaction with MCSM API."
+version = "0.1.2"
+description = "Shortcut the pypi package of MCSM./快捷操作MCSM的pypi包"
 readme = "README.md"
 readme-content-type = "text/markdown"
 authors = [

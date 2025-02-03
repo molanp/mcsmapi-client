@@ -5,7 +5,7 @@ from ..models.daemon import DaemonConfig
 
 
 class Daemon:
-    def add(self, config: dict) -> str:
+    def add(self, config: dict[str, Any]) -> str:
         """
         新增一个节点。
 
@@ -52,6 +52,8 @@ class Daemon:
     def update(self, daemonId: str, config: dict[str, Any]) -> bool:
         """
         更新一个节点的配置。
+        
+        **不建议直接使用此函数，建议调用overview()后在remote属性内使用updateConfig方法按需更新**
 
         参数:
         - daemonId (str): 节点的唯一标识符。

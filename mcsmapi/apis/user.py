@@ -1,3 +1,4 @@
+from typing import Any
 from ..pool import ApiPool
 from ..request import send
 from ..models.user import SearchUserModel, UserConfig
@@ -13,9 +14,10 @@ class User:
         - username (str): 要搜索的用户名。默认为空字符串，表示不进行用户名过滤
         - page (int): 页码，用于指示返回数据的页数。默认为1，表示返回第一页数据
         - page_size (int): 每页大小，用于指定每页包含的数据条数。默认为20，表示每页包含20条数据
-        - role (str): 用户的角色。默认为空字符串，表示不进行角色过滤
+        - role (str): 用户权限。默认为空字符串，表示不进行权限过滤
+                     可用的值为 1=用户, 10=管理员, -1=被封禁的用户
 
-        **
+        **返回:**
         - SearchUserModel: 包含搜索结果的模型。该模型包含了符合搜索条件的用户信息列表，以及总数据条数、总页数等分页信息。
         """
         result = send(
@@ -48,7 +50,7 @@ class User:
             data={"username": username, "password": password, "permission": permission},
         ).get("uuid", True)
 
-    def update(self, uuid: str, config: dict) -> bool:
+    def update(self, uuid: str, config: dict[str, Any]) -> bool:
         """
         更新用户信息的方法
 
@@ -56,7 +58,7 @@ class User:
 
         **参数:**
         - uuid (str): 用户的唯一标识符UUID
-        - config (dict): 新的用户信息，以字典形式提供，缺失内容由UserConfig模型补全。
+        - config (dict[str, Any]): 新的用户信息，以字典形式提供，缺失内容由UserConfig模型补全。
 
         **返回:**
         - bool: 成功时返回True
@@ -67,12 +69,12 @@ class User:
             data={"uuid": uuid, "config": UserConfig(**config).dict()},
         )
 
-    def delete(self, uuids: list) -> bool:
+    def delete(self, uuids: list[str]) -> bool:
         """
         删除用户的方法
 
         **参数:**
-        - uuids (list): 包含要删除的用户UUID的列表。
+        - uuids (list[str]): 包含要删除的用户UUID的列表。
 
         **返回:**
         - bool: 成功时返回True

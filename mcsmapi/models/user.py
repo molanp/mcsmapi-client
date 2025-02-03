@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 from pydantic import BaseModel
 from ..models.instance import InstanceDetail, UserInstancesList
 
@@ -29,12 +29,12 @@ class UserModel(BaseModel):
 
         return User().delete([self.uuid])
 
-    def update(self, config: dict) -> bool:
+    def update(self, config: dict[str, Any]) -> bool:
         """
         更新该用户的信息。
 
         参数:
-        - config (dict): 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充。
+        - config (dict[str, Any]): 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充。
 
         返回:
         - bool: 更新成功后返回True。

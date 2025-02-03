@@ -70,19 +70,30 @@ class DaemonModel(BaseModel):
 
         return Daemon().link(self.uuid)
 
-    def updateConfig(self, config: dict) -> bool:
+    def updateConfig(self, config: dict[str, Any]) -> bool:
         """
         更新该节点的配置。
 
         参数:
-        - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
+        - config (dict[str, Any]): 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充。
 
         返回:
         - bool: 更新成功后返回True
         """
         from ..apis.daemon import Daemon
 
-        return Daemon().update(self.uuid, config)
+        updated_config = self.dict()
+        updated_config.update(config)
+        # 过滤节点配置中不需要的字段
+        daemon_config_dict = {
+            key: updated_config[key]
+            for key in DaemonConfig.__fields__.keys()
+            if key in updated_config
+        }
+
+        daemon_config = DaemonConfig(**daemon_config_dict).dict()
+
+        return Daemon().update(self.uuid, daemon_config)
 
     def createInstance(self, config: dict[str, Any]) -> "InstanceCreateResult":
         """
