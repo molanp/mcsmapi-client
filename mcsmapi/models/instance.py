@@ -47,7 +47,6 @@ class InstanceConfig(BaseModel):
     pingConfig: PingConfig = PingConfig()
 
 
-
 class ProcessInfo(BaseModel):
     cpu: int = 0
     memory: int = 0
@@ -70,12 +69,112 @@ class InstanceInfo(BaseModel):
 class InstanceDetail(BaseModel):
     config: InstanceConfig = InstanceConfig()
     info: InstanceInfo = InstanceInfo()
+    daemonId: str = ""
     instanceUuid: str = ""
     processInfo: ProcessInfo = ProcessInfo()
     space: int = 0
     started: int = 0  # 启动次数
     status: int = 0  # -1 = 忙碌, 0 = 停止, 1 = 停止中, 2 = 启动中, 3 = 运行中
 
+    def start(self) -> str | bool:
+        """
+        启动该实例。
+
+        **返回:**
+        - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().start(self.daemonId, self.instanceUuid)
+
+    def stop(self) -> str | bool:
+        """
+        停止该实例。
+
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().stop(self.daemonId, self.instanceUuid)
+
+    def restart(self) -> str | bool:
+        """
+        重启该实例。
+
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().restart(self.daemonId, self.instanceUuid)
+
+    def kill(self) -> str | bool:
+        """
+        强制关闭该实例。
+
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().kill(self.daemonId, self.instanceUuid)
+
+    def delete(self, deleteFile=False) -> str:
+        """
+        删除该实例。
+
+        **返回:**
+        - str: 被删除的实例的uuid。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().delete(self.daemonId, [self.instanceUuid], deleteFile)[0]
+
+    def update(self) -> bool:
+        """
+        升级实例。
+
+        **返回:**
+        - bool: 返回操作结果，成功时返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().update(self.daemonId, self.instanceUuid)
+
+    def updateConfig(self, config: dict) -> str | bool:
+        """
+        更新该实例配置。
+
+        **参数:**
+        - config (dict): 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全。
+
+        **返回:**
+        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段或值为非字符串类型，则默认返回True。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().updateConfig(
+            self.daemonId, self.instanceUuid, InstanceConfig(**config).dict()
+        )
+
+    def reinstall(self, targetUrl: str, title: str = "", description: str = "") -> bool:
+        """
+        重装实例。
+
+        **参数:**
+        - targetUrl (str): 重装文件的目标URL。
+        - title (str): 重装文件的标题。
+        - description (str, optional): 重装文件的描述，默认为空字符串。
+
+        **返回:**
+        - bool: 返回操作结果，成功时返回True
+        """
+        from ..apis.instance import Instance
+
+        return Instance().reinstall(
+            self.daemonId, self.instanceUuid, targetUrl, title, description
+        )
 
 
 class InstanceCreateResult(BaseModel):
@@ -83,12 +182,16 @@ class InstanceCreateResult(BaseModel):
     config: InstanceConfig = InstanceConfig()
 
 
-
 class InstanceSearchList(BaseModel):
     pageSize: int = 0
     maxPage: int = 0
     data: List[InstanceDetail] = []
+    daemonId: str = ""
 
+    def __init__(self, **data: str):
+        super().__init__(**data)
+        for instance in self.data:
+            instance.daemonId = self.daemonId
 
 
 class UserInstancesList(BaseModel):

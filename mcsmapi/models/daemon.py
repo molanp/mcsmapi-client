@@ -1,5 +1,6 @@
-from typing import List
+from typing import Any, List
 from pydantic import BaseModel
+from ..models.instance import InstanceCreateResult
 
 
 class CpuMemChart(BaseModel):
@@ -47,7 +48,6 @@ class DaemonModel(BaseModel):
     available: bool = False
     remarks: str = ""
 
-
     def delete(self) -> bool:
         """
         删除该节点。
@@ -83,6 +83,36 @@ class DaemonModel(BaseModel):
         from ..apis.daemon import Daemon
 
         return Daemon().update(self.uuid, config)
+
+    def createInstance(self, config: dict[str, Any]) -> "InstanceCreateResult":
+        """
+        在当前节点创建一个实例。
+
+        参数:
+        - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
+
+        返回:
+        - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
+        """
+        from ..apis.instance import Instance
+        from .instance import InstanceConfig
+
+        return Instance().create(self.uuid, InstanceConfig(**config).dict())
+
+    def deleteInstance(self, uuids: list[str], deleteFile=False) -> list[str]:
+        """
+        删除当前节点的一个或多个实例。
+
+        参数:
+        - uuids (list[str]): 要删除的实例UUID列表。
+        - deleteFile (bool, optional): 是否删除关联的文件，默认为False。
+
+        返回:
+        - list[str]: 删除操作后返回的UUID列表。
+        """
+        from ..apis.instance import Instance
+
+        return Instance().delete(self.uuid, uuids, deleteFile)
 
 
 class DaemonConfig(BaseModel):

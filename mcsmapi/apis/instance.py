@@ -1,3 +1,4 @@
+from typing import Any
 from ..pool import ApiPool
 from ..request import send
 from ..models.instance import (
@@ -46,15 +47,15 @@ class Instance:
                 "tag": tag,
             },
         )
-        return InstanceSearchList(**result)
+        return InstanceSearchList(**result, daemonId=daemonId)
 
-    def detail(self, uuid: str, daemonId: str) -> InstanceDetail:
+    def detail(self, daemonId: str, uuid: str) -> InstanceDetail:
         """
         获取指定实例的详细信息
 
         **参数:**
-        - uuid (str): 实例的唯一标识符
         - daemonId (str): 守护进程的唯一标识符
+        - uuid (str): 实例的唯一标识符
 
         **返回:**
         - InstanceDetail: 包含实例详细信息的模型。
@@ -66,15 +67,15 @@ class Instance:
         )
         return InstanceDetail(**result)
 
-    def create(self, daemonId: str, config: dict) -> InstanceCreateResult:
+    def create(self, daemonId: str, config: dict[str, Any]) -> InstanceCreateResult:
         """
         创建一个实例。
 
-        参数:
+        **参数:**
         - daemonId (str): 守护进程的唯一标识符，用于关联新创建的实例。
-        - config (dict): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
+        - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
 
-        返回:
+        **返回:**
         - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
         """
         result = send(
@@ -85,17 +86,17 @@ class Instance:
         )
         return InstanceCreateResult(**result)
 
-    def updateConfig(self, uuid: str, daemonId: str, config: dict) -> str:
+    def updateConfig(self, daemonId: str, uuid: str, config: dict) -> str | bool:
         """
         更新实例配置。
 
-        参数:
-        - uuid (str): 实例的唯一标识符。
+        **参数:**
         - daemonId (str): 守护进程的标识符。
+        - uuid (str): 实例的唯一标识符。
         - config (dict): 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全。
 
-        返回:
-        - str: 更新成功后返回更新的实例UUID。
+        **返回:**
+        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "PUT",
@@ -105,19 +106,18 @@ class Instance:
         )
         return result.get("uuid", True)
 
-    def delete(self, daemonId: str, uuids: list, deleteFile: bool = False) -> list[str]:
+    def delete(
+        self, daemonId: str, uuids: list[str], deleteFile: bool = False
+    ) -> list[str]:
         """
         删除实例。
 
-        本函数通过发送DELETE请求来删除一个或多个实例。需要指定守护进程ID和要删除的实例UUID列表。
-        可以选择是否删除关联的文件。
-
-        参数:
+        **参数:**
         - daemonId (str): 守护进程的标识符。
         - uuids (list): 要删除的实例UUID列表。
         - deleteFile (bool, optional): 是否删除关联的文件，默认为False。
 
-        返回:
+        **返回:**
         - list[str]: 删除操作后返回的UUID列表。
         """
         return send(
@@ -127,16 +127,16 @@ class Instance:
             data={"uuids": uuids, "deleteFile": deleteFile},
         )
 
-    def start(self, daemonId: str, uuid: str) -> str:
+    def start(self, daemonId: str, uuid: str) -> str | bool:
         """
         启动实例。
 
-        参数:
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要启动的实例。
 
-        返回:
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "GET",
@@ -145,15 +145,16 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def stop(self, daemonId: str, uuid: str) -> str:
+    def stop(self, daemonId: str, uuid: str) -> str | bool:
         """
         关闭实例。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要关闭的实例。
 
-        返回:
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "GET",
@@ -162,15 +163,16 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def restart(self, daemonId: str, uuid: str) -> str:
+    def restart(self, daemonId: str, uuid: str) -> str | bool:
         """
         重启实例。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要重启的实例。
 
-        返回:
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "GET",
@@ -179,15 +181,16 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def kill(self, daemonId: str, uuid: str) -> str:
+    def kill(self, daemonId: str, uuid: str) -> str | bool:
         """
         强制关闭实例。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要强制关闭的实例。
 
-        返回:
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "GET",
@@ -199,11 +202,12 @@ class Instance:
     def batchOperation(self, instances: list[dict[str, str]], operation: str) -> bool:
         """
         对多个实例进行批量操作。
-        参数:
+
+        **参数:**
         - instances (list[dict[str,str]]): 包含多个实例信息的列表，每个实例信息为一个字典，包含 "uuid" 和 "daemonId" 字段。
         - operation (str): 要执行的操作，可以是 "start", "stop", "restart", 或 "kill"。
 
-        返回:
+        **返回:**
         - list[dict[str,str]]:包含每个实例操作结果的列表，每个结果为一个字典，包含 "uuid" 和 "result" 字段。
         """
         if operation in {"start", "stop", "restart", "kill"}:
@@ -214,11 +218,12 @@ class Instance:
     def update(self, daemonId: str, uuid: str) -> bool:
         """
         升级实例。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要升级的实例。
 
-        返回:
+        **返回:**
         - bool: 返回操作结果，成功时返回True。
         """
         return send(
@@ -230,13 +235,14 @@ class Instance:
     def command(self, daemonId: str, uuid: str, command: str) -> str:
         """
         向实例发送命令。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要发送命令的实例。
         - command (str): 要发送的命令。
 
-        返回:
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        **返回:**
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         result = send(
             "GET",
@@ -248,12 +254,13 @@ class Instance:
     def get_output(self, daemonId: str, uuid: str, size: int | str = "") -> str:
         """
         获取实例输出。
-        参数:
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
         - uuid (str): 实例的唯一标识符，用于指定需要获取输出的实例。
         - size (int, optional): 获取的日志大小: 1KB ~ 2048KB，如果未设置，则返回所有日志
 
-        返回:
+        **返回:**
         - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
         """
         return send(
@@ -264,22 +271,23 @@ class Instance:
 
     def reinstall(
         self,
-        uuid: str,
         daemonId: str,
+        uuid: str,
         targetUrl: str,
-        title: str,
+        title: str = "",
         description: str = "",
     ) -> bool:
         """
         重装实例。
-        参数:
-        - uuid (str): 实例的唯一标识符。
+
+        **参数:**
         - daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+        - uuid (str): 实例的唯一标识符。
         - targetUrl (str): 重装文件的目标URL。
         - title (str): 重装文件的标题。
         - description (str, optional): 重装文件的描述，默认为空字符串。
 
-        返回:
+        **返回:**
         - bool: 返回操作结果，成功时返回True。
         """
         return send(
