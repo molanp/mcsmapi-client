@@ -1,6 +1,6 @@
 from ..pool import ApiPool
 from ..request import send
-from ..models.user import SearchUserModel
+from ..models.user import SearchUserModel, UserConfig
 
 
 class User:
@@ -31,10 +31,8 @@ class User:
         return SearchUserModel(**result)
 
     def create(self, username: str, password: str, permission: int = 1) -> str | bool:
-        """创建新用户的方法
-
-        该方法接受用户名、密码和权限等级作为参数
-        如果成功创建用户，将返回用户的唯一标识符UUID或True，这一行为由 MCSM 版本决定
+        """
+        创建新用户的方法
 
         **参数:**
         - username (str): 用户名，字符串类型
@@ -42,7 +40,7 @@ class User:
         - permission (int): 权限等级，整数类型，默认值为1
 
         **返回:**
-        - str|bool: 成功时返回用户UUID或True
+        - str|bool: 创建成功后返回用户的UUID，如果未找到该字段，则默认返回True。
         """
         return send(
             "POST",
@@ -50,33 +48,33 @@ class User:
             data={"username": username, "password": password, "permission": permission},
         ).get("uuid", True)
 
-    def update(self, uuid: str, config: dict | None = None) -> bool:
-        """更新用户信息的方法
+    def update(self, uuid: str, config: dict) -> bool:
+        """
+        更新用户信息的方法
 
-        **如果需要更新用户非实例类配置，请先使用`search`获取对应用户的全部信息，然后根据需要修改对应的数据，作为`config`参数传入`update`方法**
-
-        **更新用户的实例资源时，只传入对应的实例列表即可**
+        **不建议直接使用此函数，建议调用search后使用update方法按需更新**
 
         **参数:**
-        - `uuid` (str): 用户的唯一标识符UUID
-        - `config` (dict | None): 配置字典，包含要更新的用户信息。默认为None
+        - uuid (str): 用户的唯一标识符UUID
+        - config (dict): 新的用户信息，以字典形式提供，缺失内容由UserConfig模型补全。
 
         **返回:**
-        - `bool`: 成功时返回True
+        - bool: 成功时返回True
         """
-        if config is None:
-            config = {}
-        return send("PUT", ApiPool.AUTH, data={"uuid": uuid, "config": config})
+        return send(
+            "PUT",
+            ApiPool.AUTH,
+            data={"uuid": uuid, "config": UserConfig(**config).dict()},
+        )
 
-    def delete(self, uuids: list | None = None) -> bool:
-        """删除用户的方法
+    def delete(self, uuids: list) -> bool:
+        """
+        删除用户的方法
 
         **参数:**
-        - `uuids` (list | None): 包含要删除的用户UUID的列表。默认为None
+        - uuids (list): 包含要删除的用户UUID的列表。
 
         **返回:**
-        - `bool`: 成功时返回True
+        - bool: 成功时返回True
         """
-        if uuids is None:
-            uuids = []
         return send("DELETE", ApiPool.AUTH, data=uuids)

@@ -81,7 +81,7 @@ class InstanceDetail(BaseModel):
         启动该实例。
 
         **返回:**
-        - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from ..apis.instance import Instance
 
@@ -92,7 +92,7 @@ class InstanceDetail(BaseModel):
         停止该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from ..apis.instance import Instance
 
@@ -103,7 +103,7 @@ class InstanceDetail(BaseModel):
         重启该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from ..apis.instance import Instance
 
@@ -114,7 +114,7 @@ class InstanceDetail(BaseModel):
         强制关闭该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from ..apis.instance import Instance
 
@@ -147,15 +147,20 @@ class InstanceDetail(BaseModel):
         更新该实例配置。
 
         **参数:**
-        - config (dict): 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全。
+        - config (dict): 新的实例配置，以字典形式提供，缺失内容由使用原实例配置填充。
 
         **返回:**
-        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
         """
         from ..apis.instance import Instance
 
+        updated_config = self.config.dict()
+        updated_config.update(config)
+
+        instance_config = InstanceConfig(**updated_config).dict()
+
         return Instance().updateConfig(
-            self.daemonId, self.instanceUuid, InstanceConfig(**config).dict()
+            self.daemonId, self.instanceUuid, instance_config
         )
 
     def reinstall(self, targetUrl: str, title: str = "", description: str = "") -> bool:

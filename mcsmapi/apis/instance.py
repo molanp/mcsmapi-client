@@ -89,6 +89,8 @@ class Instance:
     def updateConfig(self, daemonId: str, uuid: str, config: dict) -> str | bool:
         """
         更新实例配置。
+        
+        **不建议直接使用此函数，建议调用search后在data属性内使用updateConfig方法按需更新**
 
         **参数:**
         - daemonId (str): 守护进程的标识符。
@@ -96,7 +98,7 @@ class Instance:
         - config (dict): 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全。
 
         **返回:**
-        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
         """
         result = send(
             "PUT",
@@ -136,7 +138,7 @@ class Instance:
         - uuid (str): 实例的唯一标识符，用于指定需要启动的实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         result = send(
             "GET",
@@ -154,7 +156,7 @@ class Instance:
         - uuid (str): 实例的唯一标识符，用于指定需要关闭的实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         result = send(
             "GET",
@@ -172,7 +174,7 @@ class Instance:
         - uuid (str): 实例的唯一标识符，用于指定需要重启的实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         result = send(
             "GET",
@@ -190,7 +192,7 @@ class Instance:
         - uuid (str): 实例的唯一标识符，用于指定需要强制关闭的实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         result = send(
             "GET",
@@ -242,7 +244,7 @@ class Instance:
         - command (str): 要发送的命令。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         result = send(
             "GET",
@@ -261,7 +263,7 @@ class Instance:
         - size (int, optional): 获取的日志大小: 1KB ~ 2048KB，如果未设置，则返回所有日志
 
         **返回:**
-        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段或值为非字符串类型，则默认返回True。
+        - str: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         return send(
             "GET",
