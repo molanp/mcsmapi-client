@@ -7,7 +7,6 @@ name = "mcsmapi"
 version = "0.1.2"
 description = "Shortcut the pypi package of MCSM./快捷操作MCSM的pypi包"
 readme = "README.md"
-readme-content-type = "text/markdown"
 authors = [
     { name = "molanp", email = "molanpp@outlook.com" }
 ]
