@@ -43,7 +43,7 @@ class DaemonModel(BaseModel):
     cpuMemChart: List[CpuMemChart] = []
     uuid: str = ""
     ip: str = ""
-    port: str = ""
+    port: int = 24444
     prefix: str = ""
     available: bool = False
     remarks: str = ""

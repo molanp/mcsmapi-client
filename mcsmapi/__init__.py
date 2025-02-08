@@ -7,7 +7,7 @@ from .apis.image import Image
 from .apis.daemon import Daemon
 from .apis.instance import Instance
 from .apis.overview import Overview
-from .request import Request, send
+from .request import Request
 
 
 class MCSMAPI:
@@ -21,7 +21,7 @@ class MCSMAPI:
 
     def login(self, username: str, password: str) -> "MCSMAPI":
         Request.set_token(
-            send(
+            Request.send(
                 "POST",
                 f"{ApiPool.AUTH}/login",
                 data={"username": username, "password": password},
