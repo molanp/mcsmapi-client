@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "mcsmapi/**" # 仅监控 mcsmapi 目录的变更
+      - "pyproject.toml"
+      - "docs/**"
     branches:
       - main # 只在 main 分支触发
 

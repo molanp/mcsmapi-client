@@ -14,11 +14,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
 ]
-description = "Shortcut the pypi package of MCSM./快捷操作MCSM的pypi包"
-name = "mcsmapi"
-readme = "README.md"
 urls = {"Source" = "https://github.com/molanp/mcsmapi"}
-version = "0.1.2"
 
 dependencies = [
   "requests",
