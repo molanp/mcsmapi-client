@@ -3,11 +3,10 @@ name: Docs Auto-Update
 on:
   push:
     paths:
-      - "mcsmapi/**" # 仅监控 mcsmapi 目录的变更
+      - "mcsmapi/**"
+      - "docs/source/**"
       - "pyproject.toml"
-      - "docs/**"
-    branches:
-      - main # 只在 main 分支触发
+    branches: [main]
 
 jobs:
   build-and-pr:
@@ -17,32 +16,55 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout with full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[dev]
-      - name: Build documentation
+          pip install -e .[dev] sphinx sphinx_rtd_theme  # 明确安装文档依赖
+
+      - name: Generating API documentation..."
+        run: sphinx-apidoc -o docs/source/api/ mcsmapi/ -f
+
+      - name: Building Chinese docs
+        run: sphinx-build -b html -D language=zh_CN docs/source/ docs/build/zh_CN/
+
+      - name: Building English docs.
+        run: sphinx-build -b html -D language=en docs/source/ docs/build/en/
+
+      - name: Check for doc changes
+        id: check-docs
         run: |
-          make docs
+          git add docs/build/
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure Git
+        if: steps.check-docs.outputs.has_changes == 'true'
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Create Pull Request
+        if: steps.check-docs.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "docs: auto-update documentation [skip ci]"
           title: "[Bot] Documentation Update"
-          body: "Automated documentation update from latest code changes"
-          branch: "docs/auto-update-$(git rev-parse --short HEAD)"
+          body: "Automated update from commit ${{ github.sha }}"
+          branch: "docs/auto-update-$(date +%s)" # 使用时间戳避免冲突
           delete-branch: true
           labels: "documentation, automated"
+          token: ${{ secrets.GITHUB_TOKEN }}
