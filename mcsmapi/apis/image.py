@@ -1,6 +1,6 @@
-from ..pool import ApiPool
-from ..request import send
-from ..models.image import DockerImageItem, DockerContainerItem, DockerNetworkItem
+from mcsmapi.pool import ApiPool
+from mcsmapi.request import send
+from mcsmapi.models.image import DockerImageItem, DockerContainerItem, DockerNetworkItem
 
 
 class Image:

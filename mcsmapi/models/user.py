@@ -1,6 +1,6 @@
 from typing import Any, List
 from pydantic import BaseModel
-from ..models.instance import InstanceDetail, UserInstancesList
+from mcsmapi.models.instance import InstanceDetail, UserInstancesList
 
 
 class UserModel(BaseModel):
@@ -25,7 +25,7 @@ class UserModel(BaseModel):
         **返回:**
         - bool: 删除成功后返回True。
         """
-        from ..apis.user import User
+        from mcsmapi.apis.user import User
 
         return User().delete([self.uuid])
 
@@ -39,7 +39,7 @@ class UserModel(BaseModel):
         返回:
         - bool: 更新成功后返回True。
         """
-        from ..apis.user import User
+        from mcsmapi.apis.user import User
 
         updated_config = self.dict()
         updated_config.update(config)

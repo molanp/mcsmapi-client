@@ -1,13 +1,13 @@
 import urllib.parse
-from .models.overview import OverviewModel
-from .pool import ApiPool
-from .apis.file import File
-from .apis.user import User
-from .apis.image import Image
-from .apis.daemon import Daemon
-from .apis.instance import Instance
-from .apis.overview import Overview
-from .request import Request, send
+from mcsmapi.models.overview import OverviewModel
+from mcsmapi.pool import ApiPool
+from mcsmapi.apis.file import File
+from mcsmapi.apis.user import User
+from mcsmapi.apis.image import Image
+from mcsmapi.apis.daemon import Daemon
+from mcsmapi.apis.instance import Instance
+from mcsmapi.apis.overview import Overview
+from mcsmapi.request import Request, send
 
 
 class MCSMAPI:

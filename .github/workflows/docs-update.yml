@@ -1,0 +1,46 @@
+name: Docs Auto-Update
+
+on:
+  push:
+    paths:
+      - "mcsmapi/**" # 仅监控 mcsmapi 目录的变更
+    branches:
+      - main # 只在 main 分支触发
+
+jobs:
+  build-and-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+      - name: Build documentation
+        run: |
+          make docs
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "docs: auto-update documentation [skip ci]"
+          title: "[Bot] Documentation Update"
+          body: "Automated documentation update from latest code changes"
+          branch: "docs/auto-update-$(git rev-parse --short HEAD)"
+          delete-branch: true
+          labels: "documentation, automated"

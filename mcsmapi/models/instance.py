@@ -1,6 +1,6 @@
 from typing import List, Dict
 from pydantic import BaseModel
-from .image import DockerConfig
+from mcsmapi.models.image import DockerConfig
 
 
 class TerminalOption(BaseModel):
@@ -83,7 +83,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().start(self.daemonId, self.instanceUuid)
 
@@ -94,7 +94,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().stop(self.daemonId, self.instanceUuid)
 
@@ -105,7 +105,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().restart(self.daemonId, self.instanceUuid)
 
@@ -116,7 +116,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().kill(self.daemonId, self.instanceUuid)
 
@@ -127,7 +127,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str: 被删除的实例的uuid。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().delete(self.daemonId, [self.instanceUuid], deleteFile)[0]
 
@@ -138,7 +138,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - bool: 返回操作结果，成功时返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().update(self.daemonId, self.instanceUuid)
 
@@ -152,7 +152,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         updated_config = self.config.dict()
         updated_config.update(config)
@@ -175,7 +175,7 @@ class InstanceDetail(BaseModel):
         **返回:**
         - bool: 返回操作结果，成功时返回True
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().reinstall(
             self.daemonId, self.instanceUuid, targetUrl, title, description

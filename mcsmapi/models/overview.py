@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
 from pydantic import BaseModel
-from .daemon import DaemonModel
+from mcsmapi.models.daemon import DaemonModel
 
 
 class SystemUser(BaseModel):

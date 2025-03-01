@@ -1,6 +1,6 @@
-from ..pool import ApiPool
-from ..request import Request, send, upload
-from ..models.file import CommonConfig, FileList
+from mcsmapi.pool import ApiPool
+from mcsmapi.request import Request, send, upload
+from mcsmapi.models.file import CommonConfig, FileList
 import urllib.parse
 import os
 
