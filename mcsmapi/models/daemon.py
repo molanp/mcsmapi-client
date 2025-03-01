@@ -1,6 +1,6 @@
 from typing import Any, List
 from pydantic import BaseModel
-from ..models.instance import InstanceCreateResult
+from mcsmapi.models.instance import InstanceCreateResult
 
 
 class CpuMemChart(BaseModel):
@@ -55,7 +55,7 @@ class DaemonModel(BaseModel):
         返回:
         - bool: 删除成功后返回True
         """
-        from ..apis.daemon import Daemon
+        from mcsmapi.apis.daemon import Daemon
 
         return Daemon().delete(self.uuid)
 
@@ -66,7 +66,7 @@ class DaemonModel(BaseModel):
         返回:
         - bool: 链接成功后返回True
         """
-        from ..apis.daemon import Daemon
+        from mcsmapi.apis.daemon import Daemon
 
         return Daemon().link(self.uuid)
 
@@ -80,7 +80,7 @@ class DaemonModel(BaseModel):
         返回:
         - bool: 更新成功后返回True
         """
-        from ..apis.daemon import Daemon
+        from mcsmapi.apis.daemon import Daemon
 
         updated_config = self.dict()
         updated_config.update(config)
@@ -105,7 +105,7 @@ class DaemonModel(BaseModel):
         返回:
         - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
         from .instance import InstanceConfig
 
         return Instance().create(self.uuid, InstanceConfig(**config).dict())
@@ -121,7 +121,7 @@ class DaemonModel(BaseModel):
         返回:
         - list[str]: 删除操作后返回的UUID列表。
         """
-        from ..apis.instance import Instance
+        from mcsmapi.apis.instance import Instance
 
         return Instance().delete(self.uuid, uuids, deleteFile)
 

@@ -1,7 +1,7 @@
 from typing import Any
-from ..pool import ApiPool
-from ..request import send
-from ..models.instance import (
+from mcsmapi.pool import ApiPool
+from mcsmapi.request import send
+from mcsmapi.models.instance import (
     InstanceSearchList,
     InstanceDetail,
     InstanceCreateResult,

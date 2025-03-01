@@ -23,7 +23,7 @@ class FileItem(BaseModel):
         **返回:**
         - bool: 重命名成功后返回True。
         """
-        from ..apis.file import File
+        from mcsmapi.apis.file import File
 
         return File().rename(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), newName
@@ -36,14 +36,14 @@ class FileItem(BaseModel):
         **返回:**
         - bool: 重命名成功后返回True。
         """
-        from ..apis.file import File
+        from mcsmapi.apis.file import File
 
         return File().delete(
             self.daemonId, self.uuid, [os.path.join(self.target, self.name)]
         )
 
     def copy(self, target: str) -> bool:
-        from ..apis.file import File
+        from mcsmapi.apis.file import File
 
         return File().copyOne(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
@@ -59,7 +59,7 @@ class FileItem(BaseModel):
         **返回:**
         - bool: 移动成功后返回True。
         """
-        from ..apis.file import File
+        from mcsmapi.apis.file import File
 
         return File().moveOne(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
@@ -77,7 +77,7 @@ class FileItem(BaseModel):
         **返回:**
         - bool: 解压成功后返回True。
         """
-        from ..apis.file import File
+        from mcsmapi.apis.file import File
 
         return File().unzip(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target, code
