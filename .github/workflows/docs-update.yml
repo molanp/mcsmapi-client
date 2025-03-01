@@ -1,6 +1,7 @@
 name: Docs Auto-Update
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "mcsmapi/**"
