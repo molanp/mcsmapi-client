@@ -23,7 +23,7 @@ class SystemInfo(BaseModel):
     loadavg: List[float] = []
     platform: str = ""
     release: str = ""
-    uptime: int = 0
+    uptime: float = 0
     cpu: float = 0
 
 

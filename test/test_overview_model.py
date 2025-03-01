@@ -32,7 +32,7 @@ class TestOverviewModel(unittest.TestCase):
                 "loadavg": [0, 0, 0],
                 "platform": "win32",
                 "release": "10.0.22631",
-                "uptime": 905020,
+                "uptime": 905020.0,
                 "cpu": 0.11684482123110951,
             },
             "chart": {
@@ -67,7 +67,7 @@ class TestOverviewModel(unittest.TestCase):
                     "cpuMemChart": [{"cpu": 0, "mem": 13}],
                     "uuid": "957c6bddf379445c82bac5edf7684bbc",
                     "ip": "s1.example.com",
-                    "port": "24444",
+                    "port": 24444,
                     "prefix": "",
                     "available": True,
                     "remarks": "CN-ZJ-DEV-01",
