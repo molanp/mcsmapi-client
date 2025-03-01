@@ -24,7 +24,6 @@ dependencies = [
 dev = [
   "sphinx",
   "sphinx-intl",
-  "sphinx_autoapi",
   "sphinx-rtd-theme",
   "sphinx-autoapi",
 ]
