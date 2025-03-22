@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mcsmapi.apis.overview &#8212; mcsmapi  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>mcsmapi.apis.overview 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApiPool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">send</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.models.overview</span><span class="w"> </span><span class="kn">import</span> <span class="n">OverviewModel</span>
+
+
+<div class="viewcode-block" id="Overview">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.overview.Overview">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Overview</span><span class="p">:</span>
+<div class="viewcode-block" id="Overview.init">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.overview.Overview.init">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初始化方法，用于获取API概览信息并构建概览模型。</span>
+
+<span class="sd">        本方法通过发送GET请求获取API概览信息，确保返回的数据类型为字典，</span>
+<span class="sd">        然后使用这些数据来构建一个OverviewModel实例。</span>
+
+<span class="sd">        :return: 返回一个OverviewModel实例，该实例使用获取的API概览信息进行初始化。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">ApiPool</span><span class="o">.</span><span class="n">OVERVIEW</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">OverviewModel</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">mcsmapi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="提交" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>导航</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">模块代码</a><ul>
+  <li><a href="../../mcsmapi.html">mcsmapi</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

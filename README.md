@@ -25,8 +25,8 @@ pip install mcsmapi
 
 ## Supported Features
 
-- [x] Dashboard data ([Overview](doc/en/Overview.md))
-- [x] User management ([User](doc/en/User.md))
+- [x] Dashboard data (`Overview`)
+- [x] User management (`User`)
 - [x] Instance management (`Instance`)
 - [x] Daemon management (`Daemon`)
 - [x] File management (`File`)

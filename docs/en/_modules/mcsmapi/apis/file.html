@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mcsmapi.apis.file &#8212; mcsmapi  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for mcsmapi.apis.file</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApiPool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">send</span><span class="p">,</span> <span class="n">upload</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.models.file</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommonConfig</span><span class="p">,</span> <span class="n">FileList</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.parse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+
+<div class="viewcode-block" id="File">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">File</span><span class="p">:</span>
+<div class="viewcode-block" id="File.show">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.show">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">target</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">page_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FileList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取文件列表</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - target (str, 可选): 用于文件过滤的目标路径。默认为空字符串，表示不按路径过滤。</span>
+<span class="sd">       <br> - page (int, 可选): 指定分页的页码。默认为0。</span>
+<span class="sd">       <br> - page_size (int, 可选): 指定每页的项目数量。默认为100。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - FileList: 包含文件列表信息和分页详情的FileList模型。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/list&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span>
+                <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">,</span>
+                <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span>
+                <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span>
+                <span class="s2">&quot;page_size&quot;</span><span class="p">:</span> <span class="n">page_size</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">FileList</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">,</span> <span class="n">daemonId</span><span class="o">=</span><span class="n">daemonId</span><span class="p">,</span> <span class="n">uuid</span><span class="o">=</span><span class="n">uuid</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.content">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.content">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">content</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取文件内容</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - target (str): 文件的目标路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - str: 文件的内容信息。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.update">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        更新文件内容</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - target (str): 文件的目标路径。</span>
+<span class="sd">       <br> - text (str): 新的文件内容。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 更新成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.download">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.download">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        下载文件</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - file_name (str): 要下载的文件名。路径+名字, 示例: /backup/world.zip</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - str: 文件下载URL。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/download&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">,</span> <span class="s2">&quot;file_name&quot;</span><span class="p">:</span> <span class="n">file_name</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">CommonConfig</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="n">mcsm_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;://&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">base_url</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">protocol</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">addr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;download&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">password</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.upload">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.upload">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">upload</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">upload_dir</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        上传文件</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - file (bytes): 要上传的文件内容。</span>
+<span class="sd">       <br> - upload_dir (str): 文件上传到的目标路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 上传成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/upload&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">,</span> <span class="s2">&quot;upload_dir&quot;</span><span class="p">:</span> <span class="n">upload_dir</span><span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">CommonConfig</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="n">mcsm_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;://&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">base_url</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">protocol</span><span class="si">}</span><span class="s2">://</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">addr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;upload&quot;</span><span class="p">)</span>
+        <span class="n">final_url</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urljoin</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">upload</span><span class="p">(</span><span class="n">final_url</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="File.copy">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.copy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">copy_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        复制多个文件夹或文件到指定位置。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 文件实例的唯一标识符。</span>
+<span class="sd">       <br> - copy_map (dict): 复制映射，格式为 {源路径: 目标路径}</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 上传成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="p">[[</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">]</span> <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">copy_map</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/copy&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="n">targets</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.copyOne">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.copyOne">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copyOne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        复制单个文件或文件夹到指定位置。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - source (str): 源文件或文件夹的路径。</span>
+<span class="sd">       <br> - target (str): 目标文件或文件夹的路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 移动成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">daemonId</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="n">target</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="File.move">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.move">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">copy_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        移动多个文件或文件夹到指定位置。</span>
+
+<span class="sd">        参数:</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - copy_map (dict): 移动映射，格式为 {源路径: 目标路径}</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - bool: 移动成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="p">[[</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">]</span> <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">copy_map</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;PUT&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/move&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="n">targets</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.moveOne">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.moveOne">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">moveOne</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        从源路径移动单个文件或文件夹到目标路径。</span>
+
+<span class="sd">        参数:</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - source (str): 源文件或文件夹的路径。</span>
+<span class="sd">       <br> - target (str): 目标文件或文件夹的路径。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - bool: 移动成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">daemonId</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="n">target</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="File.rename">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.rename">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">new_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        重命名单个文件或文件夹。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - source (str): 源文件或文件夹的路径。</span>
+<span class="sd">       <br> - new_name (str): 源文件或文件夹的新名字。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 重命名成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">new_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">moveOne</span><span class="p">(</span><span class="n">daemonId</span><span class="p">,</span> <span class="n">uuid</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.zip">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.zip">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        压缩多个文件或文件夹到指定位置。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - source (str): 需要压缩到的 zip 文件路径。</span>
+<span class="sd">       <br> - targets (list): 要压缩的目标文件或文件夹的路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 压缩成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/compress&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="n">targets</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.unzip">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.unzip">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unzip</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;utf-8&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        解压缩指定的zip文件到目标位置。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - source (str): 需要解压的zip文件路径。</span>
+<span class="sd">       <br> - target (str): 解压到的目标路径。</span>
+<span class="sd">       <br> - code (str, optional): 压缩文件的编码方式，默认为&quot;utf-8&quot;。</span>
+<span class="sd">            可选值: utf-8, gbk, big5</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 解压成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/compress&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.delete">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.delete">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        删除多个文件或文件夹。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - targets (list): 要删除的文件或文件夹的路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 删除成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;DELETE&quot;</span><span class="p">,</span>
+            <span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="n">targets</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.createFile">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.createFile">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        创建文件。</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - target (str): 目标文件的路径，包含文件名。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 创建成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/touch&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="File.createFloder">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.file.File.createFloder">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">createFloder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        创建文件夹</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - uuid (str): 实例的唯一标识符。</span>
+<span class="sd">       <br> - target (str): 目标文件夹的路径。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 创建成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">FILE</span><span class="si">}</span><span class="s2">/mkdir&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span> <span class="s2">&quot;uuid&quot;</span><span class="p">:</span> <span class="n">uuid</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">},</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">mcsmapi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../mcsmapi.html">mcsmapi</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

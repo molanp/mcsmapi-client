@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mcsmapi.apis.image &#8212; mcsmapi  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for mcsmapi.apis.image</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.pool</span><span class="w"> </span><span class="kn">import</span> <span class="n">ApiPool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">send</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.models.image</span><span class="w"> </span><span class="kn">import</span> <span class="n">DockerImageItem</span><span class="p">,</span> <span class="n">DockerContainerItem</span><span class="p">,</span> <span class="n">DockerNetworkItem</span>
+
+
+<div class="viewcode-block" id="Image">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Image</span><span class="p">:</span>
+<div class="viewcode-block" id="Image.images">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image.images">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DockerImageItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取镜像列表</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - list[ImageModel]: 包含镜像列表详情的 ImageModel 模型的列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2">/image&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">DockerImageItem</span><span class="p">(</span><span class="o">**</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Image.containers">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image.containers">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">containers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DockerContainerItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取容器列表</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - list[DockerContainerItem]: 包含容器列表详情的 DockerContainerItem 模型的列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2">/containers&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">DockerContainerItem</span><span class="p">(</span><span class="o">**</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Image.network">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image.network">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DockerNetworkItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取网络接口列表</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - list[DockerNetworkItem]: 包含网络接口列表详情的 DockerNetworkItem 模型的列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2">/network&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">DockerNetworkItem</span><span class="p">(</span><span class="o">**</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Image.add">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image.add">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dockerFile</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        新增一个镜像</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+<span class="sd">       <br> - dockerFile (str): DockerFile Config</span>
+<span class="sd">       <br> - name (str): 镜像名称。</span>
+<span class="sd">       <br> - tag (str): 镜像版本。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - bool: 新增镜像成功后返回True。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2">/image&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">},</span>
+            <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dockerFile&quot;</span><span class="p">:</span> <span class="n">dockerFile</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;tag&quot;</span><span class="p">:</span> <span class="n">tag</span><span class="p">},</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Image.progress">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/index.html#mcsmapi.apis.image.Image.progress">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daemonId</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        获取镜像构建进度</span>
+
+<span class="sd">        ## **由于文档此部分内容不详，未使用模型**</span>
+
+<span class="sd">        **参数:**</span>
+<span class="sd">       <br> - daemonId (str): 守护进程的唯一标识符。</span>
+
+<span class="sd">        **返回:**</span>
+<span class="sd">       <br> - dict[str, int]: 包含构建进度信息的字典。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">send</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ApiPool</span><span class="o">.</span><span class="n">IMAGE</span><span class="si">}</span><span class="s2">/progress&quot;</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;daemonId&quot;</span><span class="p">:</span> <span class="n">daemonId</span><span class="p">},</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">mcsmapi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../mcsmapi.html">mcsmapi</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,33 @@
+mcsmapi.exceptions
+==================
+
+.. py:module:: mcsmapi.exceptions
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   mcsmapi.exceptions.MCSMError
+
+
+Module Contents
+---------------
+
+.. py:exception:: MCSMError(status_code, data=None)
+
+   Bases: :py:obj:`Exception`
+
+
+   Common base class for all non-exit exceptions.
+
+
+   .. py:attribute:: status_code
+
+
+   .. py:attribute:: data
+      :value: None
+
+
+

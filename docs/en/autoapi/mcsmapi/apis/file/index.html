@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mcsmapi.apis.file &#8212; mcsmapi documentation</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../../_static/pygments.css?v=5ecbeea2"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../../_static/basic.css?v=b08954a9"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../../_static/alabaster.css?v=27fed22d"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../../_static/graphviz.css?v=4ae1632d"
+    />
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="mcsmapi.apis.image" href="../image/index.html" />
+    <link rel="prev" title="mcsmapi.apis.daemon" href="../daemon/index.html" />
+
+    <link
+      rel="stylesheet"
+      href="../../../../_static/custom.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            <section id="module-mcsmapi.apis.file">
+              <span id="mcsmapi-apis-file"></span>
+              <h1>
+                mcsmapi.apis.file<a
+                  class="headerlink"
+                  href="#module-mcsmapi.apis.file"
+                  title="Link to this heading"
+                  ></a
+                >
+              </h1>
+              <section id="classes">
+                <h2>
+                  Classes<a
+                    class="headerlink"
+                    href="#classes"
+                    title="Link to this heading"
+                    ></a
+                  >
+                </h2>
+                <table class="autosummary longtable docutils align-default">
+                  <tbody>
+                    <tr class="row-odd">
+                      <td>
+                        <p>
+                          <a
+                            class="reference internal"
+                            href="#mcsmapi.apis.file.File"
+                            title="mcsmapi.apis.file.File"
+                            ><code
+                              class="xref py py-obj docutils literal notranslate"
+                              ><span class="pre">File</span></code
+                            ></a
+                          >
+                        </p>
+                      </td>
+                      <td><p></p></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="module-contents">
+                <h2>
+                  Module Contents<a
+                    class="headerlink"
+                    href="#module-contents"
+                    title="Link to this heading"
+                    ></a
+                  >
+                </h2>
+                <dl class="py class">
+                  <dt class="sig sig-object py" id="mcsmapi.apis.file.File">
+                    <em class="property"
+                      ><span class="k"><span class="pre">class</span></span
+                      ><span class="w"> </span></em
+                    ><span class="sig-prename descclassname"
+                      ><span class="pre">mcsmapi.apis.file.</span></span
+                    ><span class="sig-name descname"
+                      ><span class="pre">File</span></span
+                    ><a
+                      class="reference internal"
+                      href="../../../../_modules/mcsmapi/apis/file.html#File"
+                      ><span class="viewcode-link"
+                        ><span class="pre">[source]</span></span
+                      ></a
+                    ><a
+                      class="headerlink"
+                      href="#mcsmapi.apis.file.File"
+                      title="Link to this definition"
+                      ></a
+                    >
+                  </dt>
+                  <dd>
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.show"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">show</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">str</span></span
+                          ><span class="w"> </span
+                          ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
+                          ><span class="default_value"
+                            ><span class="pre">''</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">page</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">int</span></span
+                          ><span class="w"> </span
+                          ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
+                          ><span class="default_value"
+                            ><span class="pre">0</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">page_size</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">int</span></span
+                          ><span class="w"> </span
+                          ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
+                          ><span class="default_value"
+                            ><span class="pre">100</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><a
+                              class="reference internal"
+                              href="../../models/file/index.html#mcsmapi.models.file.FileList"
+                              title="mcsmapi.models.file.FileList"
+                              ><span class="pre"
+                                >mcsmapi.models.file.FileList</span
+                              ></a
+                            ></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.show"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.show"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Get the file list.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance.<br> - target
+                          (str, optional): The target path used for file
+                          filtering. Defaults to an empty string, which means no
+                          path filtering.<br> - page (int, optional): Specifies the
+                          page number for pagination. Defaults to 0.<br> - page_size
+                          (int, optional): Specifies the number of items per
+                          page. Defaults to 100.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - FileList: The FileList
+                          model containing the file list information and
+                          pagination details.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.content"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">content</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">str</span><span class="w"> </span
+                            ><span class="p"><span class="pre">|</span></span
+                            ><span class="w"> </span
+                            ><span class="pre">bytes</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.content"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.content"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Get the file content.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance.<br> - target
+                          (str): The target path of the file.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - str: The content of the
+                          file.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.update"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">update</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">text</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.update"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.update"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Update the file content.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance.<br> - target
+                          (str): The target path of the file.<br> - text (str): The
+                          new content for the file.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          update is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.download"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">download</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">file_name</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">str</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.download"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.download"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Download the file.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance. -
+                          file_name (str): The name of the file to download,
+                          including the path. Example: /backup/world.zip
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - str: The file download URL.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.upload"
+                      >
+                        <em class="property"
+                          ><span class="k"><span class="pre">async</span></span
+                          ><span class="w"> </span></em
+                        ><span class="sig-name descname"
+                          ><span class="pre">upload</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">file</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">bytes</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">upload_dir</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.upload"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.upload"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Upload the file.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance.<br> - file
+                          (bytes): The content of the file to upload. -
+                          upload_dir (str): The target directory where the file
+                          will be uploaded.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          upload is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.copy"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">copy</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">copy_map</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">dict</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"><span class="pre">,</span></span
+                            ><span class="w"> </span><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.copy"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.copy"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Copy multiple folders or files to a specified
+                          location.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the file instance.<br> - copy_map
+                          (dict): The copy mapping, formatted as {source_path:
+                          target_path}
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          copy operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.copyOne"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">copyOne</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">source</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.copyOne"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.copyOne"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Copy a single file or folder to a specified location.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - source (str):
+                          The path of the source file or folder.<br> - target (str):
+                          The path of the target file or folder.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          copy operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.move"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">move</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">copy_map</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">dict</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"><span class="pre">,</span></span
+                            ><span class="w"> </span><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.move"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.move"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Move multiple files or folders to a specified
+                          location.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - copy_map
+                          (dict): The move mapping, formatted as {source_path:
+                          target_path}
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          move operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.moveOne"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">moveOne</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">source</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.moveOne"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.moveOne"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Move a single file or folder from the source path to
+                          the target path.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - source (str):
+                          The path of the source file or folder.<br> - target (str):
+                          The path of the target file or folder.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          move operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.rename"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">rename</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">source</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">new_name</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.rename"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.rename"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Rename a single file or folder.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - source (str):
+                          The path of the source file or folder.<br> - new_name
+                          (str): The new name for the source file or folder.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          renaming operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.zip"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">zip</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">source</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">targets</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.zip"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.zip"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Compress multiple files or folders to a specified
+                          location.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - source (str):
+                          The path to the zip file where the files or folders
+                          should be compressed.<br> - targets (list): A list of
+                          paths of the files or folders to be compressed.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          compression operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.unzip"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">unzip</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">source</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">code</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"><span class="pre">str</span></span
+                          ><span class="w"> </span
+                          ><span class="o"><span class="pre">=</span></span
+                          ><span class="w"> </span
+                          ><span class="default_value"
+                            ><span class="pre">'utf-8'</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.unzip"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.unzip"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>
+                          Unzip the specified zip file to the target location.
+                        </p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - source (str):
+                          The path of the zip file to be unzipped.<br> - target
+                          (str): The target path where the files should be
+                          extracted.<br> - code (str, optional): The encoding of the
+                          compressed file, default is "utf-8".
+                        </p>
+                        <blockquote>
+                          <div><p>Optional values: utf-8, gbk, big5</p></div>
+                        </blockquote>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          extraction operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.delete"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">delete</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">targets</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">list</span
+                            ><span class="p"><span class="pre">[</span></span
+                            ><span class="pre">str</span
+                            ><span class="p"
+                              ><span class="pre">]</span></span
+                            ></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.delete"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.delete"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Delete multiple files or folders.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - targets
+                          (list): A list of paths of the files or folders to be
+                          deleted.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          deletion operation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.createFile"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">createFile</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.createFile"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.createFile"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Create a file.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - target (str):
+                          The path of the target file, including the file name.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          file creation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+
+                    <dl class="py method">
+                      <dt
+                        class="sig sig-object py"
+                        id="mcsmapi.apis.file.File.createFloder"
+                      >
+                        <span class="sig-name descname"
+                          ><span class="pre">createFloder</span></span
+                        ><span class="sig-paren">(</span
+                        ><em class="sig-param"
+                          ><span class="n"
+                            ><span class="pre">daemonId</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">uuid</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        >,
+                        <em class="sig-param"
+                          ><span class="n"><span class="pre">target</span></span
+                          ><span class="p"><span class="pre">:</span></span
+                          ><span class="w"> </span
+                          ><span class="n"
+                            ><span class="pre">str</span></span
+                          ></em
+                        ><span class="sig-paren">)</span>
+                        <span class="sig-return"
+                          ><span class="sig-return-icon">&#x2192;</span>
+                          <span class="sig-return-typehint"
+                            ><span class="pre">bool</span></span
+                          ></span
+                        ><a
+                          class="reference internal"
+                          href="../../../../_modules/mcsmapi/apis/file.html#File.createFloder"
+                          ><span class="viewcode-link"
+                            ><span class="pre">[source]</span></span
+                          ></a
+                        ><a
+                          class="headerlink"
+                          href="#mcsmapi.apis.file.File.createFloder"
+                          title="Link to this definition"
+                          ></a
+                        >
+                      </dt>
+                      <dd>
+                        <p>Create a folder.</p>
+                        <p>
+                          <strong>Parameters:</strong><br> - daemonId (str): The
+                          unique identifier of the daemon process.<br> - uuid (str):
+                          The unique identifier of the instance.<br> - target (str):
+                          The path of the target folder.
+                        </p>
+                        <p>
+                          <strong>Return:</strong><br> - bool: Returns True if the
+                          folder creation is successful.
+                        </p>
+                      </dd>
+                    </dl>
+                  </dd>
+                </dl>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+          <h1 class="logo"><a href="../../../../index.html">mcsmapi</a></h1>
+
+          <search id="searchbox" style="display: none" role="search">
+            <div class="searchformwrapper">
+              <form
+                class="search"
+                action="../../../../search.html"
+                method="get"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  aria-labelledby="searchlabel"
+                  autocomplete="off"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  placeholder="Search"
+                />
+                <input type="submit" value="Go" />
+              </form>
+            </div>
+          </search>
+          <script>
+            document.getElementById("searchbox").style.display = "block";
+          </script>
+          <h3>Navigation</h3>
+          <ul class="current">
+            <li class="toctree-l1">
+              <a
+                class="reference internal"
+                href="../../../../_autosummary/mcsmapi.html"
+                >mcsmapi</a
+              >
+            </li>
+            <li class="toctree-l1">
+              <a
+                class="reference internal"
+                href="../../../../_autosummary/mcsmapi.models.html"
+                >mcsmapi.models</a
+              >
+            </li>
+            <li class="toctree-l1 current">
+              <a class="reference internal" href="../../../index.html"
+                >API Reference</a
+              >
+              <ul class="current">
+                <li class="toctree-l2 current">
+                  <a class="reference internal" href="../../index.html"
+                    >mcsmapi</a
+                  >
+                  <ul class="current">
+                    <li class="toctree-l3 current">
+                      <a
+                        class="reference internal"
+                        href="../../index.html#submodules"
+                        >Submodules</a
+                      >
+                      <ul class="current">
+                        <li class="toctree-l4 current">
+                          <a class="reference internal" href="../index.html"
+                            >mcsmapi.apis</a
+                          >
+                          <ul class="current">
+                            <li class="toctree-l5 current">
+                              <a
+                                class="reference internal"
+                                href="../index.html#submodules"
+                                >Submodules</a
+                              >
+                              <ul class="current">
+                                <li class="toctree-l6">
+                                  <a
+                                    class="reference internal"
+                                    href="../daemon/index.html"
+                                    >mcsmapi.apis.daemon</a
+                                  >
+                                </li>
+                                <li class="toctree-l6 current">
+                                  <a class="current reference internal" href="#"
+                                    >mcsmapi.apis.file</a
+                                  >
+                                  <ul>
+                                    <li class="toctree-l7">
+                                      <a
+                                        class="reference internal"
+                                        href="#classes"
+                                        >Classes</a
+                                      >
+                                    </li>
+                                    <li class="toctree-l7">
+                                      <a
+                                        class="reference internal"
+                                        href="#module-contents"
+                                        >Module Contents</a
+                                      >
+                                      <ul>
+                                        <li class="toctree-l8">
+                                          <a
+                                            class="reference internal"
+                                            href="#mcsmapi.apis.file.File"
+                                            ><code
+                                              class="docutils literal notranslate"
+                                              ><span class="pre"
+                                                >File</span
+                                              ></code
+                                            ></a
+                                          >
+                                          <ul>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.show"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.show()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.content"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.content()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.update"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.update()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.download"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.download()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.upload"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.upload()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.copy"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.copy()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.copyOne"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.copyOne()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.move"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.move()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.moveOne"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.moveOne()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.rename"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.rename()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.zip"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.zip()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.unzip"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.unzip()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.delete"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.delete()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.createFile"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.createFile()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                            <li class="toctree-l9">
+                                              <a
+                                                class="reference internal"
+                                                href="#mcsmapi.apis.file.File.createFloder"
+                                                ><code
+                                                  class="docutils literal notranslate"
+                                                  ><span class="pre"
+                                                    >File.createFloder()</span
+                                                  ></code
+                                                ></a
+                                              >
+                                            </li>
+                                          </ul>
+                                        </li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li class="toctree-l6">
+                                  <a
+                                    class="reference internal"
+                                    href="../image/index.html"
+                                    >mcsmapi.apis.image</a
+                                  >
+                                </li>
+                                <li class="toctree-l6">
+                                  <a
+                                    class="reference internal"
+                                    href="../instance/index.html"
+                                    >mcsmapi.apis.instance</a
+                                  >
+                                </li>
+                                <li class="toctree-l6">
+                                  <a
+                                    class="reference internal"
+                                    href="../overview/index.html"
+                                    >mcsmapi.apis.overview</a
+                                  >
+                                </li>
+                                <li class="toctree-l6">
+                                  <a
+                                    class="reference internal"
+                                    href="../user/index.html"
+                                    >mcsmapi.apis.user</a
+                                  >
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li class="toctree-l4">
+                          <a
+                            class="reference internal"
+                            href="../../exceptions/index.html"
+                            >mcsmapi.exceptions</a
+                          >
+                        </li>
+                        <li class="toctree-l4">
+                          <a
+                            class="reference internal"
+                            href="../../models/index.html"
+                            >mcsmapi.models</a
+                          >
+                        </li>
+                        <li class="toctree-l4">
+                          <a
+                            class="reference internal"
+                            href="../../pool/index.html"
+                            >mcsmapi.pool</a
+                          >
+                        </li>
+                        <li class="toctree-l4">
+                          <a
+                            class="reference internal"
+                            href="../../request/index.html"
+                            >mcsmapi.request</a
+                          >
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="toctree-l3">
+                      <a
+                        class="reference internal"
+                        href="../../index.html#attributes"
+                        >Attributes</a
+                      >
+                    </li>
+                    <li class="toctree-l3">
+                      <a
+                        class="reference internal"
+                        href="../../index.html#classes"
+                        >Classes</a
+                      >
+                    </li>
+                    <li class="toctree-l3">
+                      <a
+                        class="reference internal"
+                        href="../../index.html#package-contents"
+                        >Package Contents</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="relations">
+            <h3>Related Topics</h3>
+            <ul>
+              <li>
+                <a href="../../../../index.html">Documentation overview</a>
+                <ul>
+                  <li>
+                    <a href="../../../index.html">API Reference</a>
+                    <ul>
+                      <li>
+                        <a href="../../index.html">mcsmapi</a>
+                        <ul>
+                          <li>
+                            <a href="../index.html">mcsmapi.apis</a>
+                            <ul>
+                              <li>
+                                Previous:
+                                <a
+                                  href="../daemon/index.html"
+                                  title="previous chapter"
+                                  >mcsmapi.apis.daemon</a
+                                >
+                              </li>
+                              <li>
+                                Next:
+                                <a
+                                  href="../image/index.html"
+                                  title="next chapter"
+                                  >mcsmapi.apis.image</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;. | Powered by
+      <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a> &amp;
+      <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+
+      |
+      <a
+        href="../../../../_sources/autoapi/mcsmapi/apis/file/index.rst.txt"
+        rel="nofollow"
+        >Page source</a
+      >
+    </div>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mcsmapi.models.daemon &#8212; mcsmapi  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for mcsmapi.models.daemon</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.models.instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">InstanceCreateResult</span>
+
+
+<div class="viewcode-block" id="CpuMemChart">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.CpuMemChart">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CpuMemChart</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">cpu</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">mem</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+
+<div class="viewcode-block" id="ProcessInfo">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.ProcessInfo">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProcessInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">cpu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="InstanceInfo">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.InstanceInfo">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">InstanceInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">running</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+
+<div class="viewcode-block" id="SystemInfo">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.SystemInfo">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SystemInfo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">hostname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">platform</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">release</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">uptime</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cwd</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">loadavg</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">freemem</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cpuUsage</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">memUsage</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">totalmem</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">processCpu</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">processMem</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+
+<div class="viewcode-block" id="DaemonModel">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DaemonModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">process</span><span class="p">:</span> <span class="n">ProcessInfo</span> <span class="o">=</span> <span class="n">ProcessInfo</span><span class="p">()</span>
+    <span class="n">instance</span><span class="p">:</span> <span class="n">InstanceInfo</span> <span class="o">=</span> <span class="n">InstanceInfo</span><span class="p">()</span>
+    <span class="n">system</span><span class="p">:</span> <span class="n">SystemInfo</span> <span class="o">=</span> <span class="n">SystemInfo</span><span class="p">()</span>
+    <span class="n">cpuMemChart</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CpuMemChart</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">uuid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">available</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">remarks</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<div class="viewcode-block" id="DaemonModel.delete">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel.delete">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        删除该节点。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - bool: 删除成功后返回True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.apis.daemon</span><span class="w"> </span><span class="kn">import</span> <span class="n">Daemon</span>
+
+        <span class="k">return</span> <span class="n">Daemon</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DaemonModel.link">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel.link">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">link</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        链接该节点。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - bool: 链接成功后返回True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.apis.daemon</span><span class="w"> </span><span class="kn">import</span> <span class="n">Daemon</span>
+
+        <span class="k">return</span> <span class="n">Daemon</span><span class="p">()</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DaemonModel.updateConfig">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel.updateConfig">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">updateConfig</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        更新该节点的配置。</span>
+
+<span class="sd">        参数:</span>
+<span class="sd">       <br> - config (dict[str, Any]): 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - bool: 更新成功后返回True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.apis.daemon</span><span class="w"> </span><span class="kn">import</span> <span class="n">Daemon</span>
+
+        <span class="n">updated_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+        <span class="n">updated_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># 过滤节点配置中不需要的字段</span>
+        <span class="n">daemon_config_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">:</span> <span class="n">updated_config</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">DaemonConfig</span><span class="o">.</span><span class="n">__fields__</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">updated_config</span>
+        <span class="p">}</span>
+
+        <span class="n">daemon_config</span> <span class="o">=</span> <span class="n">DaemonConfig</span><span class="p">(</span><span class="o">**</span><span class="n">daemon_config_dict</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">Daemon</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">daemon_config</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DaemonModel.createInstance">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel.createInstance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">createInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;InstanceCreateResult&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        在当前节点创建一个实例。</span>
+
+<span class="sd">        参数:</span>
+<span class="sd">       <br> - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.apis.instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">Instance</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">InstanceConfig</span>
+
+        <span class="k">return</span> <span class="n">Instance</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">InstanceConfig</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="DaemonModel.deleteInstance">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonModel.deleteInstance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deleteInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uuids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">deleteFile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        删除当前节点的一个或多个实例。</span>
+
+<span class="sd">        参数:</span>
+<span class="sd">       <br> - uuids (list[str]): 要删除的实例UUID列表。</span>
+<span class="sd">       <br> - deleteFile (bool, optional): 是否删除关联的文件，默认为False。</span>
+
+<span class="sd">        返回:</span>
+<span class="sd">       <br> - list[str]: 删除操作后返回的UUID列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mcsmapi.apis.instance</span><span class="w"> </span><span class="kn">import</span> <span class="n">Instance</span>
+
+        <span class="k">return</span> <span class="n">Instance</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span> <span class="n">uuids</span><span class="p">,</span> <span class="n">deleteFile</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DaemonConfig">
+<a class="viewcode-back" href="../../../autoapi/mcsmapi/models/daemon/index.html#mcsmapi.models.daemon.DaemonConfig">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DaemonConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">ip</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+    <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">24444</span>
+    <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">remarks</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;New Daemon&quot;</span>
+    <span class="n">available</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">mcsmapi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../mcsmapi.html">mcsmapi</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -81,7 +81,7 @@ class InstanceDetail(BaseModel):
         启动该实例。
 
         **返回:**
-        - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+       <br> - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -92,7 +92,7 @@ class InstanceDetail(BaseModel):
         停止该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -103,7 +103,7 @@ class InstanceDetail(BaseModel):
         重启该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -114,7 +114,7 @@ class InstanceDetail(BaseModel):
         强制关闭该实例。
 
         **返回:**
-        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -125,7 +125,7 @@ class InstanceDetail(BaseModel):
         删除该实例。
 
         **返回:**
-        - str: 被删除的实例的uuid。
+       <br> - str: 被删除的实例的uuid。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -136,7 +136,7 @@ class InstanceDetail(BaseModel):
         升级实例。
 
         **返回:**
-        - bool: 返回操作结果，成功时返回True。
+       <br> - bool: 返回操作结果，成功时返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -147,10 +147,10 @@ class InstanceDetail(BaseModel):
         更新该实例配置。
 
         **参数:**
-        - config (dict): 新的实例配置，以字典形式提供，缺失内容由使用原实例配置填充。
+       <br> - config (dict): 新的实例配置，以字典形式提供，缺失内容由使用原实例配置填充。
 
         **返回:**
-        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
+       <br> - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -168,12 +168,12 @@ class InstanceDetail(BaseModel):
         重装实例。
 
         **参数:**
-        - targetUrl (str): 重装文件的目标URL。
-        - title (str): 重装文件的标题。
-        - description (str, optional): 重装文件的描述，默认为空字符串。
+       <br> - targetUrl (str): 重装文件的目标URL。
+       <br> - title (str): 重装文件的标题。
+       <br> - description (str, optional): 重装文件的描述，默认为空字符串。
 
         **返回:**
-        - bool: 返回操作结果，成功时返回True
+       <br> - bool: 返回操作结果，成功时返回True
         """
         from mcsmapi.apis.instance import Instance
 

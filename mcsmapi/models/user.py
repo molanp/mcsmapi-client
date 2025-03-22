@@ -23,7 +23,7 @@ class UserModel(BaseModel):
         删除该用户。
 
         **返回:**
-        - bool: 删除成功后返回True。
+       <br> - bool: 删除成功后返回True。
         """
         from mcsmapi.apis.user import User
 
@@ -34,10 +34,10 @@ class UserModel(BaseModel):
         更新该用户的信息。
 
         参数:
-        - config (dict[str, Any]): 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充。
+       <br> - config (dict[str, Any]): 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充。
 
         返回:
-        - bool: 更新成功后返回True。
+       <br> - bool: 更新成功后返回True。
         """
         from mcsmapi.apis.user import User
 

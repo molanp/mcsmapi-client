@@ -1,0 +1,20 @@
+mcsmapi.models
+==============
+
+.. py:module:: mcsmapi.models
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/mcsmapi/models/daemon/index
+   /autoapi/mcsmapi/models/file/index
+   /autoapi/mcsmapi/models/image/index
+   /autoapi/mcsmapi/models/instance/index
+   /autoapi/mcsmapi/models/overview/index
+   /autoapi/mcsmapi/models/user/index
+
+

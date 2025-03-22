@@ -25,8 +25,8 @@ pip install mcsmapi
 
 ## 支持的功能
 
-- [x] 仪表盘数据([Overview](doc/zh-cn/Overview.md))
-- [x] 用户管理([User](doc/zh-cn/User.md))
+- [x] 仪表盘数据(`Overview`)
+- [x] 用户管理(`User`)
 - [x] 实例管理(`Instance`)
 - [x] 节点管理(`Daemon`)
 - [x] 文件管理(`File`)

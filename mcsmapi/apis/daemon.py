@@ -10,10 +10,10 @@ class Daemon:
         新增一个节点。
 
         参数:
-        - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
+       <br> - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
 
         返回:
-        - str: 新增节点的ID
+       <br> - str: 新增节点的ID
         """
         return send(
             "POST",
@@ -26,10 +26,10 @@ class Daemon:
         删除一个节点。
 
         参数:
-        - daemonId (str): 节点的唯一标识符。
+       <br> - daemonId (str): 节点的唯一标识符。
 
         返回:
-        - bool: 删除成功后返回True
+       <br> - bool: 删除成功后返回True
         """
         return send(
             "DELETE", f"{ApiPool.SERVICE}/remote_service", params={"uuid": daemonId}
@@ -40,10 +40,10 @@ class Daemon:
         连接一个节点。
 
         参数:
-        - daemonId (str): 节点的唯一标识符。
+       <br> - daemonId (str): 节点的唯一标识符。
 
         返回:
-        - bool: 连接成功后返回True
+       <br> - bool: 连接成功后返回True
         """
         return send(
             "GET", f"{ApiPool.SERVICE}/link_remote_service", params={"uuid": daemonId}
@@ -56,11 +56,11 @@ class Daemon:
         **不建议直接使用此函数，建议调用overview()后在remote属性内使用updateConfig方法按需更新**
 
         参数:
-        - daemonId (str): 节点的唯一标识符。
-        - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
+       <br> - daemonId (str): 节点的唯一标识符。
+       <br> - config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。
 
         返回:
-        - bool: 更新成功后返回True
+       <br> - bool: 更新成功后返回True
         """
         return send(
             "PUT",

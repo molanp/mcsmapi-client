@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mcsmapi.apis package &#8212; mcsmapi  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mcsmapi-apis-package">
+<h1>mcsmapi.apis package<a class="headerlink" href="#mcsmapi-apis-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-mcsmapi.apis.daemon">
+<span id="mcsmapi-apis-daemon-module"></span><h2>mcsmapi.apis.daemon module<a class="headerlink" href="#module-mcsmapi.apis.daemon" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.daemon.Daemon">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.daemon.</span></span><span class="sig-name descname"><span class="pre">Daemon</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/daemon.html#Daemon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.daemon.Daemon" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.daemon.Daemon.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/daemon.html#Daemon.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.daemon.Daemon.add" title="Link to this definition"></a></dt>
+<dd><p>新增一个节点。</p>
+<p>参数:
+- config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。</p>
+<p>返回:
+- str: 新增节点的ID</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.daemon.Daemon.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/daemon.html#Daemon.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.daemon.Daemon.delete" title="Link to this definition"></a></dt>
+<dd><p>删除一个节点。</p>
+<p>参数:
+- daemonId (str): 节点的唯一标识符。</p>
+<p>返回:
+- bool: 删除成功后返回True</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.daemon.Daemon.link">
+<span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/daemon.html#Daemon.link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.daemon.Daemon.link" title="Link to this definition"></a></dt>
+<dd><p>连接一个节点。</p>
+<p>参数:
+- daemonId (str): 节点的唯一标识符。</p>
+<p>返回:
+- bool: 连接成功后返回True</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.daemon.Daemon.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/daemon.html#Daemon.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.daemon.Daemon.update" title="Link to this definition"></a></dt>
+<dd><p>更新一个节点的配置。</p>
+<p><strong>不建议直接使用此函数，建议调用overview()后在remote属性内使用updateConfig方法按需更新</strong></p>
+<p>参数:
+- daemonId (str): 节点的唯一标识符。
+- config (dict): 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全。</p>
+<p>返回:
+- bool: 更新成功后返回True</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis.file">
+<span id="mcsmapi-apis-file-module"></span><h2>mcsmapi.apis.file module<a class="headerlink" href="#module-mcsmapi.apis.file" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.file.</span></span><span class="sig-name descname"><span class="pre">File</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.content">
+<span class="sig-name descname"><span class="pre">content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.content"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.content" title="Link to this definition"></a></dt>
+<dd><p>获取文件内容</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- target (str): 文件的目标路径。</p>
+<p><strong>返回:</strong>
+- str: 文件的内容信息。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.copy" title="Link to this definition"></a></dt>
+<dd><p>复制多个文件夹或文件到指定位置。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- copy_map (dict): 复制映射，格式为 {源路径: 目标路径}</p>
+<p><strong>返回:</strong>
+- bool: 上传成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.copyOne">
+<span class="sig-name descname"><span class="pre">copyOne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.copyOne"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.copyOne" title="Link to this definition"></a></dt>
+<dd><p>复制单个文件或文件夹到指定位置。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- source (str): 源文件或文件夹的路径。
+- target (str): 目标文件或文件夹的路径。</p>
+<p><strong>返回:</strong>
+- bool: 移动成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.createFile">
+<span class="sig-name descname"><span class="pre">createFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.createFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.createFile" title="Link to this definition"></a></dt>
+<dd><p>创建文件。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- target (str): 目标文件的路径，包含文件名。</p>
+<p><strong>返回:</strong>
+- bool: 创建成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.createFloder">
+<span class="sig-name descname"><span class="pre">createFloder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.createFloder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.createFloder" title="Link to this definition"></a></dt>
+<dd><p>创建文件夹</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- target (str): 目标文件夹的路径。</p>
+<p><strong>返回:</strong>
+- bool: 创建成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.delete" title="Link to this definition"></a></dt>
+<dd><p>删除多个文件或文件夹。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- targets (list): 要删除的文件或文件夹的路径。</p>
+<p><strong>返回:</strong>
+- bool: 删除成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.download">
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.download" title="Link to this definition"></a></dt>
+<dd><p>下载文件</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- file_name (str): 要下载的文件名。路径+名字, 示例: /backup/world.zip</p>
+<p><strong>返回:</strong>
+- str: 文件下载URL。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.move" title="Link to this definition"></a></dt>
+<dd><p>移动多个文件或文件夹到指定位置。</p>
+<p>参数:
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- copy_map (dict): 移动映射，格式为 {源路径: 目标路径}</p>
+<p>返回:
+- bool: 移动成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.moveOne">
+<span class="sig-name descname"><span class="pre">moveOne</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.moveOne"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.moveOne" title="Link to this definition"></a></dt>
+<dd><p>从源路径移动单个文件或文件夹到目标路径。</p>
+<p>参数:
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- source (str): 源文件或文件夹的路径。
+- target (str): 目标文件或文件夹的路径。</p>
+<p>返回:
+- bool: 移动成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.rename" title="Link to this definition"></a></dt>
+<dd><p>重命名单个文件或文件夹。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- source (str): 源文件或文件夹的路径。
+- new_name (str): 源文件或文件夹的新名字。</p>
+<p><strong>返回:</strong>
+- bool: 重命名成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../autoapi/mcsmapi/models/file/index.html#mcsmapi.models.file.FileList" title="mcsmapi.models.file.FileList"><span class="pre">FileList</span></a></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.show"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.show" title="Link to this definition"></a></dt>
+<dd><p>获取文件列表</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- target (str, 可选): 用于文件过滤的目标路径。默认为空字符串，表示不按路径过滤。
+- page (int, 可选): 指定分页的页码。默认为0。
+- page_size (int, 可选): 指定每页的项目数量。默认为100。</p>
+<p><strong>返回:</strong>
+- FileList: 包含文件列表信息和分页详情的FileList模型。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.unzip">
+<span class="sig-name descname"><span class="pre">unzip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.unzip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.unzip" title="Link to this definition"></a></dt>
+<dd><p>解压缩指定的zip文件到目标位置。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- source (str): 需要解压的zip文件路径。
+- target (str): 解压到的目标路径。
+- code (str, optional): 压缩文件的编码方式，默认为”utf-8”。</p>
+<blockquote>
+<div><p>可选值: utf-8, gbk, big5</p>
+</div></blockquote>
+<p><strong>返回:</strong>
+- bool: 解压成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.update" title="Link to this definition"></a></dt>
+<dd><p>更新文件内容</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- target (str): 文件的目标路径。
+- text (str): 新的文件内容。</p>
+<p><strong>返回:</strong>
+- bool: 更新成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.upload">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upload_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.upload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.upload" title="Link to this definition"></a></dt>
+<dd><p>上传文件</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 文件实例的唯一标识符。
+- file (bytes): 要上传的文件内容。
+- upload_dir (str): 文件上传到的目标路径。</p>
+<p><strong>返回:</strong>
+- bool: 上传成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.file.File.zip">
+<span class="sig-name descname"><span class="pre">zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/file.html#File.zip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.file.File.zip" title="Link to this definition"></a></dt>
+<dd><p>压缩多个文件或文件夹到指定位置。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- uuid (str): 实例的唯一标识符。
+- source (str): 需要压缩到的 zip 文件路径。
+- targets (list): 要压缩的目标文件或文件夹的路径。</p>
+<p><strong>返回:</strong>
+- bool: 压缩成功后返回True。</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis.image">
+<span id="mcsmapi-apis-image-module"></span><h2>mcsmapi.apis.image module<a class="headerlink" href="#module-mcsmapi.apis.image" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.image.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dockerFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image.add" title="Link to this definition"></a></dt>
+<dd><p>新增一个镜像</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。
+- dockerFile (str): DockerFile Config
+- name (str): 镜像名称。
+- tag (str): 镜像版本。</p>
+<p><strong>返回:</strong>
+- bool: 新增镜像成功后返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image.containers">
+<span class="sig-name descname"><span class="pre">containers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../autoapi/mcsmapi/models/image/index.html#mcsmapi.models.image.DockerContainerItem" title="mcsmapi.models.image.DockerContainerItem"><span class="pre">DockerContainerItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image.containers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image.containers" title="Link to this definition"></a></dt>
+<dd><p>获取容器列表</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。</p>
+<p><strong>返回:</strong>
+- list[DockerContainerItem]: 包含容器列表详情的 DockerContainerItem 模型的列表。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image.images">
+<span class="sig-name descname"><span class="pre">images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../autoapi/mcsmapi/models/image/index.html#mcsmapi.models.image.DockerImageItem" title="mcsmapi.models.image.DockerImageItem"><span class="pre">DockerImageItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image.images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image.images" title="Link to this definition"></a></dt>
+<dd><p>获取镜像列表</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。</p>
+<p><strong>返回:</strong>
+- list[ImageModel]: 包含镜像列表详情的 ImageModel 模型的列表。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image.network">
+<span class="sig-name descname"><span class="pre">network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../autoapi/mcsmapi/models/image/index.html#mcsmapi.models.image.DockerNetworkItem" title="mcsmapi.models.image.DockerNetworkItem"><span class="pre">DockerNetworkItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image.network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image.network" title="Link to this definition"></a></dt>
+<dd><p>获取网络接口列表</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。</p>
+<p><strong>返回:</strong>
+- list[DockerNetworkItem]: 包含网络接口列表详情的 DockerNetworkItem 模型的列表。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.image.Image.progress">
+<span class="sig-name descname"><span class="pre">progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/image.html#Image.progress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.image.Image.progress" title="Link to this definition"></a></dt>
+<dd><p>获取镜像构建进度</p>
+<p>## <strong>由于文档此部分内容不详，未使用模型</strong></p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符。</p>
+<p><strong>返回:</strong>
+- dict[str, int]: 包含构建进度信息的字典。</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis.instance">
+<span id="mcsmapi-apis-instance-module"></span><h2>mcsmapi.apis.instance module<a class="headerlink" href="#module-mcsmapi.apis.instance" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.instance.</span></span><span class="sig-name descname"><span class="pre">Instance</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.batchOperation">
+<span class="sig-name descname"><span class="pre">batchOperation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instances</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.batchOperation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.batchOperation" title="Link to this definition"></a></dt>
+<dd><p>对多个实例进行批量操作。</p>
+<p><strong>参数:</strong>
+- instances (list[dict[str,str]]): 包含多个实例信息的列表，每个实例信息为一个字典，包含 “uuid” 和 “daemonId” 字段。
+- operation (str): 要执行的操作，可以是 “start”, “stop”, “restart”, 或 “kill”。</p>
+<p><strong>返回:</strong>
+- list[dict[str,str]]:包含每个实例操作结果的列表，每个结果为一个字典，包含 “uuid” 和 “result” 字段。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.command">
+<span class="sig-name descname"><span class="pre">command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.command" title="Link to this definition"></a></dt>
+<dd><p>向实例发送命令。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要发送命令的实例。
+- command (str): 要发送的命令。</p>
+<p><strong>返回:</strong>
+- str|bool: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../autoapi/mcsmapi/models/instance/index.html#mcsmapi.models.instance.InstanceCreateResult" title="mcsmapi.models.instance.InstanceCreateResult"><span class="pre">InstanceCreateResult</span></a></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.create" title="Link to this definition"></a></dt>
+<dd><p>创建一个实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符，用于关联新创建的实例。
+- config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。</p>
+<p><strong>返回:</strong>
+- InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deleteFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.delete" title="Link to this definition"></a></dt>
+<dd><p>删除实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的标识符。
+- uuids (list): 要删除的实例UUID列表。
+- deleteFile (bool, optional): 是否删除关联的文件，默认为False。</p>
+<p><strong>返回:</strong>
+- list[str]: 删除操作后返回的UUID列表。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.detail">
+<span class="sig-name descname"><span class="pre">detail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../autoapi/mcsmapi/models/instance/index.html#mcsmapi.models.instance.InstanceDetail" title="mcsmapi.models.instance.InstanceDetail"><span class="pre">InstanceDetail</span></a></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.detail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.detail" title="Link to this definition"></a></dt>
+<dd><p>获取指定实例的详细信息</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符
+- uuid (str): 实例的唯一标识符</p>
+<p><strong>返回:</strong>
+- InstanceDetail: 包含实例详细信息的模型。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.get_output">
+<span class="sig-name descname"><span class="pre">get_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.get_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.get_output" title="Link to this definition"></a></dt>
+<dd><p>获取实例输出。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要获取输出的实例。
+- size (int, optional): 获取的日志大小: 1KB ~ 2048KB，如果未设置，则返回所有日志</p>
+<p><strong>返回:</strong>
+- str: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.kill">
+<span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.kill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.kill" title="Link to this definition"></a></dt>
+<dd><p>强制关闭实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要强制关闭的实例。</p>
+<p><strong>返回:</strong>
+- str|bool: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.reinstall">
+<span class="sig-name descname"><span class="pre">reinstall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetUrl</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.reinstall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.reinstall" title="Link to this definition"></a></dt>
+<dd><p>重装实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符。
+- targetUrl (str): 重装文件的目标URL。
+- title (str): 重装文件的标题。
+- description (str, optional): 重装文件的描述，默认为空字符串。</p>
+<p><strong>返回:</strong>
+- bool: 返回操作结果，成功时返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.restart">
+<span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.restart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.restart" title="Link to this definition"></a></dt>
+<dd><p>重启实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要重启的实例。</p>
+<p><strong>返回:</strong>
+- str|bool: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../autoapi/mcsmapi/models/instance/index.html#mcsmapi.models.instance.InstanceSearchList" title="mcsmapi.models.instance.InstanceSearchList"><span class="pre">InstanceSearchList</span></a></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.search" title="Link to this definition"></a></dt>
+<dd><p>根据指定的参数搜索实例信息</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的唯一标识符
+- page (int): 页码，用于指示返回数据的页数。默认为1，表示返回第一页数据
+- page_size (int): 每页大小，用于指定每页包含的数据条数。默认为20，表示每页包含20条数据
+- instance_name (str): 实例的名称。默认为空字符串，表示不进行实例名称过滤
+- status (str): 实例的状态。默认为空字符串，表示不进行状态过滤
+- tag (list[str] | None): 实例的标签列表。默认为None，表示不进行标签过滤</p>
+<p><strong>返回:</strong>
+- InstanceSearchList: 包含搜索结果的模型。该模型包含了符合搜索条件的实例信息列表，以及总数据条数、总页数等分页信息。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.start" title="Link to this definition"></a></dt>
+<dd><p>启动实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要启动的实例。</p>
+<p><strong>返回:</strong>
+- str|bool: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.stop" title="Link to this definition"></a></dt>
+<dd><p>关闭实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要关闭的实例。</p>
+<p><strong>返回:</strong>
+- str|bool: 返回结果中的 “instanceUuid” 字段值，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.update" title="Link to this definition"></a></dt>
+<dd><p>升级实例。</p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的ID，用于标识特定的守护进程。
+- uuid (str): 实例的唯一标识符，用于指定需要升级的实例。</p>
+<p><strong>返回:</strong>
+- bool: 返回操作结果，成功时返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.instance.Instance.updateConfig">
+<span class="sig-name descname"><span class="pre">updateConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daemonId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/instance.html#Instance.updateConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.instance.Instance.updateConfig" title="Link to this definition"></a></dt>
+<dd><p>更新实例配置。</p>
+<p><strong>不建议直接使用此函数，建议调用search后在data属性内使用updateConfig方法按需更新</strong></p>
+<p><strong>参数:</strong>
+- daemonId (str): 守护进程的标识符。
+- uuid (str): 实例的唯一标识符。
+- config (dict): 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全。</p>
+<p><strong>返回:</strong>
+- str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis.overview">
+<span id="mcsmapi-apis-overview-module"></span><h2>mcsmapi.apis.overview module<a class="headerlink" href="#module-mcsmapi.apis.overview" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.overview.Overview">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.overview.</span></span><span class="sig-name descname"><span class="pre">Overview</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/overview.html#Overview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.overview.Overview" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.overview.Overview.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mcsmapi/apis/overview.html#Overview.init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.overview.Overview.init" title="Link to this definition"></a></dt>
+<dd><p>初始化方法，用于获取API概览信息并构建概览模型。</p>
+<p>本方法通过发送GET请求获取API概览信息，确保返回的数据类型为字典，
+然后使用这些数据来构建一个OverviewModel实例。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>返回一个OverviewModel实例，该实例使用获取的API概览信息进行初始化。</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis.user">
+<span id="mcsmapi-apis-user-module"></span><h2>mcsmapi.apis.user module<a class="headerlink" href="#module-mcsmapi.apis.user" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mcsmapi.apis.user.User">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mcsmapi.apis.user.</span></span><span class="sig-name descname"><span class="pre">User</span></span><a class="reference internal" href="../_modules/mcsmapi/apis/user.html#User"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.user.User" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.user.User.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permission</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/user.html#User.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.user.User.create" title="Link to this definition"></a></dt>
+<dd><p>创建新用户的方法</p>
+<p><strong>参数:</strong>
+- username (str): 用户名，字符串类型
+- password (str): 密码，字符串类型
+- permission (int): 权限等级，整数类型，默认值为1</p>
+<p><strong>返回:</strong>
+- str|bool: 创建成功后返回用户的UUID，如果未找到该字段，则默认返回True。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.user.User.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/user.html#User.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.user.User.delete" title="Link to this definition"></a></dt>
+<dd><p>删除用户的方法</p>
+<p><strong>参数:</strong>
+- uuids (list[str]): 包含要删除的用户UUID的列表。</p>
+<p><strong>返回:</strong>
+- bool: 成功时返回True</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.user.User.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../autoapi/mcsmapi/models/user/index.html#mcsmapi.models.user.SearchUserModel" title="mcsmapi.models.user.SearchUserModel"><span class="pre">SearchUserModel</span></a></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/user.html#User.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.user.User.search" title="Link to this definition"></a></dt>
+<dd><p>根据用户名和角色搜索用户信息</p>
+<p><strong>参数:</strong>
+- username (str): 要搜索的用户名。默认为空字符串，表示不进行用户名过滤
+- page (int): 页码，用于指示返回数据的页数。默认为1，表示返回第一页数据
+- page_size (int): 每页大小，用于指定每页包含的数据条数。默认为20，表示每页包含20条数据
+- role (str): 用户权限。默认为空字符串，表示不进行权限过滤</p>
+<blockquote>
+<div><p>可用的值为 1=用户, 10=管理员, -1=被封禁的用户</p>
+</div></blockquote>
+<p><strong>返回:</strong>
+- SearchUserModel: 包含搜索结果的模型。该模型包含了符合搜索条件的用户信息列表，以及总数据条数、总页数等分页信息。</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mcsmapi.apis.user.User.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/mcsmapi/apis/user.html#User.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mcsmapi.apis.user.User.update" title="Link to this definition"></a></dt>
+<dd><p>更新用户信息的方法</p>
+<p><strong>不建议直接使用此函数，建议调用search后使用update方法按需更新</strong></p>
+<p><strong>参数:</strong>
+- uuid (str): 用户的唯一标识符UUID
+- config (dict[str, Any]): 新的用户信息，以字典形式提供，缺失内容由UserConfig模型补全。</p>
+<p><strong>返回:</strong>
+- bool: 成功时返回True</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mcsmapi.apis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mcsmapi.apis" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mcsmapi</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.1</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/api/mcsmapi.apis.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

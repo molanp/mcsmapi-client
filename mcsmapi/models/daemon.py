@@ -53,7 +53,7 @@ class DaemonModel(BaseModel):
         删除该节点。
 
         返回:
-        - bool: 删除成功后返回True
+       <br> - bool: 删除成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -64,7 +64,7 @@ class DaemonModel(BaseModel):
         链接该节点。
 
         返回:
-        - bool: 链接成功后返回True
+       <br> - bool: 链接成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -75,10 +75,10 @@ class DaemonModel(BaseModel):
         更新该节点的配置。
 
         参数:
-        - config (dict[str, Any]): 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充。
+       <br> - config (dict[str, Any]): 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充。
 
         返回:
-        - bool: 更新成功后返回True
+       <br> - bool: 更新成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -100,10 +100,10 @@ class DaemonModel(BaseModel):
         在当前节点创建一个实例。
 
         参数:
-        - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
+       <br> - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
 
         返回:
-        - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
+       <br> - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
         """
         from mcsmapi.apis.instance import Instance
         from .instance import InstanceConfig
@@ -115,11 +115,11 @@ class DaemonModel(BaseModel):
         删除当前节点的一个或多个实例。
 
         参数:
-        - uuids (list[str]): 要删除的实例UUID列表。
-        - deleteFile (bool, optional): 是否删除关联的文件，默认为False。
+       <br> - uuids (list[str]): 要删除的实例UUID列表。
+       <br> - deleteFile (bool, optional): 是否删除关联的文件，默认为False。
 
         返回:
-        - list[str]: 删除操作后返回的UUID列表。
+       <br> - list[str]: 删除操作后返回的UUID列表。
         """
         from mcsmapi.apis.instance import Instance
 
