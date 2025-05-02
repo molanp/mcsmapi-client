@@ -9,6 +9,10 @@ English|[Chinese Simplified](README_zh-cn.md)
 > [!important]
 > We need your help, the documentation for this project has not been written yet, if you are willing, please submit pr to help us write the documentation.
 
+## Documentation
+
+The documentation is not yet complete, if you need it, please visit [https://deepwiki.com/molanp/mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+
 ## Introduction
 
 `mcsmapi` is a PyPI package based on [MCSManager](https://github.com/MCSManager/MCSManager), designed to simplify interactions with the MCSM API.

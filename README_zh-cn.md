@@ -15,6 +15,10 @@
 > [!important]
 > 我们需要你的帮助，此项目的文档尚未编写，如您有意愿，请提交pr来帮助我们编写文档
 
+## 文档
+
+文档尚未编写完成，如果你需要，请访问[https://deepwiki.com/molanp/mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+
 ## 安装
 
 您可以使用 `pip` 安装 `mcsmapi`：
