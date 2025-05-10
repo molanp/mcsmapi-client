@@ -65,6 +65,18 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
         )
 
+    def content(self):
+        """
+        获取文件内容。
+        **返回:**
+        - str | bytes: 文件内容。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().content(
+            self.daemonId, self.uuid, os.path.join(self.target, self.name)
+        )
+
     def unzip(self, target: str, code: str = "utf-8") -> bool:
         """
         解压缩该 zip 文件到目标位置。
@@ -100,7 +112,6 @@ class FileList(BaseModel):
             item.daemonId = self.daemonId
             item.uuid = self.uuid
             item.target = self.target
-
 
 
 class CommonConfig(BaseModel):

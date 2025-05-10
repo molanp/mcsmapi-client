@@ -182,7 +182,7 @@ class InstanceDetail(BaseModel):
             self.daemonId, self.instanceUuid, targetUrl, title, description
         )
 
-    def files(self, target:str = "", page:int=0, page_size:int=100) -> FileList:
+    def files(self, target: str = "", page: int = 0, page_size: int = 100) -> FileList:
         """
         获取实例的文件列表。
 
@@ -197,6 +197,23 @@ class InstanceDetail(BaseModel):
         from mcsmapi.apis.file import File
 
         return File().show(self.daemonId, self.instanceUuid, target, page, page_size)
+
+    async def upload(self, file_data: bytes, upload_dir: str) -> bool:
+        """
+        上传文件到实例。
+
+        **参数:**
+        - file_data (bytes): 要上传的文件数据。
+        - upload_dir (str): 上传文件的目标目录(包含文件名)。
+
+        **返回:**
+        - bool: 返回操作结果，成功时返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return await File().upload(
+            self.daemonId, self.instanceUuid, file_data, upload_dir
+        )
 
 
 class InstanceCreateResult(BaseModel):
