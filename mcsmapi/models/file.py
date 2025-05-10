@@ -95,6 +95,32 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target, code
         )
 
+    def update(self, text: str) -> bool:
+        """
+        更新该文件内容。
+        **参数:**
+        - text (str): 文件内容。
+        **返回:**
+        - bool: 更新成功后返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().update(
+            self.daemonId, self.uuid, os.path.join(self.target, self.name), text
+        )
+
+    def download(self) -> str:
+        """
+        下载该文件。
+        **返回:**
+        - str: 文件下载的URL。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().download(
+            self.daemonId, self.uuid, os.path.join(self.target, self.name)
+        )
+
 
 class FileList(BaseModel):
     items: List[FileItem]
@@ -112,6 +138,49 @@ class FileList(BaseModel):
             item.daemonId = self.daemonId
             item.uuid = self.uuid
             item.target = self.target
+
+    async def upload(self, file: bytes, upload_dir: str) -> bool:
+        """
+        上传文件到实例。
+
+        **参数:**
+        - file (bytes): 要上传的文件内容。
+        - upload_dir (str): 上传文件的目标目录(包含文件名)。
+
+        **返回:**
+        - bool: 返回操作结果，成功时返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return await File().upload(self.daemonId, self.uuid, file, upload_dir)
+
+    def createFile(self, target: str) -> bool:
+        """
+        创建文件。
+
+        **参数:**
+        - target (str): 目标文件的路径，包含文件名。
+
+        **返回:**
+        - bool: 创建成功后返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().createFile(self.daemonId, self.uuid, target)
+
+    def createFloder(self, target: str) -> bool:
+        """
+        创建文件夹
+
+        **参数:**
+        - target (str): 目标文件夹的路径。
+
+        **返回:**
+        - bool: 创建成功后返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().createFloder(self.daemonId, self.uuid, target)
 
 
 class CommonConfig(BaseModel):
