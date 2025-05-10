@@ -18,7 +18,7 @@ mcsm.login(address, password)
 def get_all_instance_info(daemon_id: str):
     # Get all instance info from the daemon
     instance_object = mcsm.instance()
-    instance_list = instance_object.search(daemon_id).data
+    instance_list = instance_object.search(daemonId=daemon_id).data
     
     # Create a dictionary to store instance info
     instance_dict = {}
