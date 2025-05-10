@@ -27,6 +27,9 @@ You can install `mcsmapi` using `pip`:
 pip install mcsmapi
 ```
 
+If you need the latest build files (untested), please visit
+[Actions](https://github.com/molanp/mcsmapi/actions)
+
 ## Supported Features
 
 - [x] Dashboard data (`Overview`)
