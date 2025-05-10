@@ -33,9 +33,16 @@ jobs:
         if: github.event_name == 'push'
         run: echo "Push event detected, proceeding to upload artifact..."
 
-      - name: Upload dist as artifact
+      - name: Upload .tar.gz as artifact
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
-          name: mcsmapi-${{ github.sha }}
-          path: dist/
+            name: mcsmapi-source-${{ github.sha }}
+            path: dist/*.tar.gz
+
+      - name: Upload .whl as artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+            name: mcsmapi-wheel-${{ github.sha }}
+            path: dist/*.whl
