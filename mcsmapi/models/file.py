@@ -77,6 +77,21 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name)
         )
 
+    def zip(self, source: str, targets: list[str]) -> bool:
+        """
+        压缩多个文件或文件夹到指定位置。
+
+        **参数:**
+        - source (str): 需要压缩的文件路径。
+        - targets (list): 要压缩到的目标文件的路径。
+
+        **返回:**
+        - bool: 压缩成功后返回True。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().zip(self.daemonId, self.uuid, source, targets)
+
     def unzip(self, target: str, code: str = "utf-8") -> bool:
         """
         解压缩该 zip 文件到目标位置。

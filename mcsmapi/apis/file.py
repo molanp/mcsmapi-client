@@ -223,8 +223,8 @@ class File:
         **参数:**
         - daemonId (str): 守护进程的唯一标识符。
         - uuid (str): 实例的唯一标识符。
-        - source (str): 需要压缩到的 zip 文件路径。
-        - targets (list): 要压缩的目标文件或文件夹的路径。
+        - source (str): 需要压缩的文件路径。
+        - targets (list): 要压缩到的目标文件的路径。
 
         **返回:**
         - bool: 压缩成功后返回True。
