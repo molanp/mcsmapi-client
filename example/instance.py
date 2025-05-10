@@ -26,7 +26,7 @@ instance.kill()
 file_list = instance.files("", 1, 20)
 
 # show total files
-file_list.total
+print(file_list.total)
 
 # show file list
 fs = file_list.items
