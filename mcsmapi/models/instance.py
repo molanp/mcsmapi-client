@@ -1,5 +1,6 @@
 from typing import List, Dict, Optional
 from pydantic import BaseModel
+from mcsmapi.models.file import FileList
 from mcsmapi.models.image import DockerConfig
 
 
@@ -81,7 +82,7 @@ class InstanceDetail(BaseModel):
         启动该实例。
 
         **返回:**
-       <br> - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+        - str|bool: str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -92,7 +93,7 @@ class InstanceDetail(BaseModel):
         停止该实例。
 
         **返回:**
-       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -103,7 +104,7 @@ class InstanceDetail(BaseModel):
         重启该实例。
 
         **返回:**
-       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -114,7 +115,7 @@ class InstanceDetail(BaseModel):
         强制关闭该实例。
 
         **返回:**
-       <br> - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
+        - str|bool: 返回结果中的 "instanceUuid" 字段值，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -125,7 +126,7 @@ class InstanceDetail(BaseModel):
         删除该实例。
 
         **返回:**
-       <br> - str: 被删除的实例的uuid。
+        - str: 被删除的实例的uuid。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -136,7 +137,7 @@ class InstanceDetail(BaseModel):
         升级实例。
 
         **返回:**
-       <br> - bool: 返回操作结果，成功时返回True。
+        - bool: 返回操作结果，成功时返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -147,10 +148,10 @@ class InstanceDetail(BaseModel):
         更新该实例配置。
 
         **参数:**
-       <br> - config (dict): 新的实例配置，以字典形式提供，缺失内容由使用原实例配置填充。
+        - config (dict): 新的实例配置，以字典形式提供，缺失内容由使用原实例配置填充。
 
         **返回:**
-       <br> - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
+        - str|bool: 更新成功后返回更新的实例UUID，如果未找到该字段，则默认返回True。
         """
         from mcsmapi.apis.instance import Instance
 
@@ -168,18 +169,34 @@ class InstanceDetail(BaseModel):
         重装实例。
 
         **参数:**
-       <br> - targetUrl (str): 重装文件的目标URL。
-       <br> - title (str): 重装文件的标题。
-       <br> - description (str, optional): 重装文件的描述，默认为空字符串。
+        - targetUrl (str): 重装文件的目标URL。
+        - title (str): 重装文件的标题。
+        - description (str, optional): 重装文件的描述，默认为空字符串。
 
         **返回:**
-       <br> - bool: 返回操作结果，成功时返回True
+        - bool: 返回操作结果，成功时返回True
         """
         from mcsmapi.apis.instance import Instance
 
         return Instance().reinstall(
             self.daemonId, self.instanceUuid, targetUrl, title, description
         )
+
+    def files(self, target:str = "", page:int=0, page_size:int=100) -> FileList:
+        """
+        获取实例的文件列表。
+
+        **参数:**
+        - target (str, 可选): 用于文件过滤的目标路径。默认为空字符串，表示不按路径过滤
+        - page (int, 可选): 指定分页的页码。默认为0。
+        - page_size (int, 可选): 指定每页的文件数量。默认为100。
+
+        **返回:**
+        - FileList: 文件列表。
+        """
+        from mcsmapi.apis.file import File
+
+        return File().show(self.daemonId, self.instanceUuid, target, page, page_size)
 
 
 class InstanceCreateResult(BaseModel):

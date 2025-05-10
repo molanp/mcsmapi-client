@@ -18,10 +18,10 @@ class FileItem(BaseModel):
         重命名该文件或文件夹。
 
         **参数:**
-       <br> - new_name (str): 源文件或文件夹的新名字。
+        - new_name (str): 源文件或文件夹的新名字。
 
         **返回:**
-       <br> - bool: 重命名成功后返回True。
+        - bool: 重命名成功后返回True。
         """
         from mcsmapi.apis.file import File
 
@@ -34,7 +34,7 @@ class FileItem(BaseModel):
         删除该文件或文件夹。
 
         **返回:**
-       <br> - bool: 重命名成功后返回True。
+        - bool: 重命名成功后返回True。
         """
         from mcsmapi.apis.file import File
 
@@ -54,10 +54,10 @@ class FileItem(BaseModel):
         移动该文件或文件夹到目标路径。
 
         **参数:**
-       <br> - target (str): 目标文件或文件夹的路径。
+        - target (str): 目标文件或文件夹的路径。
 
         **返回:**
-       <br> - bool: 移动成功后返回True。
+        - bool: 移动成功后返回True。
         """
         from mcsmapi.apis.file import File
 
@@ -70,12 +70,12 @@ class FileItem(BaseModel):
         解压缩该 zip 文件到目标位置。
 
         **参数:**
-       <br> - target (str): 解压到的目标路径。
-       <br> - code (str, optional): 压缩文件的编码方式，默认为"utf-8"。
+        - target (str): 解压到的目标路径。
+        - code (str, optional): 压缩文件的编码方式，默认为"utf-8"。
             可选值: utf-8, gbk, big5
 
         **返回:**
-       <br> - bool: 解压成功后返回True。
+        - bool: 解压成功后返回True。
         """
         from mcsmapi.apis.file import File
 
