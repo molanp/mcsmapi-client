@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'pyproject.toml'
+      - 'mcsmapi/**'
   pull_request:
     branches:
       - main
@@ -37,12 +40,12 @@ jobs:
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
-            name: mcsmapi-source-${{ github.sha }}
+            name: mcsmapi.tar.gz
             path: dist/*.tar.gz
 
       - name: Upload .whl as artifact
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
-            name: mcsmapi-wheel-${{ github.sha }}
+            name: mcsmapi.whl
             path: dist/*.whl
