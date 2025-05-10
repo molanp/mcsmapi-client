@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from pydantic import BaseModel
 from mcsmapi.models.image import DockerConfig
 
@@ -31,7 +31,7 @@ class InstanceConfig(BaseModel):
     lastDatetime: int = 0
     type: str = "universal"
     tag: List[str] = []
-    endTime: int = 0
+    endTime: Optional[int] = None
     fileCode: str = "gbk"
     processType: str = "docker"
     updateCommand: str = "shutdown -s"

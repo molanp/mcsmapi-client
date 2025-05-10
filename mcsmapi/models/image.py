@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Union
 from pydantic import BaseModel
 
 
@@ -9,8 +9,8 @@ class DockerConfig(BaseModel):
     ports: List[str] = ["25565:25565/tcp"]
     extraVolumes: List[str] = []
     maxSpace: Optional[int] = None
-    network: Optional[str] = None
-    io: Optional[str] = None
+    network: Optional[Union[str, int]] = None
+    io: Optional[Union[str, int]] = None
     networkMode: str = "bridge"
     networkAliases: List[str] = []
     cpusetCpus: str = ""

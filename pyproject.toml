@@ -10,20 +10,13 @@ readme = "README.md"
 authors = [
   {name = "molanp", email = "molanpp@outlook.com"},
 ]
+license = "MIT"
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
 ]
 urls = {"Source" = "https://github.com/molanp/mcsmapi"}
 
 dependencies = [
   "requests",
   "pydantic",
-]
-[project.optional-dependencies]
-dev = [
-  "sphinx",
-  "sphinx-intl",
-  "sphinx-rtd-theme",
-  "sphinx-autoapi",
 ]
