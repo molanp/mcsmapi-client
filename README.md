@@ -48,7 +48,7 @@ pip install mcsmapi
 from mcsmapi import MCSMAPI
 
 # Initialize
-mcsm = MCSMAPI("https://example.com")
+mcsm = MCSMAPI("https://example.com") # https or http required
 
 # Log in with username and password (API permissions depend on the account permissions)
 mcsm.login("username", "password")
