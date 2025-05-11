@@ -6,10 +6,14 @@ mcsm.login("admin", "547cABC9bf88@")
 
 # mcsm.login_with_apikey("apikey")
 
-daemonM = mcsm.daemon()
+daemon_object = mcsm.daemon()
+
+# show Daemon list
+
+print(daemon_object.show())
 
 # 创建节点
-daemonId = daemonM.add(
+daemonId = daemon_object.add(
     {
         "ip": "localhost",
         "port": 24444,
@@ -19,4 +23,4 @@ daemonId = daemonM.add(
     }
 )
 # 删除节点
-daemonM.delete(daemonId)
+daemon_object.delete(daemonId)

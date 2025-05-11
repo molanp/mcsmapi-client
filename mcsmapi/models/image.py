@@ -3,9 +3,12 @@ from pydantic import BaseModel
 
 
 class DockerConfig(BaseModel):
+    """容器名称"""
     containerName: str = ""
-    image: str = "mcsm-ubuntu:22.04"
-    memory: int = 1024  # in MB
+    """镜像名称"""
+    image: str = ""
+    """容器分配内存(单位: MB)"""
+    memory: int = 0  # in MB
     ports: List[str] = ["25565:25565/tcp"]
     extraVolumes: List[str] = []
     maxSpace: Optional[int] = None

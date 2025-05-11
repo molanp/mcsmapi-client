@@ -5,7 +5,7 @@ import os
 
 class FileItem(BaseModel):
     """文件名称"""
-    name: str = "New File"
+    name: str = ""
     """文件大小(单位: byte)"""
     size: int = 0  # byte
     """文件修改时间"""

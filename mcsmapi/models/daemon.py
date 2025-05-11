@@ -158,8 +158,13 @@ class DaemonModel(BaseModel):
 
 
 class DaemonConfig(BaseModel):
+    """远程节点的ip"""
     ip: str = "localhost"
+    """远程节点的端口"""
     port: int = 24444
+    """远程节点的路径前缀"""
     prefix: str = ""
+    """远程节点的备注"""
     remarks: str = "New Daemon"
+    """远程节点的可用状态"""
     available: bool = True

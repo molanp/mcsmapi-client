@@ -38,7 +38,7 @@ class File:
                 "target": target,
                 "page": page,
                 "page_size": page_size,
-                "file_name": file_name
+                "file_name": file_name,
             },
         )
         return FileList(**result, daemonId=daemonId, uuid=uuid)
