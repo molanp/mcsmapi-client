@@ -18,7 +18,13 @@
 
 ## 文档
 
-文档尚未编写完成，如果你需要，请访问[https://deepwiki.com/molanp/mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+文档尚未完成，如果您需要，请访问 [deepwiki-mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+
+您还可以找到： 
+
+📄 正在进行的文档: [docs](docs)
+
+💡 示例: [example](example)
 
 ## 安装
 
