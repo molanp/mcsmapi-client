@@ -73,7 +73,7 @@ class InstanceDetail(BaseModel):
     daemonId: str = ""
     instanceUuid: str = ""
     processInfo: ProcessInfo = ProcessInfo()
-    space: int = 0
+    space: int = 0 # 在MCSM代码中，此项始终为0，意义不明
     started: int = 0  # 启动次数
     status: int = 0  # -1 = 忙碌, 0 = 停止, 1 = 停止中, 2 = 启动中, 3 = 运行中
 

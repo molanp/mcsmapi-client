@@ -4,48 +4,79 @@ from mcsmapi.models.instance import InstanceCreateResult
 
 
 class CpuMemChart(BaseModel):
+    """cpu使用率"""
     cpu: float = 0
+    """内存使用率"""
     mem: float = 0
 
 
 class ProcessInfo(BaseModel):
+    """远程节点使用的cpu资源(单位: byte)"""
     cpu: int = 0
+    """远程节点使用的内存资源(单位: byte)"""
     memory: int = 0
+    """远程节点的工作路径"""
     cwd: str = ""
 
 
 class InstanceInfo(BaseModel):
+    """运行中实例数量"""
     running: int = 0
+    """全部实例数量"""
     total: int = 0
 
 
 class SystemInfo(BaseModel):
+    """系统类型"""
     type: str = ""
+    """主机名"""
     hostname: str = ""
+    """平台架构"""
     platform: str = ""
+    """系统版本"""
     release: str = ""
+    """系统运行时间(单位: sec)"""
     uptime: float = 0
+    """远程节点运行路径"""
     cwd: str = ""
+    """系统负载平均值（仅适用于 Linux 和 macOS），表示过去 **1 分钟、5 分钟、15 分钟** 内的 CPU 负载情况"""
     loadavg: List[float] = []
+    """可用内存(单位: byte)"""
     freemem: int = 0
+    """cpu使用率"""
     cpuUsage: float = 0
+    """内存使用率"""
     memUsage: float = 0
+    """内存总量(单位: byte)"""
     totalmem: int = 0
+    """未知，在MCSM代码中始终为0"""
     processCpu: int = 0
+    """未知，在MCSM代码中始终为0"""
     processMem: int = 0
 
 
 class DaemonModel(BaseModel):
+    """远程节点版本"""
     version: str = ""
+    """远程节点的基本信息"""
     process: ProcessInfo = ProcessInfo()
+    """远程节点实例基本信息"""
     instance: InstanceInfo = InstanceInfo()
+    """远程节点系统信息"""
     system: SystemInfo = SystemInfo()
+    """cpu和内存使用趋势"""
     cpuMemChart: List[CpuMemChart] = []
+    """远程节点的uuid"""
     uuid: str = ""
+    """远程节点的ip"""
     ip: str = ""
+    """远程节点的端口"""
     port: int = 24444
+    """远程节点的路径前缀"""
     prefix: str = ""
+    """远程节点的可用状态"""
     available: bool = False
+    """远程节点的备注"""
     remarks: str = ""
 
     def delete(self) -> bool:

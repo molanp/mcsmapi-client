@@ -40,4 +40,5 @@ print(json.dumps(instance_info, indent=4))
 
 # Optional: Save info to a file in the current directory
 with open("instance_info.json", "w") as f:
-    json.dump(instance_info, f, indent=4)
+    content = json.dump(instance_info, f, indent=4)
+    f.write(content)

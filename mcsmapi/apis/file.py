@@ -13,6 +13,7 @@ class File:
         target: str = "",
         page: int = 0,
         page_size: int = 100,
+        file_name: str = ""
     ) -> FileList:
         """
         获取文件列表
@@ -23,6 +24,7 @@ class File:
         - target (str, 可选): 用于文件过滤的目标路径。默认为空字符串，表示不按路径过滤。
         - page (int, 可选): 指定分页的页码。默认为0。
         - page_size (int, 可选): 指定每页的文件数量。默认为100。
+        - file_name (str, 可选): 用于在文件列表中过滤出名称包含指定字符串的文件或文件夹
 
         **返回:**
         - FileList: 包含文件列表信息和分页详情的FileList模型。
@@ -36,6 +38,7 @@ class File:
                 "target": target,
                 "page": page,
                 "page_size": page_size,
+                "file_name": file_name
             },
         )
         return FileList(**result, daemonId=daemonId, uuid=uuid)

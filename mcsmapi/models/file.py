@@ -4,14 +4,24 @@ import os
 
 
 class FileItem(BaseModel):
+    """文件名称"""
     name: str = "New File"
+    """文件大小(单位: byte)"""
     size: int = 0  # byte
+    """文件修改时间"""
     time: str = ""
+    """文件操作权限(仅适用于Linux)"""
     mode: int = 777  # Linux file permission
+    """文件类型，`0`为文件夹，`1`为文件"""
     type: int = 0  # 0 = Folder, 1 = File
+    """远程节点uuid"""
     daemonId: str = ""
+    """实例的uiid"""
     uuid: str = ""
+    """文件所在路径"""
     target: str = ""
+    """当前文件列表过滤条件"""
+    file_name: str = ""
 
     def rename(self, newName: str) -> bool:
         """
@@ -139,13 +149,21 @@ class FileItem(BaseModel):
 
 
 class FileList(BaseModel):
+    """文件信息列表"""
     items: List[FileItem]
+    """当前页数"""
     page: int = 0
+    """文件列表单页大小"""
     pageSize: int = 100
+    """总页数"""
     total: int = 0
+    """当前路径在远程节点的绝对路径"""
     absolutePath: str = "\\"
+    """远程节点uuid"""
     daemonId: str = ""
+    """实例uuid"""
     uuid: str = ""
+    """文件（名称或目录）路径"""
     target: str = ""
 
     def __init__(self, **data: str):
@@ -200,5 +218,7 @@ class FileList(BaseModel):
 
 
 class CommonConfig(BaseModel):
+    """文件下载密码"""
     password: str = ""
+    """文件下载地址"""
     addr: str = ""
