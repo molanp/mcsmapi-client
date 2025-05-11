@@ -4,6 +4,8 @@ import os
 
 
 class FileItem(BaseModel):
+    """文件信息"""
+
     """文件名称"""
     name: str = ""
     """文件大小(单位: byte)"""
@@ -149,6 +151,8 @@ class FileItem(BaseModel):
 
 
 class FileList(BaseModel):
+    """文件列表"""
+
     """文件信息列表"""
     items: List[FileItem]
     """当前页数"""

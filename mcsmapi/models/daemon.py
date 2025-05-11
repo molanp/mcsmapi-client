@@ -4,6 +4,8 @@ from mcsmapi.models.instance import InstanceCreateResult
 
 
 class CpuMemChart(BaseModel):
+    """节点资源使用率信息"""
+
     """cpu使用率"""
     cpu: float = 0
     """内存使用率"""
@@ -11,6 +13,8 @@ class CpuMemChart(BaseModel):
 
 
 class ProcessInfo(BaseModel):
+    """节点进程详细信息"""
+
     """远程节点使用的cpu资源(单位: byte)"""
     cpu: int = 0
     """远程节点使用的内存资源(单位: byte)"""
@@ -20,6 +24,8 @@ class ProcessInfo(BaseModel):
 
 
 class InstanceInfo(BaseModel):
+    """实例统计信息"""
+
     """运行中实例数量"""
     running: int = 0
     """全部实例数量"""
@@ -27,6 +33,8 @@ class InstanceInfo(BaseModel):
 
 
 class SystemInfo(BaseModel):
+    """节点系统信息"""
+
     """系统类型"""
     type: str = ""
     """主机名"""
@@ -56,6 +64,8 @@ class SystemInfo(BaseModel):
 
 
 class DaemonModel(BaseModel):
+    """节点详细信息"""
+
     """远程节点版本"""
     version: str = ""
     """远程节点的基本信息"""
@@ -158,6 +168,8 @@ class DaemonModel(BaseModel):
 
 
 class DaemonConfig(BaseModel):
+    """节点配置信息"""
+
     """远程节点的ip"""
     ip: str = "localhost"
     """远程节点的端口"""

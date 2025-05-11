@@ -52,6 +52,7 @@ class Daemon:
         - 由于根据 MCSM 源代码的测试无法获取有效数据，目前无法完成该功能的开发。
         - 如果你有具体的实现思路，请在 issue 中提出
         - 可供参考 MCSM 源码: [daemon_router.ts 第 32 行](https://github.com/MCSManager/MCSManager/blob/master/panel%2Fsrc%2Fapp%2Frouters%2Fdaemon_router.ts#L32-L32)
+        - 模型定义代码: https://github.com/MCSManager/MCSManager/blob/master/frontend%2Fsrc%2Fservices%2Fapis%2Findex.ts#L86-L86
         - 测试地址示例:
             `http://localhost:23333/api/service/remote_service_instances?apikey=xxx&daemonId=xxx&page=0&page_size=10&status=3&instance_name=`
         """
