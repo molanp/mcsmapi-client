@@ -12,7 +12,13 @@ English|[Chinese Simplified](README_zh-cn.md)
 
 ## Documentation
 
-The documentation is not yet complete, if you need it, please visit [https://deepwiki.com/molanp/mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+The documentation is not yet complete, if you need it, please visit [deepwiki-mcsmapi](https://deepwiki.com/molanp/mcsmapi)
+
+You can also find:  
+
+📄 Work-in-progress docs: [docs](docs)
+
+💡 Example: [example](example)
 
 ## Introduction
 
