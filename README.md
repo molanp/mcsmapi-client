@@ -18,7 +18,7 @@ You can also find:
 
 📄 Work-in-progress docs: [docs](docs)
 
-💡 Examples: [examples](example)
+💡 Example: [example](example)
 
 ## Introduction
 
