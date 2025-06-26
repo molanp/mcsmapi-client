@@ -229,7 +229,7 @@ class Instance:
         - bool: 返回操作结果，成功时返回True。
         """
         return send(
-            "GET",
+            "POST",
             f"{ApiPool.PROTECTED_INSTANCE}/asynchronous",
             params={"daemonId": daemonId, "uuid": uuid, "task_name": "update"},
         )
