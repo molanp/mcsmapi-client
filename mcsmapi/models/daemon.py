@@ -7,59 +7,59 @@ from mcsmapi.models.common import ProcessInfo, InstanceInfo, CpuMemChart
 class SystemInfo(BaseModel):
     """节点系统信息"""
 
-    type: str = ""
+    type: str
     """系统类型"""
-    hostname: str = ""
+    hostname: str
     """主机名"""
-    platform: str = ""
+    platform: str
     """平台架构"""
-    release: str = ""
+    release: str
     """系统版本"""
-    uptime: float = 0
+    uptime: float
     """系统运行时间(单位: sec)"""
-    cwd: str = ""
+    cwd: str
     """远程节点运行路径"""
-    loadavg: list[float] = []
+    loadavg: list[float]
     """系统负载平均值（仅适用于 Linux 和 macOS），表示过去 **1 分钟、5 分钟、15 分钟** 内的 CPU 负载情况"""
-    freemem: int = 0
+    freemem: int
     """可用内存(单位: byte)"""
-    cpuUsage: float = 0
+    cpuUsage: float
     """cpu使用率"""
-    memUsage: float = 0
+    memUsage: float
     """内存使用率"""
-    totalmem: int = 0
+    totalmem: int
     """内存总量(单位: byte)"""
-    processCpu: int = 0
+    processCpu: int
     """未知"""
-    processMem: int = 0
+    processMem: int
     """未知"""
 
 
 class DaemonModel(BaseModel):
     """节点详细信息"""
 
-    version: str = ""
+    version: str
     """远程节点版本"""
-    process: ProcessInfo = ProcessInfo()
+    process: ProcessInfo
     """远程节点的基本信息"""
-    instance: InstanceInfo = InstanceInfo()
+    instance: InstanceInfo
     """远程节点实例基本信息"""
-    system: SystemInfo = SystemInfo()
+    system: SystemInfo
     """远程节点系统信息"""
-    cpuMemChart: list[CpuMemChart] = []
+    cpuMemChart: list[CpuMemChart]
     """cpu和内存使用趋势"""
-    uuid: str = ""
+    uuid: str
     """远程节点的uuid"""
-    ip: str = ""
+    ip: str
     """远程节点的ip"""
-    port: int = 24444
+    port: int
     """远程节点的端口"""
-    prefix: str = ""
+    prefix: str
     """远程节点的路径前缀"""
-    available: bool = False
+    available: bool
     """远程节点的可用状态"""
-    remarks: str = ""
-    """远程节点的备注"""
+    remarks: str
+    """远程节点的名称"""
 
     def delete(self) -> bool:
         """

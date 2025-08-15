@@ -11,15 +11,15 @@ class FileType(IntEnum):
 class FileItem(BaseModel):
     """文件信息"""
 
-    name: str = ""
+    name: str
     """文件名称"""
-    size: int = 0
+    size: int
     """文件大小(单位: byte)"""
-    time: str = ""
+    time: str
     """文件修改时间"""
-    mode: int = 777
+    mode: int
     """文件操作权限(仅适用于Linux)"""
-    type: FileType = FileType.FOLDER
+    type: FileType
     """文件类型"""
     daemonId: str = ""
     """远程节点uuid"""
@@ -27,7 +27,7 @@ class FileItem(BaseModel):
     """实例的uiid"""
     target: str = ""
     """文件所在路径"""
-    file_name: str = ""
+    file_name: str
     """当前文件列表过滤条件"""
 
     def rename(self, newName: str) -> bool:
@@ -160,19 +160,19 @@ class FileList(BaseModel):
 
     items: list[FileItem]
     """文件信息列表"""
-    page: int = 0
+    page: int
     """当前页数"""
-    pageSize: int = 100
+    pageSize: int
     """文件列表单页大小"""
-    total: int = 0
+    total: int
     """总页数"""
-    absolutePath: str = "\\"
+    absolutePath: str
     """当前路径在远程节点的绝对路径"""
-    daemonId: str = ""
+    daemonId: str
     """远程节点uuid"""
-    uuid: str = ""
+    uuid: str
     """实例uuid"""
-    target: str = ""
+    target: str
     """文件（名称或目录）路径"""
 
     def __init__(self, **data: str):
@@ -226,9 +226,9 @@ class FileList(BaseModel):
         return File.createFolder(self.daemonId, self.uuid, target)
 
 
-class CommonConfig(BaseModel):
+class FileDownloadConfig(BaseModel):
 
-    password: str = ""
+    password: str
     """文件下载密码"""
-    addr: str = ""
+    addr: str
     """文件下载地址"""
