@@ -5,8 +5,9 @@ from mcsmapi.models.user import SearchUserModel, UserConfig
 
 
 class User:
+    @staticmethod
     def search(
-        self, username: str = "", page: int = 1, page_size: int = 20, role: str = ""
+        username: str = "", page: int = 1, page_size: int = 20, role: str = ""
     ) -> SearchUserModel:
         """根据用户名和角色搜索用户信息
 
@@ -32,7 +33,8 @@ class User:
         )
         return SearchUserModel(**result)
 
-    def create(self, username: str, password: str, permission: int = 1) -> str | bool:
+    @staticmethod
+    def create(username: str, password: str, permission: int = 1) -> str | bool:
         """
         创建新用户的方法
 
@@ -50,7 +52,8 @@ class User:
             data={"username": username, "password": password, "permission": permission},
         ).get("uuid", True)
 
-    def update(self, uuid: str, config: dict[str, Any]) -> bool:
+    @staticmethod
+    def update(uuid: str, config: dict[str, Any]) -> bool:
         """
         更新用户信息的方法
 
@@ -66,10 +69,11 @@ class User:
         return send(
             "PUT",
             ApiPool.AUTH,
-            data={"uuid": uuid, "config": UserConfig(**config).dict()},
+            data={"uuid": uuid, "config": UserConfig(**config).model_dump()},
         )
 
-    def delete(self, uuids: list[str]) -> bool:
+    @staticmethod
+    def delete(uuids: list[str]) -> bool:
         """
         删除用户的方法
 

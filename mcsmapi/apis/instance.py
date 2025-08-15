@@ -10,8 +10,8 @@ from mcsmapi.models.instance import (
 
 
 class Instance:
+    @staticmethod
     def search(
-        self,
         daemonId: str,
         page: int = 1,
         page_size: int = 20,
@@ -49,7 +49,8 @@ class Instance:
         )
         return InstanceSearchList(**result, daemonId=daemonId)
 
-    def detail(self, daemonId: str, uuid: str) -> InstanceDetail:
+    @staticmethod
+    def detail(daemonId: str, uuid: str) -> InstanceDetail:
         """
         获取指定实例的详细信息
 
@@ -67,7 +68,8 @@ class Instance:
         )
         return InstanceDetail(**result)
 
-    def create(self, daemonId: str, config: dict[str, Any]) -> InstanceCreateResult:
+    @staticmethod
+    def create(daemonId: str, config: dict[str, Any]) -> InstanceCreateResult:
         """
         创建一个实例。
 
@@ -86,10 +88,11 @@ class Instance:
         )
         return InstanceCreateResult(**result)
 
-    def updateConfig(self, daemonId: str, uuid: str, config: dict) -> str | bool:
+    @staticmethod
+    def updateConfig(daemonId: str, uuid: str, config: dict) -> str | bool:
         """
         更新实例配置。
-        
+
         **不建议直接使用此函数，建议调用search后在data属性内使用updateConfig方法按需更新**
 
         **参数:**
@@ -108,9 +111,8 @@ class Instance:
         )
         return result.get("uuid", True)
 
-    def delete(
-        self, daemonId: str, uuids: list[str], deleteFile: bool = False
-    ) -> list[str]:
+    @staticmethod
+    def delete(daemonId: str, uuids: list[str], deleteFile: bool = False) -> list[str]:
         """
         删除实例。
 
@@ -129,7 +131,8 @@ class Instance:
             data={"uuids": uuids, "deleteFile": deleteFile},
         )
 
-    def start(self, daemonId: str, uuid: str) -> str | bool:
+    @staticmethod
+    def start(daemonId: str, uuid: str) -> str | bool:
         """
         启动实例。
 
@@ -147,7 +150,8 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def stop(self, daemonId: str, uuid: str) -> str | bool:
+    @staticmethod
+    def stop(daemonId: str, uuid: str) -> str | bool:
         """
         关闭实例。
 
@@ -165,7 +169,8 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def restart(self, daemonId: str, uuid: str) -> str | bool:
+    @staticmethod
+    def restart(daemonId: str, uuid: str) -> str | bool:
         """
         重启实例。
 
@@ -183,7 +188,8 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def kill(self, daemonId: str, uuid: str) -> str | bool:
+    @staticmethod
+    def kill(daemonId: str, uuid: str) -> str | bool:
         """
         强制关闭实例。
 
@@ -201,7 +207,8 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def batchOperation(self, instances: list[dict[str, str]], operation: str) -> bool:
+    @staticmethod
+    def batchOperation(instances: list[dict[str, str]], operation: str) -> bool:
         """
         对多个实例进行批量操作。
 
@@ -217,7 +224,8 @@ class Instance:
         else:
             raise ValueError("operation must be one of start, stop, restart, kill")
 
-    def update(self, daemonId: str, uuid: str) -> bool:
+    @staticmethod
+    def update(daemonId: str, uuid: str) -> bool:
         """
         升级实例。
 
@@ -234,7 +242,8 @@ class Instance:
             params={"daemonId": daemonId, "uuid": uuid, "task_name": "update"},
         )
 
-    def command(self, daemonId: str, uuid: str, command: str) -> str:
+    @staticmethod
+    def command(daemonId: str, uuid: str, command: str) -> str:
         """
         向实例发送命令。
 
@@ -253,7 +262,8 @@ class Instance:
         )
         return result.get("instanceUuid", True)
 
-    def get_output(self, daemonId: str, uuid: str, size: int | str = "") -> str:
+    @staticmethod
+    def get_output(daemonId: str, uuid: str, size: int | str = "") -> str:
         """
         获取实例输出。
 
@@ -271,8 +281,8 @@ class Instance:
             params={"daemonId": daemonId, "uuid": uuid, "size": size},
         )
 
+    @staticmethod
     def reinstall(
-        self,
         daemonId: str,
         uuid: str,
         targetUrl: str,

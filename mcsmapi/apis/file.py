@@ -6,14 +6,14 @@ import os
 
 
 class File:
+    @staticmethod
     def show(
-        self,
         daemonId: str,
         uuid: str,
         target: str = "",
         page: int = 0,
         page_size: int = 100,
-        file_name: str = ""
+        file_name: str = "",
     ) -> FileList:
         """
         获取文件列表
@@ -43,7 +43,8 @@ class File:
         )
         return FileList(**result, daemonId=daemonId, uuid=uuid)
 
-    def content(self, daemonId: str, uuid: str, target: str) -> str | bytes:
+    @staticmethod
+    def content(daemonId: str, uuid: str, target: str) -> str | bytes:
         """
         获取文件内容
 
@@ -62,7 +63,8 @@ class File:
             data={"target": target},
         )
 
-    def update(self, daemonId: str, uuid: str, target: str, text: str) -> bool:
+    @staticmethod
+    def update(daemonId: str, uuid: str, target: str, text: str) -> bool:
         """
         更新文件内容
 
@@ -82,7 +84,8 @@ class File:
             data={"target": target, "text": text},
         )
 
-    def download(self, daemonId: str, uuid: str, file_name: str) -> str:
+    @staticmethod
+    def download(daemonId: str, uuid: str, file_name: str) -> str:
         """
         下载文件
 
@@ -105,9 +108,8 @@ class File:
         base_url = urllib.parse.urljoin(f"{protocol}://{result.addr}", "download")
         return urllib.parse.urljoin(base_url, f"{result.password}/{file_name}")
 
-    async def upload(
-        self, daemonId: str, uuid: str, file: bytes, upload_dir: str
-    ) -> bool:
+    @staticmethod
+    async def upload(daemonId: str, uuid: str, file: bytes, upload_dir: str) -> bool:
         """
         上传文件
 
@@ -132,7 +134,8 @@ class File:
         await upload(final_url, file)
         return True
 
-    def copy(self, daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
+    @staticmethod
+    def copy(daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
         """
         复制多个文件夹或文件到指定位置。
 
@@ -152,7 +155,8 @@ class File:
             data={"targets": targets},
         )
 
-    def copyOne(self, daemonId: str, uuid: str, source: str, target: str) -> bool:
+    @staticmethod
+    def copyOne(daemonId: str, uuid: str, source: str, target: str) -> bool:
         """
         复制单个文件或文件夹到指定位置。
 
@@ -165,9 +169,10 @@ class File:
         **返回:**
         - bool: 移动成功后返回True。
         """
-        return self.copy(daemonId, uuid, {source: target})
+        return File.copy(daemonId, uuid, {source: target})
 
-    def move(self, daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
+    @staticmethod
+    def move(daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
         """
         移动多个文件或文件夹到指定位置。
 
@@ -187,7 +192,8 @@ class File:
             data={"targets": targets},
         )
 
-    def moveOne(self, daemonId: str, uuid: str, source: str, target: str) -> bool:
+    @staticmethod
+    def moveOne(daemonId: str, uuid: str, source: str, target: str) -> bool:
         """
         从源路径移动单个文件或文件夹到目标路径。
 
@@ -200,9 +206,10 @@ class File:
         返回:
         - bool: 移动成功后返回True。
         """
-        return self.move(daemonId, uuid, {source: target})
+        return File.move(daemonId, uuid, {source: target})
 
-    def rename(self, daemonId: str, uuid: str, source: str, new_name: str) -> bool:
+    @staticmethod
+    def rename(daemonId: str, uuid: str, source: str, new_name: str) -> bool:
         """
         重命名单个文件或文件夹。
 
@@ -217,9 +224,10 @@ class File:
         """
         directory = os.path.dirname(source)
         target = os.path.join(directory, new_name)
-        return self.moveOne(daemonId, uuid, source, target)
+        return File.moveOne(daemonId, uuid, source, target)
 
-    def zip(self, daemonId: str, uuid: str, source: str, targets: list[str]) -> bool:
+    @staticmethod
+    def zip(daemonId: str, uuid: str, source: str, targets: list[str]) -> bool:
         """
         压缩多个文件或文件夹到指定位置。
 
@@ -239,8 +247,9 @@ class File:
             data={"type": 1, "code": "utf-8", "source": source, "targets": targets},
         )
 
+    @staticmethod
     def unzip(
-        self, daemonId: str, uuid: str, source: str, target: str, code: str = "utf-8"
+        daemonId: str, uuid: str, source: str, target: str, code: str = "utf-8"
     ) -> bool:
         """
         解压缩指定的zip文件到目标位置。
@@ -263,7 +272,8 @@ class File:
             data={"type": 2, "code": code, "source": source, "targets": target},
         )
 
-    def delete(self, daemonId: str, uuid: str, targets: list[str]) -> bool:
+    @staticmethod
+    def delete(daemonId: str, uuid: str, targets: list[str]) -> bool:
         """
         删除多个文件或文件夹。
 
@@ -282,7 +292,8 @@ class File:
             data={"targets": targets},
         )
 
-    def createFile(self, daemonId: str, uuid: str, target: str) -> bool:
+    @staticmethod
+    def createFile(daemonId: str, uuid: str, target: str) -> bool:
         """
         创建文件。
 
@@ -301,7 +312,8 @@ class File:
             data={"target": target},
         )
 
-    def createFloder(self, daemonId: str, uuid: str, target: str) -> bool:
+    @staticmethod
+    def createFloder(daemonId: str, uuid: str, target: str) -> bool:
         """
         创建文件夹
 

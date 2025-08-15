@@ -4,7 +4,8 @@ from mcsmapi.models.overview import OverviewModel
 
 
 class Overview:
-    def init(self):
+    @staticmethod
+    def init():
         """
         初始化方法，用于获取API概览信息并构建概览模型。
 

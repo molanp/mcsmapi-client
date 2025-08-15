@@ -1,93 +1,65 @@
-from typing import Any, List
+from typing import Any
 from pydantic import BaseModel
 from mcsmapi.models.instance import InstanceCreateResult
-
-
-class CpuMemChart(BaseModel):
-    """节点资源使用率信息"""
-
-    """cpu使用率"""
-    cpu: float = 0
-    """内存使用率"""
-    mem: float = 0
-
-
-class ProcessInfo(BaseModel):
-    """节点进程详细信息"""
-
-    """远程节点使用的cpu资源(单位: byte)"""
-    cpu: int = 0
-    """远程节点使用的内存资源(单位: byte)"""
-    memory: int = 0
-    """远程节点的工作路径"""
-    cwd: str = ""
-
-
-class InstanceInfo(BaseModel):
-    """实例统计信息"""
-
-    """运行中实例数量"""
-    running: int = 0
-    """全部实例数量"""
-    total: int = 0
+from mcsmapi.models.common import ProcessInfo, InstanceInfo, CpuMemChart
 
 
 class SystemInfo(BaseModel):
     """节点系统信息"""
 
-    """系统类型"""
     type: str = ""
-    """主机名"""
+    """系统类型"""
     hostname: str = ""
-    """平台架构"""
+    """主机名"""
     platform: str = ""
-    """系统版本"""
+    """平台架构"""
     release: str = ""
-    """系统运行时间(单位: sec)"""
+    """系统版本"""
     uptime: float = 0
-    """远程节点运行路径"""
+    """系统运行时间(单位: sec)"""
     cwd: str = ""
+    """远程节点运行路径"""
+    loadavg: list[float] = []
     """系统负载平均值（仅适用于 Linux 和 macOS），表示过去 **1 分钟、5 分钟、15 分钟** 内的 CPU 负载情况"""
-    loadavg: List[float] = []
-    """可用内存(单位: byte)"""
     freemem: int = 0
-    """cpu使用率"""
+    """可用内存(单位: byte)"""
     cpuUsage: float = 0
-    """内存使用率"""
+    """cpu使用率"""
     memUsage: float = 0
-    """内存总量(单位: byte)"""
+    """内存使用率"""
     totalmem: int = 0
-    """未知，在MCSM代码中始终为0"""
+    """内存总量(单位: byte)"""
     processCpu: int = 0
-    """未知，在MCSM代码中始终为0"""
+    """未知"""
     processMem: int = 0
+    """未知"""
 
 
 class DaemonModel(BaseModel):
     """节点详细信息"""
 
-    """远程节点版本"""
     version: str = ""
-    """远程节点的基本信息"""
+    """远程节点版本"""
     process: ProcessInfo = ProcessInfo()
-    """远程节点实例基本信息"""
+    """远程节点的基本信息"""
     instance: InstanceInfo = InstanceInfo()
-    """远程节点系统信息"""
+    """远程节点实例基本信息"""
     system: SystemInfo = SystemInfo()
+    """远程节点系统信息"""
+    cpuMemChart: list[CpuMemChart] = []
     """cpu和内存使用趋势"""
-    cpuMemChart: List[CpuMemChart] = []
-    """远程节点的uuid"""
     uuid: str = ""
-    """远程节点的ip"""
+    """远程节点的uuid"""
     ip: str = ""
-    """远程节点的端口"""
+    """远程节点的ip"""
     port: int = 24444
-    """远程节点的路径前缀"""
+    """远程节点的端口"""
     prefix: str = ""
-    """远程节点的可用状态"""
+    """远程节点的路径前缀"""
     available: bool = False
-    """远程节点的备注"""
+    """远程节点的可用状态"""
     remarks: str = ""
+    """远程节点的备注"""
 
     def delete(self) -> bool:
         """
@@ -98,7 +70,7 @@ class DaemonModel(BaseModel):
         """
         from mcsmapi.apis.daemon import Daemon
 
-        return Daemon().delete(self.uuid)
+        return Daemon.delete(self.uuid)
 
     def link(self) -> bool:
         """
@@ -109,7 +81,7 @@ class DaemonModel(BaseModel):
         """
         from mcsmapi.apis.daemon import Daemon
 
-        return Daemon().link(self.uuid)
+        return Daemon.link(self.uuid)
 
     def updateConfig(self, config: dict[str, Any]) -> bool:
         """
@@ -123,18 +95,18 @@ class DaemonModel(BaseModel):
         """
         from mcsmapi.apis.daemon import Daemon
 
-        updated_config = self.dict()
+        updated_config = self.model_dump()
         updated_config.update(config)
         # 过滤节点配置中不需要的字段
         daemon_config_dict = {
             key: updated_config[key]
-            for key in DaemonConfig.__fields__.keys()
+            for key in DaemonConfig.model_fields.keys()
             if key in updated_config
         }
 
-        daemon_config = DaemonConfig(**daemon_config_dict).dict()
+        daemon_config = DaemonConfig(**daemon_config_dict).model_dump()
 
-        return Daemon().update(self.uuid, daemon_config)
+        return Daemon.update(self.uuid, daemon_config)
 
     def createInstance(self, config: dict[str, Any]) -> "InstanceCreateResult":
         """
@@ -149,7 +121,7 @@ class DaemonModel(BaseModel):
         from mcsmapi.apis.instance import Instance
         from .instance import InstanceConfig
 
-        return Instance().create(self.uuid, InstanceConfig(**config).dict())
+        return Instance.create(self.uuid, InstanceConfig(**config).dict())
 
     def deleteInstance(self, uuids: list[str], deleteFile=False) -> list[str]:
         """
@@ -164,19 +136,19 @@ class DaemonModel(BaseModel):
         """
         from mcsmapi.apis.instance import Instance
 
-        return Instance().delete(self.uuid, uuids, deleteFile)
+        return Instance.delete(self.uuid, uuids, deleteFile)
 
 
 class DaemonConfig(BaseModel):
     """节点配置信息"""
 
-    """远程节点的ip"""
     ip: str = "localhost"
-    """远程节点的端口"""
+    """远程节点的ip"""
     port: int = 24444
-    """远程节点的路径前缀"""
+    """远程节点的端口"""
     prefix: str = ""
-    """远程节点的备注"""
+    """远程节点的路径前缀"""
     remarks: str = "New Daemon"
-    """远程节点的可用状态"""
+    """远程节点的备注"""
     available: bool = True
+    """远程节点的可用状态"""

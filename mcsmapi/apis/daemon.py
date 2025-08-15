@@ -2,11 +2,11 @@ from typing import Any
 from mcsmapi.pool import ApiPool
 from mcsmapi.request import send
 from mcsmapi.models.daemon import DaemonConfig, DaemonModel
-from mcsmapi.models.daemon.instance import InstanceDetail
 
 
 class Daemon:
-    def show(self) -> list[DaemonConfig]:
+    @staticmethod
+    def show() -> list[DaemonConfig]:
         """
         获取全部节点配置信息
 
@@ -18,11 +18,12 @@ class Daemon:
             f"{ApiPool.SERVICE}/remote_services_list",
         )
         return [DaemonConfig(**daemon) for daemon in daemons]
-        
-    def system(self) -> list[DaemonModel]:
+
+    @staticmethod
+    def system() -> list[DaemonModel]:
         """
         获取全部节点的系统信息
-        
+
         返回:
         - List[DaemonModel]: 节点系统信息列表
         """
@@ -32,7 +33,8 @@ class Daemon:
         )
         return [DaemonModel(**daemon) for daemon in daemons]
 
-    def add(self, config: dict[str, Any]) -> str:
+    @staticmethod
+    def add(config: dict[str, Any]) -> str:
         """
         新增一个节点。
 
@@ -47,8 +49,8 @@ class Daemon:
             f"{ApiPool.SERVICE}/remote_service",
             data=DaemonConfig(**config).dict(),
         )
-
-    def delete(self, daemonId: str) -> bool:
+    @staticmethod
+    def delete(daemonId: str) -> bool:
         """
         删除一个节点。
 
@@ -61,8 +63,8 @@ class Daemon:
         return send(
             "DELETE", f"{ApiPool.SERVICE}/remote_service", params={"uuid": daemonId}
         )
-
-    def link(self, daemonId: str) -> bool:
+    @staticmethod
+    def link(daemonId: str) -> bool:
         """
         连接一个节点。
 
@@ -75,11 +77,11 @@ class Daemon:
         return send(
             "GET", f"{ApiPool.SERVICE}/link_remote_service", params={"uuid": daemonId}
         )
-
-    def update(self, daemonId: str, config: dict[str, Any]) -> bool:
+    @staticmethod
+    def update(daemonId: str, config: dict[str, Any]) -> bool:
         """
         更新一个节点的配置。
-        
+
         **不建议直接使用此函数，建议调用overview()后在remote属性内使用updateConfig方法按需更新**
 
         参数:

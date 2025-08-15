@@ -36,7 +36,7 @@ class MCSMAPI:
         return self
 
     def overview(self) -> OverviewModel:
-        return Overview().init()
+        return Overview.init()
 
     def instance(self) -> Instance:
         return Instance()

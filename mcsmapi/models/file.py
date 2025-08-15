@@ -1,29 +1,34 @@
+from enum import IntEnum
 from pydantic import BaseModel
-from typing import List
 import os
+
+
+class FileType(IntEnum):
+    FOLDER = 0
+    FILE = 1
 
 
 class FileItem(BaseModel):
     """文件信息"""
 
-    """文件名称"""
     name: str = ""
+    """文件名称"""
+    size: int = 0
     """文件大小(单位: byte)"""
-    size: int = 0  # byte
-    """文件修改时间"""
     time: str = ""
+    """文件修改时间"""
+    mode: int = 777
     """文件操作权限(仅适用于Linux)"""
-    mode: int = 777  # Linux file permission
-    """文件类型，`0`为文件夹，`1`为文件"""
-    type: int = 0  # 0 = Folder, 1 = File
-    """远程节点uuid"""
+    type: FileType = FileType.FOLDER
+    """文件类型"""
     daemonId: str = ""
-    """实例的uiid"""
+    """远程节点uuid"""
     uuid: str = ""
-    """文件所在路径"""
+    """实例的uiid"""
     target: str = ""
-    """当前文件列表过滤条件"""
+    """文件所在路径"""
     file_name: str = ""
+    """当前文件列表过滤条件"""
 
     def rename(self, newName: str) -> bool:
         """
@@ -37,7 +42,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().rename(
+        return File.rename(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), newName
         )
 
@@ -50,14 +55,14 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().delete(
+        return File.delete(
             self.daemonId, self.uuid, [os.path.join(self.target, self.name)]
         )
 
     def copy(self, target: str) -> bool:
         from mcsmapi.apis.file import File
 
-        return File().copyOne(
+        return File.copyOne(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
         )
 
@@ -73,7 +78,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().moveOne(
+        return File.moveOne(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
         )
 
@@ -85,7 +90,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().content(
+        return File.content(
             self.daemonId, self.uuid, os.path.join(self.target, self.name)
         )
 
@@ -101,7 +106,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().zip(
+        return File.zip(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), targets
         )
 
@@ -119,7 +124,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().unzip(
+        return File.unzip(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target, code
         )
 
@@ -133,7 +138,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().update(
+        return File.update(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), text
         )
 
@@ -145,7 +150,7 @@ class FileItem(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().download(
+        return File.download(
             self.daemonId, self.uuid, os.path.join(self.target, self.name)
         )
 
@@ -153,22 +158,22 @@ class FileItem(BaseModel):
 class FileList(BaseModel):
     """文件列表"""
 
+    items: list[FileItem]
     """文件信息列表"""
-    items: List[FileItem]
-    """当前页数"""
     page: int = 0
-    """文件列表单页大小"""
+    """当前页数"""
     pageSize: int = 100
-    """总页数"""
+    """文件列表单页大小"""
     total: int = 0
-    """当前路径在远程节点的绝对路径"""
+    """总页数"""
     absolutePath: str = "\\"
-    """远程节点uuid"""
+    """当前路径在远程节点的绝对路径"""
     daemonId: str = ""
-    """实例uuid"""
+    """远程节点uuid"""
     uuid: str = ""
-    """文件（名称或目录）路径"""
+    """实例uuid"""
     target: str = ""
+    """文件（名称或目录）路径"""
 
     def __init__(self, **data: str):
         super().__init__(**data)
@@ -190,7 +195,7 @@ class FileList(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return await File().upload(self.daemonId, self.uuid, file, upload_dir)
+        return await File.upload(self.daemonId, self.uuid, file, upload_dir)
 
     def createFile(self, target: str) -> bool:
         """
@@ -204,7 +209,7 @@ class FileList(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().createFile(self.daemonId, self.uuid, target)
+        return File.createFile(self.daemonId, self.uuid, target)
 
     def createFloder(self, target: str) -> bool:
         """
@@ -218,11 +223,12 @@ class FileList(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File().createFloder(self.daemonId, self.uuid, target)
+        return File.createFloder(self.daemonId, self.uuid, target)
 
 
 class CommonConfig(BaseModel):
-    """文件下载密码"""
+
     password: str = ""
-    """文件下载地址"""
+    """文件下载密码"""
     addr: str = ""
+    """文件下载地址"""

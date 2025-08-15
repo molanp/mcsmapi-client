@@ -4,7 +4,8 @@ from mcsmapi.models.image import DockerImageItem, DockerContainerItem, DockerNet
 
 
 class Image:
-    def images(self, daemonId: str) -> list[DockerImageItem]:
+    @staticmethod
+    def images(daemonId: str) -> list[DockerImageItem]:
         """
         获取镜像列表
 
@@ -24,7 +25,8 @@ class Image:
 
         return [DockerImageItem(**item) for item in result]
 
-    def containers(self, daemonId: str) -> list[DockerContainerItem]:
+    @staticmethod
+    def containers(daemonId: str) -> list[DockerContainerItem]:
         """
         获取容器列表
 
@@ -44,7 +46,8 @@ class Image:
 
         return [DockerContainerItem(**item) for item in result]
 
-    def network(self, daemonId: str) -> list[DockerNetworkItem]:
+    @staticmethod
+    def network(daemonId: str) -> list[DockerNetworkItem]:
         """
         获取网络接口列表
 
@@ -63,7 +66,8 @@ class Image:
         )
         return [DockerNetworkItem(**item) for item in result]
 
-    def add(self, daemonId: str, dockerFile: str, name: str, tag: str) -> bool:
+    @staticmethod
+    def add(daemonId: str, dockerFile: str, name: str, tag: str) -> bool:
         """
         新增一个镜像
 
@@ -83,7 +87,8 @@ class Image:
             data={"dockerFile": dockerFile, "name": name, "tag": tag},
         )
 
-    def progress(self, daemonId: str) -> dict[str, int]:
+    @staticmethod
+    def progress(daemonId: str) -> dict[str, int]:
         """
         获取镜像构建进度
 

@@ -1,37 +1,44 @@
-from typing import Any, List
+from enum import IntEnum
+from typing import Any
 from pydantic import BaseModel
 from mcsmapi.models.instance import InstanceDetail, UserInstancesList
+
+
+class UserPermission(IntEnum):
+    BANNED = -1
+    USER = 1
+    ADMIN = 10
 
 
 class UserModel(BaseModel):
     """用户信息模型"""
 
-    """用户唯一标识符 (UUID)"""
     uuid: str = ""
-    """用户名"""
+    """用户唯一标识符 (UUID)"""
     userName: str = ""
-    """用户密码 (存储加密后的字符串)"""
+    """用户名"""
     passWord: str = ""
-    """密码类型 (0=默认类型)"""
+    """用户密码 (存储加密后的字符串)"""
     passWordType: int = 0
-    """密码盐值 (用于加密)"""
+    """密码类型 (0=默认类型)"""
     salt: str = ""
-    """用户权限级别 (1=用户, 10=管理员, -1=被封禁的用户)"""
-    permission: int = 1
-    """用户注册时间 (时间字符串格式)"""
+    """密码盐值 (用于加密)"""
+    permission: UserPermission = UserPermission.USER
+    """用户权限级别"""
     registerTime: str = ""
-    """用户最后登录时间 (时间字符串格式)"""
+    """用户注册时间 (时间字符串格式)"""
     loginTime: str = ""
-    """用户 API 密钥"""
+    """用户最后登录时间 (时间字符串格式)"""
     apiKey: str = ""
-    """是否为初始化用户 (系统内置用户)"""
+    """用户 API 密钥"""
     isInit: bool = False
-    """用户安全密钥 (可能用于额外的身份验证)"""
+    """是否为初始化用户 (系统内置用户)"""
     secret: str = ""
-    """是否启用双因素认证 (2FA)"""
+    """用户安全密钥 (可能用于额外的身份验证)"""
     open2FA: bool = False
+    """是否启用双因素认证 (2FA)"""
+    instances: list[UserInstancesList] = []
     """用户关联的实例列表"""
-    instances: List["UserInstancesList"] = []
 
     def delete(self) -> bool:
         """
@@ -56,16 +63,16 @@ class UserModel(BaseModel):
         """
         from mcsmapi.apis.user import User
 
-        updated_config = self.dict()
+        updated_config = self.model_dump()
         updated_config.update(config)
         # 过滤用户信息中不需要的字段
         user_config_dict = {
             key: updated_config[key]
-            for key in UserConfig.__fields__.keys()
+            for key in UserConfig.model_fields.keys()
             if key in updated_config
         }
 
-        user_config = UserConfig(**user_config_dict).dict()
+        user_config = UserConfig(**user_config_dict).model_dump()
 
         return User().update(self.uuid, user_config)
 
@@ -73,38 +80,38 @@ class UserModel(BaseModel):
 class SearchUserModel(BaseModel):
     """用户搜索结果"""
 
-    """匹配的用户总数"""
     total: int = 0
-    """当前页码"""
+    """匹配的用户总数"""
     page: int = 0
-    """每页返回的用户数量"""
+    """当前页码"""
     page_size: int = 0
-    """最大可用页数"""
+    """每页返回的用户数量"""
     max_page: int = 0
+    """最大可用页数"""
+    data: list[UserModel] = []
     """用户信息列表"""
-    data: List[UserModel] = []
 
 
 class UserConfig(BaseModel):
     """用户配置信息"""
 
-    """用户唯一标识符 (UUID)"""
     uuid: str
-    """用户名"""
+    """用户唯一标识符 (UUID)"""
     userName: str
-    """最后登录时间"""
+    """用户名"""
     loginTime: str
-    """注册时间"""
+    """最后登录时间"""
     registerTime: str
+    """注册时间"""
+    instances: list[InstanceDetail]
     """用户拥有的实例列表"""
-    instances: List[InstanceDetail]
-    """用户权限级别 (1=用户, 10=管理员, -1=被封禁的用户)"""
-    permission: int
-    """用户 API 密钥"""
+    permission: UserPermission
+    """用户权限级别"""
     apiKey: str
-    """是否为初始化用户 (系统内置用户)"""
+    """用户 API 密钥"""
     isInit: bool
-    """用户安全密钥 (可能用于额外的身份验证)"""
+    """是否为初始化用户 (系统内置用户)"""
     secret: str
-    """是否启用双因素认证 (2FA)"""
+    """用户安全密钥 (可能用于额外的身份验证)"""
     open2FA: bool
+    """是否启用双因素认证 (2FA)"""
