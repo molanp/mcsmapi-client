@@ -8,10 +8,11 @@ mcsm.login("admin", "547cABC9bf88@")
 
 # Get dashboard data
 overview = mcsm.overview()
+overview_data = overview.overview()
 
-mcsm_version = mcsm.overview().version
+mcsm_version = overview_data.version
 
-remotes = overview.remote
+remotes = overview_data.remote
 
 for remote in remotes:
     print(remote.remarks)

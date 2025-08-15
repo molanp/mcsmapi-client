@@ -68,9 +68,10 @@ mcsm.login_with_apikey("apikey")
 
 # Get dashboard data
 overview = mcsm.overview()
+overview_data = overview.overview()
 
 # Get MCSM version
-mcsm_version = mcsm.overview().version
+mcsm_version = overview_data.version
 ```
 
 ## Contributing

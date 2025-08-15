@@ -12,13 +12,12 @@
 
 ---
 
-### 方法一：[init()](https://github.com/molanp/mcsmapi/blob/main/mcsmapi/apis/overview.py#L10-L23)
+### 方法一：[overview()](https://github.com/molanp/mcsmapi/blob/main/mcsmapi/apis/overview.py#L10-L23)
 
 #### 功能
 
-**内部方法，请勿直接调用**
 
-初始化方法，用于获取 API 概览信息并构建 [OverviewModel](https://github.com/molanp/mcsmapi/blob/main/mcsmapi/models/overview.py#L57-L98) 实例。
+用于获取面板基本信息
 
 #### 参数说明：
 
@@ -59,6 +58,8 @@ api = MCSMAPI("http://localhost:23333")
 api.login("admin", "your_password_here")  
 # 或使用 login_with_apikey
 # api.login_with_apikey("your_apikey_here")
+# 获取overview管理对象
+api = api.overview()
 ```
 
 ### 获取系统概览信息

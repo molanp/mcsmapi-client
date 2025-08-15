@@ -68,10 +68,10 @@ mcsm.login_with_apikey("apikey")
 
 # 获取仪表盘数据
 overview = mcsm.overview()
+overview_data = overview.overview()
 
 # 获取 MCSM 版本
-mcsm_version = mcsm.overview().version
-
+mcsm_version = overview_data.version
 ```
 
 ## 贡献
