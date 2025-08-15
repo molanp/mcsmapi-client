@@ -313,7 +313,7 @@ class File:
         )
 
     @staticmethod
-    def createFloder(daemonId: str, uuid: str, target: str) -> bool:
+    def createFolder(daemonId: str, uuid: str, target: str) -> bool:
         """
         创建文件夹
 

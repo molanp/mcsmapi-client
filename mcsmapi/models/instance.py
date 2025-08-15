@@ -84,7 +84,7 @@ class InstanceConfig(BaseModel):
     """进程类型 (如 docker, local)"""
     updateCommand: str = "shutdown -s"
     """更新命令"""
-    actionCommandlist: list[str] = []
+    actionCommandList: list[str] = []
     """实例可执行的操作命令列表"""
     crlf: CRLFType = CRLFType.CRLF
     """换行符"""
@@ -277,7 +277,7 @@ class InstanceDetail(BaseModel):
         - page_size (int, 可选): 指定每页的文件数量。默认为100。
 
         **返回:**
-        - Filelist: 文件列表。
+        - FileList: 文件列表。
         """
         from mcsmapi.apis.file import File
 

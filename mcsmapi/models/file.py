@@ -211,7 +211,7 @@ class FileList(BaseModel):
 
         return File.createFile(self.daemonId, self.uuid, target)
 
-    def createFloder(self, target: str) -> bool:
+    def createFolder(self, target: str) -> bool:
         """
         创建文件夹
 
@@ -223,7 +223,7 @@ class FileList(BaseModel):
         """
         from mcsmapi.apis.file import File
 
-        return File.createFloder(self.daemonId, self.uuid, target)
+        return File.createFolder(self.daemonId, self.uuid, target)
 
 
 class CommonConfig(BaseModel):
