@@ -111,27 +111,27 @@ class InstanceConfig(BaseModel):
 class ProcessInfo(BaseModel):
     """进程信息"""
 
-    cpu: int = 0
+    cpu: int
     """CPU 使用率 (单位: %)"""
-    memory: int = 0
+    memory: int
     """进程占用内存 (单位: KB)"""
-    ppid: int = 0
+    ppid: int
     """父进程 ID"""
-    pid: int = 0
+    pid: int
     """进程 ID"""
-    ctime: int = 0
+    ctime: int
     """进程创建时间 (Unix 时间戳)"""
-    elapsed: int = 0
+    elapsed: int
     """进程运行时长 (单位: 秒)"""
-    timestamp: int = 0
+    timestamp: int
     """时间戳"""
 
 
 class InstanceInfo(BaseModel):
     """实例运行状态信息(这些选项在新版中已不再支持设置，但仍在API中返回)"""
 
-    currentPlayers: int = -1
-    """当前玩家数量 (-1 表示未知)"""
+    currentPlayers: int
+    """当前玩家数量"""
     fileLock: int = 0
     """文件锁状态 (0: 无锁)"""
     maxPlayers: int = -1
@@ -147,21 +147,19 @@ class InstanceInfo(BaseModel):
 class InstanceDetail(BaseModel):
     """实例详细信息"""
 
-    config: InstanceConfig = InstanceConfig()
+    config: InstanceConfig
     """实例的配置信息"""
-    info: InstanceInfo = InstanceInfo()
+    info: InstanceInfo
     """实例的运行状态信息"""
-    daemonId: str = ""
+    daemonId: str
     """所属的守护进程 (Daemon) ID"""
-    instanceUuid: str = ""
+    instanceUuid: str
     """实例唯一标识符 (UUID)"""
-    processInfo: ProcessInfo = ProcessInfo()
+    processInfo: ProcessInfo
     """实例的进程信息"""
-    space: int = 0
-    """实例的存储空间大小(已弃用)"""
-    started: int = 0
+    started: int
     """实例的启动次数"""
-    status: Status = Status.STOP
+    status: Status
     """实例状态"""
 
     def start(self) -> str | bool:

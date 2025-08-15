@@ -1,6 +1,6 @@
 from mcsmapi.pool import ApiPool
 from mcsmapi.request import Request, send, upload
-from mcsmapi.models.file import CommonConfig, FileList
+from mcsmapi.models.file import FileDownloadConfig, FileList
 import urllib.parse
 import os
 
@@ -103,7 +103,7 @@ class File:
             f"{ApiPool.FILE}/download",
             params={"daemonId": daemonId, "uuid": uuid, "file_name": file_name},
         )
-        result = CommonConfig(**result)
+        result = FileDownloadConfig(**result)
         protocol = Request.mcsm_url.split("://")[0]
         base_url = urllib.parse.urljoin(f"{protocol}://{result.addr}", "download")
         return urllib.parse.urljoin(base_url, f"{result.password}/{file_name}")
@@ -127,7 +127,7 @@ class File:
             f"{ApiPool.FILE}/upload",
             params={"daemonId": daemonId, "uuid": uuid, "upload_dir": upload_dir},
         )
-        result = CommonConfig(**result)
+        result = FileDownloadConfig(**result)
         protocol = Request.mcsm_url.split("://")[0]
         base_url = urllib.parse.urljoin(f"{protocol}://{result.addr}", "upload")
         final_url = urllib.parse.urljoin(base_url, result.password)

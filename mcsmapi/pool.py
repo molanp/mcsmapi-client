@@ -12,3 +12,4 @@ class ApiPool(Enum):
     SERVICE = "api/service"
     FILE = "api/files"
     IMAGE = "api/environment"
+    LOG = "api/overview/operation_logs"

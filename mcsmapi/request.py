@@ -1,59 +1,65 @@
 from typing import Any
 import requests
 import urllib.parse
+
+from mcsmapi.pool import ApiPool
 from .exceptions import MCSMError
 
 
 class Request:
-    mcsm_url = ""
-    timeout = 5
+    mcsm_url: str = ""
+    timeout: int = 5
     session = requests.Session()
-    apikey = None
-    token = None
+    apikey: str | None = None
+    token: str | None = None
 
     @classmethod
-    def set_mcsm_url(cls, url):
+    def set_mcsm_url(cls, url: str):
         """设置类级别的 mcsm_url"""
         cls.mcsm_url = url
 
     @classmethod
-    def set_timeout(cls, timeout):
+    def set_timeout(cls, timeout: int):
         """设置类级别的 timeout"""
         cls.timeout = timeout
 
     @classmethod
-    def set_apikey(cls, apikey):
+    def set_apikey(cls, apikey: str):
         """设置类级别的 apikey"""
         cls.apikey = apikey
 
     @classmethod
-    def set_token(cls, token):
+    def set_token(cls, token: str):
         """设置类级别的 token"""
         cls.token = token
 
     @classmethod
-    def __init__(cls, mcsm_url=None, timeout=None):
+    def __init__(cls, mcsm_url: str | None = None, timeout: int | None = None):
         """初始化时使用类变量，或者使用传入的参数覆盖默认值"""
         cls.mcsm_url = mcsm_url or cls.mcsm_url
         cls.timeout = timeout or cls.timeout
 
     @classmethod
-    def send(cls, method: str, endpoint: Any, params=None, data=None) -> Any:
+    def send(
+        cls,
+        method: str,
+        endpoint: str | ApiPool,
+        params: dict | None = None,
+        data: Any | None = None,
+    ) -> Any:
         """发送 HTTP 请求"""
         if params is None:
             params = {}
         if data is None:
             data = {}
-        if not isinstance(endpoint, str):
-            endpoint = str(endpoint)
+        if isinstance(endpoint, ApiPool):
+            endpoint = endpoint.value
 
         url = urllib.parse.urljoin(cls.mcsm_url, endpoint)
         if cls.apikey is not None:
             params["apikey"] = cls.apikey
-            data["apikey"] = cls.apikey
         if cls.token is not None:
             params["token"] = cls.token
-            data["token"] = cls.token
 
         response = cls.session.request(
             method.upper(),
