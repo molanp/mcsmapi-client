@@ -22,7 +22,7 @@
 
 您还可以找到： 
 
-📄 正在进行的文档: [docs](docs)
+📄 正在进行的文档: [docs](https://www.awkchan.top/mcsmapi/)
 
 💡 示例: [example](example)
 
@@ -35,7 +35,7 @@ pip install mcsmapi
 ```
 
 如果你需要最新的构建文件，请访问
-[Actions](https://github.com/molanp/mcsmapi/actions)
+[Actions](https://github.com/molanp/mcsmapi/actions/workflows/auto-build.yml)
 
 ## 支持的功能
 

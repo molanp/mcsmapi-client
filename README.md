@@ -16,7 +16,7 @@ The documentation is not yet complete, if you need it, please visit [deepwiki-mc
 
 You can also find:  
 
-📄 Work-in-progress docs: [docs](docs)
+📄 Work-in-progress docs: [docs](https://www.awkchan.top/mcsmapi/en/)
 
 💡 Example: [example](example)
 
@@ -35,7 +35,7 @@ pip install mcsmapi
 ```
 
 If you need the latest build files, please visit
-[Actions](https://github.com/molanp/mcsmapi/actions)
+[Actions](https://github.com/molanp/mcsmapi/actions/workflows/auto-build.yml)
 
 ## Supported Features
 
