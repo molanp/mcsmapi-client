@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class CpuMemChart(BaseModel):
-    """节点资源使用率信息"""
+    """资源使用率信息"""
 
     cpu: float
     """cpu使用率"""
@@ -11,14 +11,14 @@ class CpuMemChart(BaseModel):
 
 
 class ProcessInfo(BaseModel):
-    """节点进程详细信息"""
+    """进程详细信息"""
 
     cpu: int
-    """远程节点使用的cpu资源(单位: byte)"""
+    """CPU 使用率（百分比）"""
     memory: int
-    """远程节点使用的内存资源(单位: byte)"""
+    """内存使用量（MB）"""
     cwd: str
-    """远程节点的工作路径"""
+    """工作路径"""
 
 
 class InstanceInfo(BaseModel):

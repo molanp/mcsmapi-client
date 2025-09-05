@@ -5,61 +5,71 @@ from mcsmapi.models.instance import InstanceDetail, UserInstancesList
 
 
 class UserPermission(IntEnum):
+    """用户权限级别"""
+
     BANNED = -1
     USER = 1
     ADMIN = 10
 
 
+class UserCreateResult(BaseModel):
+    """用户创建结果"""
+
+    uuid: str
+    """用户UUID"""
+    userName: str
+    """用户名"""
+    permission: UserPermission
+    """用户权限级别"""
+
+
 class UserModel(BaseModel):
     """用户信息模型"""
 
-    uuid: str = ""
-    """用户唯一标识符 (UUID)"""
-    userName: str = ""
+    uuid: str
+    """用户UUID"""
+    userName: str
     """用户名"""
-    passWord: str = ""
-    """用户密码 (存储加密后的字符串)"""
-    passWordType: int = 0
-    """密码类型 (0=默认类型)"""
-    salt: str = ""
-    """密码盐值 (用于加密)"""
-    permission: UserPermission = UserPermission.USER
+    permission: UserPermission
     """用户权限级别"""
-    registerTime: str = ""
-    """用户注册时间 (时间字符串格式)"""
-    loginTime: str = ""
-    """用户最后登录时间 (时间字符串格式)"""
-    apiKey: str = ""
+    registerTime: str
+    """用户注册时间 (YYYY/M/D hh:mm:ss)"""
+    loginTime: str
+    """用户最后登录时间 (YYYY/M/D hh:mm:ss)"""
+    apiKey: str
     """用户 API 密钥"""
-    isInit: bool = False
-    """是否为初始化用户 (系统内置用户)"""
-    secret: str = ""
-    """用户安全密钥 (可能用于额外的身份验证)"""
-    open2FA: bool = False
+    open2FA: bool
     """是否启用双因素认证 (2FA)"""
-    instances: list[UserInstancesList] = []
+    instances: list[UserInstancesList]
     """用户关联的实例列表"""
+    isInit: bool
+    """是否为初始化用户 (已弃用)"""
+    secret: str
+    """用户安全密钥 (已弃用)"""
+    passWord: str
+    """用户密码 (已弃用)"""
+    passWordType: int
+    """密码类型 (已弃用)"""
+    salt: str
+    """密码盐值 (已弃用)"""
 
-    def delete(self) -> bool:
+    def delete(self):
         """
-        删除该用户。
+        删除该用户
 
-        **返回:**
-        - bool: 删除成功后返回True。
+        :returns: 删除成功后返回True
         """
         from mcsmapi.apis.user import User
 
         return User().delete([self.uuid])
 
-    def update(self, config: dict[str, Any]) -> bool:
+    def update(self, config: dict[str, Any]):
         """
-        更新该用户的信息。
+        更新该用户的信息
 
-        参数:
-        - config (dict[str, Any]): 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充。
+        :params config: 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充
 
-        返回:
-        - bool: 更新成功后返回True。
+        :returns: 更新成功后返回True
         """
         from mcsmapi.apis.user import User
 
@@ -80,38 +90,44 @@ class UserModel(BaseModel):
 class SearchUserModel(BaseModel):
     """用户搜索结果"""
 
-    total: int = 0
+    total: int
     """匹配的用户总数"""
-    page: int = 0
+    page: int
     """当前页码"""
-    page_size: int = 0
+    page_size: int
     """每页返回的用户数量"""
-    max_page: int = 0
+    max_page: int
     """最大可用页数"""
-    data: list[UserModel] = []
+    data: list[UserModel]
     """用户信息列表"""
 
 
 class UserConfig(BaseModel):
     """用户配置信息"""
 
-    uuid: str
-    """用户唯一标识符 (UUID)"""
-    userName: str
+    uuid: str = ""
+    """用户UUID"""
+    userName: str = ""
     """用户名"""
-    loginTime: str
+    loginTime: str = ""
     """最后登录时间"""
-    registerTime: str
+    registerTime: str = ""
     """注册时间"""
-    instances: list[InstanceDetail]
+    instances: list[InstanceDetail] = []
     """用户拥有的实例列表"""
-    permission: UserPermission
+    permission: UserPermission = UserPermission.USER
     """用户权限级别"""
-    apiKey: str
-    """用户 API 密钥"""
-    isInit: bool
-    """是否为初始化用户 (系统内置用户)"""
-    secret: str
-    """用户安全密钥 (可能用于额外的身份验证)"""
-    open2FA: bool
+    passWord: str = ""
+    """用户密码"""
+    open2FA: bool = False
     """是否启用双因素认证 (2FA)"""
+    apiKey: str = ""
+    """用户 API 密钥"""
+    passWordType: int = 1
+    """密码类型 (已弃用)"""
+    isInit: bool = False
+    """是否为初始化用户 (已弃用)"""
+    secret: str = ""
+    """用户安全密钥 (已弃用)"""
+    salt: str = ""
+    """用户密码盐值 (已弃用)"""

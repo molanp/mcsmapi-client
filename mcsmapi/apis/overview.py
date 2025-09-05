@@ -11,7 +11,7 @@ class Overview:
         """
         result = send("GET", ApiPool.OVERVIEW)
         return OverviewModel(**result)
-    
+
     @staticmethod
     def logs():
         """

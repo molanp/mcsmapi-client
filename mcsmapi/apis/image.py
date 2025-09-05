@@ -9,11 +9,9 @@ class Image:
         """
         获取镜像列表
 
-        **参数:**
-        - daemonId (str): 守护进程的唯一标识符。
+        :params daemonId: 节点的UUID
 
-        **返回:**
-        - list[ImageModel]: 包含镜像列表详情的 ImageModel 模型的列表。
+        :returns: 包含镜像列表详情的 ImageModel 模型的列表
         """
         result = send(
             "GET",
@@ -30,11 +28,9 @@ class Image:
         """
         获取容器列表
 
-        **参数:**
-        - daemonId (str): 守护进程的唯一标识符。
+        :params daemonId: 节点的UUID
 
-        **返回:**
-        - list[DockerContainerItem]: 包含容器列表详情的 DockerContainerItem 模型的列表。
+        :params: 包含容器列表详情的 DockerContainerItem 模型的列表
         """
         result = send(
             "GET",
@@ -51,11 +47,9 @@ class Image:
         """
         获取网络接口列表
 
-        **参数:**
-        - daemonId (str): 守护进程的唯一标识符。
+        :params daemonId: 节点的UUID
 
-        **返回:**
-        - list[DockerNetworkItem]: 包含网络接口列表详情的 DockerNetworkItem 模型的列表。
+        :returns: 包含网络接口列表详情的 DockerNetworkItem 模型的列表
         """
         result = send(
             "GET",
@@ -71,14 +65,12 @@ class Image:
         """
         新增一个镜像
 
-        **参数:**
-        - daemonId (str): 守护进程的唯一标识符。
-        - dockerFile (str): DockerFile Config
-        - name (str): 镜像名称。
-        - tag (str): 镜像版本。
+        :params daemonId: 节点的UUID
+        :params dockerFile: DockerFile Config 内容
+        :params name: 镜像名称
+        :params tag: 镜像版本
 
-        **返回:**
-        - bool: 新增镜像成功后返回True。
+        :returns: 新增镜像成功后返回True
         """
         return send(
             "POST",
@@ -92,13 +84,15 @@ class Image:
         """
         获取镜像构建进度
 
-        ## **由于文档此部分内容不详，未使用模型**
+        :params daemonId: 节点的UUID
 
-        **参数:**
-        - daemonId (str): 守护进程的唯一标识符。
+        :returns: {容器名称: 当前状态}
 
-        **返回:**
-        - dict[str, int]: 包含构建进度信息的字典。
+        状态码对照:
+        ```
+        -1: 镜像构建失败
+         1: 镜像构建中
+         2: 镜像构建完成
         """
         return send(
             "GET",

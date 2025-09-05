@@ -4,7 +4,7 @@ from mcsmapi.models.instance import InstanceCreateResult
 from mcsmapi.models.common import ProcessInfo, InstanceInfo, CpuMemChart
 
 
-class SystemInfo(BaseModel):
+class DaemonSystemInfo(BaseModel):
     """节点系统信息"""
 
     type: str
@@ -19,7 +19,7 @@ class SystemInfo(BaseModel):
     """系统运行时间(单位: sec)"""
     cwd: str
     """远程节点运行路径"""
-    loadavg: list[float]
+    loadavg: tuple[float, float, float]
     """系统负载平均值（仅适用于 Linux 和 macOS），表示过去 **1 分钟、5 分钟、15 分钟** 内的 CPU 负载情况"""
     freemem: int
     """可用内存(单位: byte)"""
@@ -44,7 +44,7 @@ class DaemonModel(BaseModel):
     """远程节点的基本信息"""
     instance: InstanceInfo
     """远程节点实例基本信息"""
-    system: SystemInfo
+    system: DaemonSystemInfo
     """远程节点系统信息"""
     cpuMemChart: list[CpuMemChart]
     """cpu和内存使用趋势"""
@@ -61,23 +61,21 @@ class DaemonModel(BaseModel):
     remarks: str
     """远程节点的名称"""
 
-    def delete(self) -> bool:
+    def delete(self):
         """
-        删除该节点。
+        删除该节点
 
-        返回:
-        - bool: 删除成功后返回True
+        :returns: 删除成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
         return Daemon.delete(self.uuid)
 
-    def link(self) -> bool:
+    def link(self):
         """
-        链接该节点。
+        尝试连接该节点
 
-        返回:
-        - bool: 链接成功后返回True
+        :returns: 连接成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -85,13 +83,11 @@ class DaemonModel(BaseModel):
 
     def updateConfig(self, config: dict[str, Any]) -> bool:
         """
-        更新该节点的配置。
+        更新该节点的配置
 
-        参数:
-        - config (dict[str, Any]): 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充。
+        :params config: 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充
 
-        返回:
-        - bool: 更新成功后返回True
+        :returns: 更新成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -108,31 +104,27 @@ class DaemonModel(BaseModel):
 
         return Daemon.update(self.uuid, daemon_config)
 
-    def createInstance(self, config: dict[str, Any]) -> "InstanceCreateResult":
+    def createInstance(self, config: dict[str, Any]) -> InstanceCreateResult:
         """
-        在当前节点创建一个实例。
+        在当前节点创建一个实例
 
-        参数:
-        - config (dict[str, Any]): 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全。
+        :params config: 实例的配置信息，以字典形式提供，缺失内容由InstanceConfig模型补全
 
-        返回:
-        - InstanceCreateResult: 一个包含新创建实例信息的结果对象，内容由InstanceCreateResult模型定义。
+        :returns: 一个包含新创建实例信息的结果对象
         """
         from mcsmapi.apis.instance import Instance
         from .instance import InstanceConfig
 
-        return Instance.create(self.uuid, InstanceConfig(**config).dict())
+        return Instance.create(self.uuid, InstanceConfig(**config).model_dump())
 
     def deleteInstance(self, uuids: list[str], deleteFile=False) -> list[str]:
         """
-        删除当前节点的一个或多个实例。
+        删除当前节点的一个或多个实例
 
-        参数:
-        - uuids (list[str]): 要删除的实例UUID列表。
-        - deleteFile (bool, optional): 是否删除关联的文件，默认为False。
+        :params uuids: 要删除的实例UUID列表
+        :params deleteFile: 是否删除关联的文件
 
-        返回:
-        - list[str]: 删除操作后返回的UUID列表。
+        :returns: 删除操作后返回的UUID列表
         """
         from mcsmapi.apis.instance import Instance
 

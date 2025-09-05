@@ -1,4 +1,5 @@
 from enum import IntEnum
+from typing import Literal
 from pydantic import BaseModel
 import os
 
@@ -30,15 +31,13 @@ class FileItem(BaseModel):
     file_name: str
     """当前文件列表过滤条件"""
 
-    def rename(self, newName: str) -> bool:
+    def rename(self, newName: str):
         """
-        重命名该文件或文件夹。
+        重命名该文件或文件夹
 
-        **参数:**
-        - new_name (str): 源文件或文件夹的新名字。
+        :params new_name: 源文件或文件夹的新名字
 
-        **返回:**
-        - bool: 重命名成功后返回True。
+        :returns: 重命名成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -46,12 +45,11 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name), newName
         )
 
-    def delete(self) -> bool:
+    def delete(self):
         """
-        删除该文件或文件夹。
+        删除该文件或文件夹
 
-        **返回:**
-        - bool: 重命名成功后返回True。
+        :returns: 重命名成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -59,22 +57,27 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, [os.path.join(self.target, self.name)]
         )
 
-    def copy(self, target: str) -> bool:
+    def copy(self, target: str):
+        """
+        复制该文件或文件夹到目标路径
+
+        :param target: 目标路径
+
+        :returns: 复制成功后返回True
+        """
         from mcsmapi.apis.file import File
 
         return File.copyOne(
             self.daemonId, self.uuid, os.path.join(self.target, self.name), target
         )
 
-    def move(self, target: str) -> bool:
+    def move(self, target: str):
         """
-        移动该文件或文件夹到目标路径。
+        移动该文件或文件夹到目标路径
 
-        **参数:**
-        - target (str): 目标文件或文件夹的路径。
+        :params target: 目标文件或文件夹的路径
 
-        **返回:**
-        - bool: 移动成功后返回True。
+        :returns: 移动成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -84,9 +87,9 @@ class FileItem(BaseModel):
 
     def content(self):
         """
-        获取文件内容。
-        **返回:**
-        - str | bytes: 文件内容。
+        获取文件内容
+
+        :returns: 文件内容
         """
         from mcsmapi.apis.file import File
 
@@ -94,15 +97,15 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name)
         )
 
-    def zip(self, targets: list[str]) -> bool:
+    def zip(self, targets: list[str]):
         """
-        压缩多个文件或文件夹到指定位置。
+        压缩多个文件或文件夹到指定位置
 
         **参数:**
-        - targets (list): 要压缩到的目标文件的路径。
+        - targets (list): 要压缩到的目标文件的路径
 
         **返回:**
-        - bool: 压缩成功后返回True。
+        - bool: 压缩成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -110,17 +113,19 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, os.path.join(self.target, self.name), targets
         )
 
-    def unzip(self, target: str, code: str = "utf-8") -> bool:
+    def unzip(
+        self, target: str, code: Literal["utf-8", "gbk", "big5"] = "utf-8"
+    ) -> bool:
         """
-        解压缩该 zip 文件到目标位置。
+        解压缩该 zip 文件到目标位置
 
         **参数:**
-        - target (str): 解压到的目标路径。
-        - code (str, optional): 压缩文件的编码方式，默认为"utf-8"。
+        - target (str): 解压到的目标路径
+        - code (str, optional): 压缩文件的编码方式，默认为"utf-8"
             可选值: utf-8, gbk, big5
 
         **返回:**
-        - bool: 解压成功后返回True。
+        - bool: 解压成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -130,11 +135,11 @@ class FileItem(BaseModel):
 
     def update(self, text: str) -> bool:
         """
-        更新该文件内容。
+        更新该文件内容
         **参数:**
-        - text (str): 文件内容。
+        - text (str): 文件内容
         **返回:**
-        - bool: 更新成功后返回True。
+        - bool: 更新成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -144,9 +149,9 @@ class FileItem(BaseModel):
 
     def download(self) -> str:
         """
-        下载该文件。
+        下载该文件
         **返回:**
-        - str: 文件下载的URL。
+        - str: 文件下载的URL
         """
         from mcsmapi.apis.file import File
 
@@ -184,14 +189,14 @@ class FileList(BaseModel):
 
     async def upload(self, file: bytes, upload_dir: str) -> bool:
         """
-        上传文件到实例。
+        上传文件到实例
 
         **参数:**
-        - file (bytes): 要上传的文件内容。
-        - upload_dir (str): 上传文件的目标目录(包含文件名)。
+        - file (bytes): 要上传的文件内容
+        - upload_dir (str): 上传文件的目标目录(包含文件名)
 
         **返回:**
-        - bool: 返回操作结果，成功时返回True。
+        - bool: 操作成功返回True
         """
         from mcsmapi.apis.file import File
 
@@ -199,13 +204,13 @@ class FileList(BaseModel):
 
     def createFile(self, target: str) -> bool:
         """
-        创建文件。
+        创建文件
 
         **参数:**
-        - target (str): 目标文件的路径，包含文件名。
+        - target (str): 目标文件的路径，包含文件名
 
         **返回:**
-        - bool: 创建成功后返回True。
+        - bool: 创建成功后返回True
         """
         from mcsmapi.apis.file import File
 
@@ -216,10 +221,10 @@ class FileList(BaseModel):
         创建文件夹
 
         **参数:**
-        - target (str): 目标文件夹的路径。
+        - target (str): 目标文件夹的路径
 
         **返回:**
-        - bool: 创建成功后返回True。
+        - bool: 创建成功后返回True
         """
         from mcsmapi.apis.file import File
 

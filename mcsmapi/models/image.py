@@ -9,30 +9,36 @@ class DockerConfig(BaseModel):
     """容器名称"""
     image: str = ""
     """镜像名称"""
-    memory: int = 0
-    """容器分配内存(单位: MB)"""
     ports: list[str] = []
     """容器端口映射, eg:["25565:25565/tcp"]"""
     extraVolumes: list[str] = []
     """额外挂载卷路径"""
-    maxSpace: int | None = None
-    """容器可使用的最大磁盘空间(单位: MB)"""
-    network: str | int | None = None
-    """网络配置，可以是网络名称或ID"""
-    io: str | int | None = None
-    """容器的 IO 限制"""
+    memory: int = 0
+    """容器分配内存(单位: MB)"""
+    memorySwap: int | None = None
+    """容器分配 swap 内存(单位: MB)"""
+    memorySwappiness: int | None = None
+    """虚拟内存使用倾向(0-100)"""
     networkMode: str = "bridge"
     """网络模式(例如: bridge, host)"""
     networkAliases: list[str] = []
     """网络别名列表"""
+    maxSpace: int = 0
+    """容器可使用的最大磁盘空间(单位: MB)"""
+    network: int = 0
+    """网络配置(已弃用)"""
+    io: int = 0
+    """容器的 IO 限制"""
     cpusetCpus: str = ""
     """绑定的 CPU 核心, eg: `0,1`"""
-    cpuUsage: int = 100
-    """CPU 使用率(单位: %)"""
-    workingDir: str = ""
+    cpuUsage: int = 0
+    """限制CPU 使用率(单位: %)"""
+    workingDir: str = "/workspace/"
     """工作目录"""
     env: list[str] = []
     """环境变量设置"""
+    changeWorkdir: bool = True
+    """是否更变容器默认工作目录"""
 
 
 class DockerImageItem(BaseModel):

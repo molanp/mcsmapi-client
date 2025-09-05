@@ -4,7 +4,7 @@ requires = ["setuptools", "wheel"]
 
 [project]
 name = "mcsmapi"
-version = "0.1.7"
+version = "0.1.8.b1"
 description = "Shortcut the pypi package of MCSM./快捷操作MCSM的pypi包"
 readme = "README.md"
 authors = [
@@ -20,5 +20,5 @@ urls = {"Source" = "https://github.com/molanp/mcsmapi"}
 
 dependencies = [
   "requests",
-  "pydantic>=2.0.0",
+  "pydantic>=2.0.0, <3.0.0",
 ]
