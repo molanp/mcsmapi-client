@@ -215,9 +215,11 @@ class InstanceDetail(BaseModel):
 
         return Instance.kill(self.daemonId, self.instanceUuid)
 
-    def delete(self, deleteFile=False):
+    def delete(self, deleteFile: bool = False):
         """
         删除该实例
+        
+        :params deleteFile: 是否删除关联的文件
 
         :returns: 被删除的实例的uuid
         """
