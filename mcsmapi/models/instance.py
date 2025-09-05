@@ -1,6 +1,6 @@
 from enum import IntEnum
 from typing import Any, TypedDict
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from mcsmapi.models.image import DockerConfig
 
 
@@ -218,7 +218,7 @@ class InstanceDetail(BaseModel):
     def delete(self, deleteFile: bool = False):
         """
         删除该实例
-        
+
         :params deleteFile: 是否删除关联的文件
 
         :returns: 被删除的实例的uuid
@@ -317,9 +317,9 @@ class InstanceDetail(BaseModel):
 class InstanceCreateResult(BaseModel):
     """实例创建结果"""
 
-    instanceUuid: str = ""
+    instanceUuid: str
     """实例UUID"""
-    config: InstanceConfig = InstanceConfig()
+    config: InstanceConfig
     """实例的配置信息"""
 
 
@@ -335,11 +335,17 @@ class InstanceSearchList(BaseModel):
     daemonId: str = ""
     """所属的节点UUID"""
 
-    def __init__(self, **data: str):
-        """实例化对象，并在每个实例中填充 daemonId"""
-        super().__init__(**data)
-        for instance in self.data:
-            instance.daemonId = self.daemonId
+    @field_validator("data", mode="before")
+    @classmethod
+    def fill_daemon_id(cls, v: Any, info) -> Any:
+        """在验证 data 字段前填充 daemonId"""
+        if isinstance(info.data, dict):
+            daemon_id = info.data.get("daemonId", "")
+            if isinstance(v, list):
+                for instance in v:
+                    if isinstance(instance, dict):
+                        instance["daemonId"] = daemon_id
+        return v
 
 
 class UserInstancesList(BaseModel):
