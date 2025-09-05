@@ -34,8 +34,8 @@
 pip install mcsmapi
 ```
 
-如果你需要最新的构建文件(未经过测试)，请访问
-[Actions](https://github.com/molanp/mcsmapi/actions/workflows/auto-build.yml)
+如果你需要最新的构建文件，请访问
+[Actions](https://github.com/molanp/mcsmapi/actions)
 
 ## 支持的功能
 
