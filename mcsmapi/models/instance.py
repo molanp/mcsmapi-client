@@ -179,7 +179,7 @@ class InstanceDetail(BaseModel):
         """
         启动该实例
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被启动的实例的UUID
         """
         from mcsmapi.apis.instance import Instance
 
@@ -189,7 +189,7 @@ class InstanceDetail(BaseModel):
         """
         停止该实例
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被停止的实例的UUID
         """
         from mcsmapi.apis.instance import Instance
 
@@ -199,7 +199,7 @@ class InstanceDetail(BaseModel):
         """
         重启该实例
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被重启的实例的UUID
         """
         from mcsmapi.apis.instance import Instance
 
@@ -209,7 +209,7 @@ class InstanceDetail(BaseModel):
         """
         强制关闭该实例
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被强制关闭的实例的UUID
         """
         from mcsmapi.apis.instance import Instance
 
@@ -267,6 +267,30 @@ class InstanceDetail(BaseModel):
         return Instance.reinstall(
             self.daemonId, self.instanceUuid, targetUrl, title, description
         )
+
+    def command(self, command: str) -> str:
+        """
+        发送命令给实例。
+
+        :params command: 要发送的命令
+
+        :returns: 被操作的实例的UUID
+        """
+        from mcsmapi.apis.instance import Instance
+
+        return Instance.command(self.daemonId, self.instanceUuid, command)
+
+    def get_output(self, size: int | None = None) -> str:
+        """
+        获取实例的输出。
+
+        :params size: 要获取的输出大小
+
+        :returns: 输出结果
+        """
+        from mcsmapi.apis.instance import Instance
+
+        return Instance.get_output(self.daemonId, self.instanceUuid, size)
 
     def files(
         self, target: str = "", page: int = 0, page_size: int = 100, file_name: str = ""

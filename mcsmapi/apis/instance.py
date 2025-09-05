@@ -94,7 +94,7 @@ class Instance:
         :params uuid: 实例的UUID
         :params config: 新的实例配置，以字典形式提供，缺失内容由InstanceConfig模型补全
 
-        :returns: 更新成功后返回更新的实例UUID
+        :returns: 被更新配置的实例UUID
         """
         result = send(
             "PUT",
@@ -109,7 +109,7 @@ class Instance:
         """
         删除实例
 
-        :params daemonId: 节点的标识符
+        :params daemonId: 节点的UUID
         :params uuids: 要删除的实例UUID列表
         :params deleteFile: 是否删除关联的文件
 
@@ -130,7 +130,7 @@ class Instance:
         :params daemonId: 节点的UUID
         :params uuid: 实例的UUID
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被启动的实例的UUID
         """
         result = send(
             "GET",
@@ -147,7 +147,7 @@ class Instance:
         :params daemonId: 节点的UUID
         :params uuid: 实例的UUID
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被关闭的实例的UUID
         """
         result = send(
             "GET",
@@ -164,7 +164,7 @@ class Instance:
         :params daemonId: 节点的UUID
         :params uuid: 实例的UUID
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被重启的实例的UUID
         """
         result = send(
             "GET",
@@ -181,7 +181,7 @@ class Instance:
         :params daemonId: 节点的UUID
         :params uuid: 实例的UUID
 
-        :returns: 返回被操作的实例的UUID
+        :returns: 被强制关闭的实例的UUID
         """
         result = send(
             "GET",
@@ -230,7 +230,7 @@ class Instance:
         :params uuid: 实例的UUID
         :params command: 要发送的命令
 
-        :params: 返回被操作的实例的UUID
+        :returns: 被操作的实例的UUID
         """
         result = send(
             "GET",

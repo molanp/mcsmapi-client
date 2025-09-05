@@ -11,14 +11,14 @@ from mcsmapi.request import Request
 
 class MCSMAPI:
 
-    def __init__(self, url: str, timeout: int = 5) -> None:
+    def __init__(self, url: str, timeout: int = 5):
         split_url = urllib.parse.urlsplit(url)
         Request.set_mcsm_url(
             urllib.parse.urljoin(f"{split_url.scheme}://{split_url.netloc}", "")
         )
         Request.set_timeout(timeout)
 
-    def login(self, username: str, password: str) -> "MCSMAPI":
+    def login(self, username: str, password: str):
         Request.set_token(
             Request.send(
                 "POST",
@@ -34,20 +34,20 @@ class MCSMAPI:
         self.authentication = "apikey"
         return self
 
-    def overview(self) -> Overview:
+    def overview(self):
         return Overview()
 
-    def instance(self) -> Instance:
+    def instance(self):
         return Instance()
 
-    def user(self) -> User:
+    def user(self) :
         return User()
 
-    def daemon(self) -> Daemon:
+    def daemon(self):
         return Daemon()
 
-    def file(self) -> File:
+    def file(self):
         return File()
 
-    def image(self) -> Image:
+    def image(self):
         return Image()
