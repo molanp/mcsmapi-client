@@ -272,7 +272,7 @@ class InstanceDetail(BaseModel):
 
     def command(self, command: str) -> str:
         """
-        发送命令给实例。
+        发送命令给实例
 
         :params command: 要发送的命令
 
@@ -284,7 +284,7 @@ class InstanceDetail(BaseModel):
 
     def get_output(self, size: int | None = None) -> str:
         """
-        获取实例的输出。
+        获取实例的输出
 
         :params size: 要获取的输出大小
 
