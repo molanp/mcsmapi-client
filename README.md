@@ -16,7 +16,7 @@ The documentation is not yet complete, if you need it, please visit [deepwiki-mc
 
 You can also find:  
 
-📄 Work-in-progress docs: [docs](https://www.awkchan.top/mcsmapi/en/)
+📄 Work-in-progress docs: [docs](https://mcsmapi.awkchan.top/en/)
 
 💡 Example: [example](example)
 

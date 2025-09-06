@@ -2,3 +2,4 @@ __pycache__
 mcsmapi.egg-info
 dist
 .vscode
+node_modules
