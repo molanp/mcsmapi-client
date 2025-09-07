@@ -22,7 +22,7 @@
 
 您还可以找到： 
 
-📄 正在进行的文档: [docs](https://mcsmapi.awkchan.top/)
+📄 文档: [docs](https://mcsmapi.awkchan.top/)
 
 💡 示例: [example](example)
 
