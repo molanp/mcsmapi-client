@@ -4,7 +4,7 @@ requires = ["setuptools", "wheel"]
 
 [project]
 name = "mcsmapi"
-version = "0.1.8.b2"
+version = "0.1.8.b3"
 description = "Shortcut the pypi package of MCSM./快捷操作MCSM的pypi包"
 readme = "README.md"
 authors = [

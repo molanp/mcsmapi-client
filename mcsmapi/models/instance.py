@@ -306,12 +306,3 @@ class InstanceSearchList(BaseModel):
                     if isinstance(instance, dict):
                         instance["daemonId"] = daemon_id
         return v
-
-
-class UserInstancesList(BaseModel):
-    """用户实例列表"""
-
-    instanceUuid: str = ""
-    """实例UUID"""
-    daemonId: str = ""
-    """所属的节点UUID"""

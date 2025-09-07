@@ -1,7 +1,6 @@
 from enum import IntEnum
 from typing import Any
 from pydantic import BaseModel
-from mcsmapi.models.instance import InstanceDetail, UserInstancesList
 
 
 class UserPermission(IntEnum):
@@ -10,6 +9,15 @@ class UserPermission(IntEnum):
     BANNED = -1
     USER = 1
     ADMIN = 10
+
+
+class UserInstances(BaseModel):
+    """用户实例信息"""
+
+    instanceUuid: str
+    """实例UUID"""
+    daemonId: str
+    """节点ID"""
 
 
 class UserCreateResult(BaseModel):
@@ -40,7 +48,7 @@ class UserModel(BaseModel):
     """用户 API 密钥"""
     open2FA: bool
     """是否启用双因素认证 (2FA)"""
-    instances: list[UserInstancesList]
+    instances: list[UserInstances]
     """用户关联的实例列表"""
     isInit: bool
     """是否为初始化用户 (已弃用)"""
@@ -106,7 +114,7 @@ class UserConfig(BaseModel):
     """最后登录时间"""
     registerTime: str = ""
     """注册时间"""
-    instances: list[InstanceDetail] = []
+    instances: list[UserInstances] = []
     """用户拥有的实例列表"""
     permission: UserPermission = UserPermission.USER
     """用户权限级别"""
