@@ -1,12 +1,18 @@
 from typing import Any
 from mcsmapi.pool import ApiPool
 from mcsmapi.request import send
-from mcsmapi.models.daemon import DaemonConfig, DaemonModel
+from mcsmapi.models.daemon import (
+    DaemonConfig,
+    DaemonInfo,
+    DaemonSystemInfo,
+    DaemonStatus,
+    DaemonUpdateConfig,
+)
 
 
 class Daemon:
     @staticmethod
-    def show() -> list[DaemonConfig]:
+    def config() -> list[DaemonStatus]:
         """
         获取全部节点配置信息
 
@@ -16,10 +22,23 @@ class Daemon:
             "GET",
             f"{ApiPool.SERVICE}/remote_services_list",
         )
-        return [DaemonConfig(**daemon) for daemon in daemons]
+        return [DaemonStatus(**daemon) for daemon in daemons]
 
     @staticmethod
-    def system() -> list[DaemonModel]:
+    def info() -> list[DaemonInfo]:
+        """
+        获取全部节点信息
+
+        :returns: 节点信息列表
+        """
+        daemons = send(
+            "GET",
+            f"{ApiPool.SERVICE}/remote_services",
+        )
+        return [DaemonInfo(**daemon) for daemon in daemons]
+
+    @staticmethod
+    def system() -> list[DaemonSystemInfo]:
         """
         获取全部节点的系统信息
 
@@ -29,7 +48,7 @@ class Daemon:
             "GET",
             f"{ApiPool.SERVICE}/remote_services_system",
         )
-        return [DaemonModel(**daemon) for daemon in daemons]
+        return [DaemonSystemInfo(**daemon) for daemon in daemons]
 
     @staticmethod
     def add(config: dict[str, Any]) -> str:
@@ -77,10 +96,8 @@ class Daemon:
         """
         更新一个节点的配置
 
-        **不建议直接使用此函数，建议调用overview()后在remote属性内使用节点对象的updateConfig方法按需更新**
-
         :params daemonId: 节点的UUID
-        :params config: 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全
+        :params config: 节点的配置信息，以字典形式提供，缺失内容由DaemonUpdateConfig模型补全
 
         :returns: 操作成功后返回True
         """
@@ -88,5 +105,5 @@ class Daemon:
             "PUT",
             f"{ApiPool.SERVICE}/remote_service",
             params={"uuid": daemonId},
-            data=DaemonConfig(**config).model_dump(),
+            data=DaemonUpdateConfig(**config).model_dump(),
         )

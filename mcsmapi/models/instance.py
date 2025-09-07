@@ -121,55 +121,15 @@ class InstanceConfig(BaseModel):
     """运行该实例的系统用户，为空则使用启动面板的系统用户"""
 
 
-class InstanceProcessInfo(BaseModel):
-    """进程信息"""
-
-    cpu: int
-    """CPU 使用率 (单位: %)"""
-    memory: int
-    """进程占用内存 (单位: KB)"""
-    ppid: int
-    """父进程 ID"""
-    pid: int
-    """进程 ID"""
-    ctime: int
-    """进程创建时间 (Unix 时间戳)"""
-    elapsed: int
-    """进程运行时长 (单位: 秒)"""
-    timestamp: int
-    """时间戳"""
-
-
-class InstanceInfo(BaseModel):
-    """实例运行状态信息(这些选项在新版中已不再支持设置，但仍在API中返回)"""
-
-    currentPlayers: int
-    """当前玩家数量"""
-    fileLock: int = 0
-    """文件锁状态 (0: 无锁)"""
-    maxPlayers: int = -1
-    """最大允许玩家数 (-1 表示未知)"""
-    openFrpStatus: bool = False
-    """是否启用 FRP 远程服务"""
-    playersChart: list[dict] = []
-    """玩家数量变化图表数据"""
-    version: str = ""
-    """服务器版本"""
-
-
 class InstanceDetail(BaseModel):
     """实例详细信息"""
 
     config: InstanceConfig
     """实例的配置信息"""
-    info: InstanceInfo
-    """实例的运行状态信息"""
     daemonId: str
     """所属的节点UUID"""
     instanceUuid: str
     """实例UUID"""
-    processInfo: InstanceProcessInfo
-    """实例的进程信息"""
     started: int
     """实例的启动次数"""
     status: Status

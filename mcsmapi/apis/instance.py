@@ -63,7 +63,7 @@ class Instance:
             ApiPool.INSTANCE,
             params={"uuid": uuid, "daemonId": daemonId},
         )
-        return InstanceDetail(**result)
+        return InstanceDetail(**result, daemonId=daemonId)
 
     @staticmethod
     def create(daemonId: str, config: dict[str, Any]) -> InstanceCreateResult:

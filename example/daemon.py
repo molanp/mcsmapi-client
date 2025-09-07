@@ -10,7 +10,7 @@ daemon_object = mcsm.daemon()
 
 # show Daemon list
 
-print(daemon_object.show())
+print(daemon_object.config())
 
 # 创建节点
 daemonId = daemon_object.add(

@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Literal
 from pydantic import BaseModel
 from mcsmapi.models.common import CpuMemChart, ProcessInfo
-from mcsmapi.models.daemon import DaemonModel
+from mcsmapi.models.daemon import DaemonSystemInfo
 
 
 class SystemUser(BaseModel):
@@ -110,7 +110,7 @@ class OverviewModel(BaseModel):
     """系统与请求统计图表数据"""
     remoteCount: RemoteCountInfo
     """远程节点统计信息"""
-    remote: list[DaemonModel]
+    remote: list[DaemonSystemInfo]
     """远程节点详细信息"""
 
 

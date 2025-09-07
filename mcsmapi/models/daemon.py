@@ -1,10 +1,10 @@
 from typing import Any
 from pydantic import BaseModel
-from mcsmapi.models.instance import InstanceCreateResult
-from mcsmapi.models.common import ProcessInfo, InstanceInfo, CpuMemChart
+from mcsmapi.models.instance import InstanceCreateResult, InstanceDetail
+from mcsmapi.models.common import ProcessInfo, InstanceStat, CpuMemChart
 
 
-class DaemonSystemInfo(BaseModel):
+class SystemInfo(BaseModel):
     """节点系统信息"""
 
     type: str
@@ -35,31 +35,44 @@ class DaemonSystemInfo(BaseModel):
     """未知"""
 
 
-class DaemonModel(BaseModel):
-    """节点详细信息"""
+class DaemonSetting(BaseModel):
+    """节点系统配置信息"""
 
-    version: str
-    """远程节点版本"""
-    process: ProcessInfo
-    """远程节点的基本信息"""
-    instance: InstanceInfo
-    """远程节点实例基本信息"""
-    system: DaemonSystemInfo
-    """远程节点系统信息"""
-    cpuMemChart: list[CpuMemChart]
-    """cpu和内存使用趋势"""
-    uuid: str
-    """远程节点的uuid"""
-    ip: str
-    """远程节点的ip"""
+    language: str
+    """节点语言"""
+    uploadSpeedRate: int
+    """上传速度限制(0为不限制, 限制为(n * 64)KB/s)"""
+    downloadSpeedRate: int
+    """下载速度限制(0为不限制, 限制为(n * 64)KB/s)"""
+    portRangeStart: int
+    """端口范围起始值"""
+    portRangeEnd: int
+    """端口范围结束值"""
+    portAssignInterval: int
+    """未知"""
     port: int
-    """远程节点的端口"""
-    prefix: str
-    """远程节点的路径前缀"""
-    available: bool
-    """远程节点的可用状态"""
-    remarks: str
-    """远程节点的名称"""
+    """节点监听端口"""
+
+
+class DaemonSystemInfo(BaseModel):
+    """节点系统信息"""
+
+    version: str | None = None
+    """远程节点版本"""
+    process: ProcessInfo | None = None
+    """远程节点的基本信息"""
+    instance: InstanceStat | None = None
+    """远程节点实例基本信息"""
+    system: SystemInfo | None = None
+    """远程节点系统信息"""
+    cpuMemChart: list[CpuMemChart] | None = None
+    """cpu和内存使用趋势"""
+    config: DaemonSetting
+
+
+class DaemonOperation(BaseModel):
+    uuid: str
+    """节点UUID"""
 
     def delete(self):
         """
@@ -93,14 +106,8 @@ class DaemonModel(BaseModel):
 
         updated_config = self.model_dump()
         updated_config.update(config)
-        # 过滤节点配置中不需要的字段
-        daemon_config_dict = {
-            key: updated_config[key]
-            for key in DaemonConfig.model_fields.keys()
-            if key in updated_config
-        }
 
-        daemon_config = DaemonConfig(**daemon_config_dict).model_dump()
+        daemon_config = DaemonUpdateConfig(**updated_config).model_dump()
 
         return Daemon.update(self.uuid, daemon_config)
 
@@ -142,5 +149,29 @@ class DaemonConfig(BaseModel):
     """远程节点的路径前缀"""
     remarks: str = "Unnamed Node"
     """远程节点的备注"""
-    available: bool = True
-    """远程节点的可用状态"""
+    apiKey: str = ""
+    """远程节点的apiKey"""
+
+
+class DaemonStatus(DaemonOperation):
+    """节点状态信息"""
+    ip: str = "localhost"
+    """远程节点的ip"""
+    port: int = 24444
+    """远程节点的端口"""
+    prefix: str = ""
+    """远程节点的路径前缀"""
+    remarks: str = "Unnamed Node"
+    """远程节点的备注"""
+    available: bool
+    """节点可用状态"""
+
+
+class DaemonInfo(DaemonStatus):
+    """节点信息"""
+    instances: list[InstanceDetail]
+
+
+class DaemonUpdateConfig(DaemonConfig):
+    """节点更新配置信息"""
+    setting: DaemonSetting

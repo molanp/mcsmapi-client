@@ -75,14 +75,7 @@ class UserModel(BaseModel):
 
         updated_config = self.model_dump()
         updated_config.update(config)
-        # 过滤用户信息中不需要的字段
-        user_config_dict = {
-            key: updated_config[key]
-            for key in UserConfig.model_fields.keys()
-            if key in updated_config
-        }
-
-        user_config = UserConfig(**user_config_dict).model_dump()
+        user_config = UserConfig(**updated_config).model_dump()
 
         return User().update(self.uuid, user_config)
 

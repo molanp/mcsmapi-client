@@ -21,7 +21,7 @@ class ProcessInfo(BaseModel):
     """工作路径"""
 
 
-class InstanceInfo(BaseModel):
+class InstanceStat(BaseModel):
     """实例统计信息"""
 
     running: int
