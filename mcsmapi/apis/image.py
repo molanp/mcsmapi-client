@@ -70,7 +70,7 @@ class Image:
         :params name: 镜像名称
         :params tag: 镜像版本
 
-        :returns: 新增镜像成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "POST",

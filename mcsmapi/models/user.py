@@ -57,7 +57,7 @@ class UserModel(BaseModel):
         """
         删除该用户
 
-        :returns: 删除成功后返回True
+        :returns: 操作成功后返回True
         """
         from mcsmapi.apis.user import User
 
@@ -69,7 +69,7 @@ class UserModel(BaseModel):
 
         :params config: 用户的新信息，以字典形式提供，缺失内容使用原用户信息填充
 
-        :returns: 更新成功后返回True
+        :returns: 操作成功后返回True
         """
         from mcsmapi.apis.user import User
 

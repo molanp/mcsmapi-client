@@ -53,7 +53,7 @@ class Daemon:
 
         :params daemonId: 节点的UUID
 
-        :returns: 删除成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "DELETE", f"{ApiPool.SERVICE}/remote_service", params={"uuid": daemonId}
@@ -66,7 +66,7 @@ class Daemon:
 
         :params daemonId: 节点的UUID
 
-        :returns: 连接成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "GET", f"{ApiPool.SERVICE}/link_remote_service", params={"uuid": daemonId}
@@ -82,7 +82,7 @@ class Daemon:
         :params daemonId: 节点的UUID
         :params config: 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全
 
-        :returns: 更新成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "PUT",

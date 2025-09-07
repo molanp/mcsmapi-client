@@ -18,7 +18,7 @@ daemonId = daemon_object.add(
         "ip": "localhost",
         "port": 24444,
         "prefix": "",
-        "remarks": "New Daemon",
+        "remarks": "Unnamed Node",
         "available": True,
     }
 )

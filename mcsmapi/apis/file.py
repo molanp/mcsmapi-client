@@ -70,7 +70,7 @@ class File:
         :params target: 目标文件的路径
         :params text: 新的文件内容
 
-        :returns: 更新成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "PUT",
@@ -111,7 +111,7 @@ class File:
         :params file: 要上传的文件内容
         :params upload_dir: 文件上传到的目标路径
 
-        :returns: 上传成功后返回True
+        :returns: 操作成功后返回True
         """
         result = send(
             "POST",
@@ -134,7 +134,7 @@ class File:
         :params uuid: 实例的UUID
         :params copy_map: 复制映射，格式为 {源路径: 目标路径}
 
-        :returns: 复制成功后返回True
+        :returns: 操作成功后返回True
         """
         targets = [[source, target] for source, target in copy_map.items()]
         return send(
@@ -154,7 +154,7 @@ class File:
         :params source: 源文件或文件夹的路径
         :params target: 目标文件或文件夹的路径
 
-        :return: 复制成功后返回True
+        :returns: 操作成功后返回True
         """
         return File.copy(daemonId, uuid, {source: target})
 
@@ -167,7 +167,7 @@ class File:
         :params uuid: 实例的UUID
         :params copy_map: 移动映射，格式为 {源路径: 目标路径}
 
-        :returns: 移动成功后返回True
+        :returns: 操作成功后返回True
         """
         targets = [[source, target] for source, target in copy_map.items()]
         return send(
@@ -187,7 +187,7 @@ class File:
         :params source: 源文件或文件夹的路径
         :params target: 目标文件或文件夹的路径
 
-        :returns: 移动成功后返回True
+        :returns: 操作成功后返回True
         """
         return File.move(daemonId, uuid, {source: target})
 
@@ -201,7 +201,7 @@ class File:
         :params source: 源文件或文件夹的路径
         :params new_name: 源文件或文件夹的新名字
 
-        :returns: 重命名成功后返回True
+        :returns: 操作成功后返回True
         """
         directory = os.path.dirname(source)
         target = os.path.join(directory, new_name)
@@ -217,8 +217,7 @@ class File:
         :params source: 要压缩到的目标文件的路径
         :params targets: 需要压缩的文件路径
 
-        **返回:**
-        - bool: 压缩成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "POST",
@@ -244,7 +243,7 @@ class File:
         :params targets: 解压到的目标路径
         :params code: 压缩文件的编码方式
 
-        :returns: 解压成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "POST",
@@ -262,7 +261,7 @@ class File:
         :params uuid: 实例的UUID
         :params targets: 要删除的文件或文件夹的路径
 
-        :returns: 删除成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "DELETE",
@@ -280,7 +279,7 @@ class File:
         :params uuid: 实例的UUID
         :params target: 目标文件的路径，包含文件名
 
-        :returns: 创建成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "POST",
@@ -298,7 +297,7 @@ class File:
         :params uuid: 实例的UUID
         :params target: 目标文件夹的路径
 
-        :returns: 创建成功后返回True
+        :returns: 操作成功后返回True
         """
         return send(
             "POST",

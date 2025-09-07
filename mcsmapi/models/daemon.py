@@ -65,7 +65,7 @@ class DaemonModel(BaseModel):
         """
         删除该节点
 
-        :returns: 删除成功后返回True
+        :returns: 操作成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -75,7 +75,7 @@ class DaemonModel(BaseModel):
         """
         尝试连接该节点
 
-        :returns: 连接成功后返回True
+        :returns: 操作成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -87,7 +87,7 @@ class DaemonModel(BaseModel):
 
         :params config: 节点的配置信息，以字典形式提供，缺失内容使用原节点配置填充
 
-        :returns: 更新成功后返回True
+        :returns: 操作成功后返回True
         """
         from mcsmapi.apis.daemon import Daemon
 
@@ -140,7 +140,7 @@ class DaemonConfig(BaseModel):
     """远程节点的端口"""
     prefix: str = ""
     """远程节点的路径前缀"""
-    remarks: str = "New Daemon"
+    remarks: str = "Unnamed Node"
     """远程节点的备注"""
     available: bool = True
     """远程节点的可用状态"""
