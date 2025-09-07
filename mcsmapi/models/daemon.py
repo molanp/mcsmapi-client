@@ -29,10 +29,6 @@ class SystemInfo(BaseModel):
     """内存使用率"""
     totalmem: int
     """内存总量(单位: byte)"""
-    processCpu: int
-    """未知"""
-    processMem: int
-    """未知"""
 
 
 class DaemonSetting(BaseModel):
@@ -155,6 +151,7 @@ class DaemonConfig(BaseModel):
 
 class DaemonStatus(DaemonOperation):
     """节点状态信息"""
+
     ip: str = "localhost"
     """远程节点的ip"""
     port: int = 24444
@@ -169,9 +166,11 @@ class DaemonStatus(DaemonOperation):
 
 class DaemonInfo(DaemonStatus):
     """节点信息"""
+
     instances: list[InstanceDetail]
 
 
 class DaemonUpdateConfig(DaemonConfig):
     """节点更新配置信息"""
+
     setting: DaemonSetting
