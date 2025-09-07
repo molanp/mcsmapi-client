@@ -64,6 +64,7 @@ class DaemonSystemInfo(BaseModel):
     cpuMemChart: list[CpuMemChart] | None = None
     """cpu和内存使用趋势"""
     config: DaemonSetting
+    """节点系统配置信息"""
 
 
 class DaemonOperation(BaseModel):
