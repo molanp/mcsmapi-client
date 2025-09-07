@@ -9,18 +9,11 @@
 
 ## 简介
 
-`mcsmapi` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi包，旨在简化与MCSM API的交互。
+`mcsmapi` 是一个基于 [MCSManager](https://github.com/MCSManager/MCSManager) 的 Pypi 包，旨在简化与 MCSM API 的交互。
 
-通过这个库，您可以更轻松地访问和操作MCSM提供的各种功能。
-
-> [!important]
-> 我们需要你的帮助，此项目的文档尚未编写，如您有意愿，请提交pr来帮助我们编写文档
+通过这个库，您可以更轻松地访问和操作 MCSM 提供的各种功能。
 
 ## 文档
-
-文档尚未完成，如果您需要，请访问 [deepwiki-mcsmapi](https://deepwiki.com/molanp/mcsmapi)
-
-您还可以找到： 
 
 📄 文档: [docs](https://mcsmapi.awkchan.top/)
 
@@ -49,8 +42,8 @@ pip install mcsmapi
 ## 支持的 MCSM 版本
 
 | MCSM 版本 | 支持状态 |
-| :---: | :---: |
-| 10.x | ✅ |
+| :-------: | :------: |
+|   10.x    |    ✅    |
 
 ### 快速示例
 

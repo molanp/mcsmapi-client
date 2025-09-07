@@ -7,14 +7,7 @@
 
 English|[Chinese Simplified](README_zh-cn.md)
 
-> [!important]
-> We need your help, the documentation for this project has not been written yet, if you are willing, please submit pr to help us write the documentation.
-
 ## Documentation
-
-The documentation is not yet complete, if you need it, please visit [deepwiki-mcsmapi](https://deepwiki.com/molanp/mcsmapi)
-
-You can also find:  
 
 📄 Docs: [docs](https://mcsmapi.awkchan.top/en/)
 
@@ -49,8 +42,8 @@ If you need the latest build files, please visit
 ## Supported MCSM Versions
 
 | MCSM Version | Support Status |
-| :---: | :---: |
-| 10.x | ✅ |
+| :----------: | :------------: |
+|     10.x     |       ✅       |
 
 ### Quick Example
 
