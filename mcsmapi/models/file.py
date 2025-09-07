@@ -5,6 +5,8 @@ import os
 
 
 class FileType(IntEnum):
+    """文件类型"""
+
     FOLDER = 0
     FILE = 1
 
@@ -13,7 +15,7 @@ class FileItem(BaseModel):
     """文件信息"""
 
     name: str
-    """文件名称"""
+    """文件或文件夹名称"""
     size: int
     """文件大小(单位: byte)"""
     time: str

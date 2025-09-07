@@ -154,7 +154,7 @@ class File:
         :params source: 源文件或文件夹的路径
         :params target: 目标文件或文件夹的路径
 
-        :return: 移动成功后返回True
+        :return: 复制成功后返回True
         """
         return File.copy(daemonId, uuid, {source: target})
 

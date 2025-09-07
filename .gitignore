@@ -3,3 +3,4 @@ mcsmapi.egg-info
 dist
 .vscode
 node_modules
+.vitepress
