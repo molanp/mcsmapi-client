@@ -169,9 +169,11 @@ class DaemonInfo(DaemonStatus):
     """节点信息"""
 
     instances: list[InstanceDetail]
+    """节点实例列表"""
 
 
 class DaemonUpdateConfig(DaemonConfig):
     """节点更新配置信息"""
 
     setting: DaemonSetting
+    """节点系统配置"""
