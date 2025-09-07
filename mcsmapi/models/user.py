@@ -34,32 +34,32 @@ class UserCreateResult(BaseModel):
 class UserModel(BaseModel):
     """用户信息模型"""
 
-    uuid: str
+    uuid: str = ""
     """用户UUID"""
-    userName: str
+    userName: str = ""
     """用户名"""
-    permission: UserPermission
+    loginTime: str = ""
+    """最后登录时间 (YYYY/M/D hh:mm:ss)"""
+    registerTime: str = ""
+    """注册时间 (YYYY/M/D hh:mm:ss)"""
+    instances: list[UserInstances] = []
+    """用户拥有的实例列表"""
+    permission: UserPermission = UserPermission.USER
     """用户权限级别"""
-    registerTime: str
-    """用户注册时间 (YYYY/M/D hh:mm:ss)"""
-    loginTime: str
-    """用户最后登录时间 (YYYY/M/D hh:mm:ss)"""
-    apiKey: str
-    """用户 API 密钥"""
-    open2FA: bool
+    passWord: str = ""
+    """用户密码"""
+    open2FA: bool = False
     """是否启用双因素认证 (2FA)"""
-    instances: list[UserInstances]
-    """用户关联的实例列表"""
-    isInit: bool
-    """是否为初始化用户 (已弃用)"""
-    secret: str
-    """用户安全密钥 (已弃用)"""
-    passWord: str
-    """用户密码 (已弃用)"""
-    passWordType: int
+    apiKey: str = ""
+    """用户 API 密钥"""
+    passWordType: int = 1
     """密码类型 (已弃用)"""
-    salt: str
-    """密码盐值 (已弃用)"""
+    isInit: bool = False
+    """是否为初始化用户 (已弃用)"""
+    secret: str = ""
+    """用户安全密钥 (已弃用)"""
+    salt: str = ""
+    """用户密码盐值 (已弃用)"""
 
     def delete(self):
         """
@@ -81,9 +81,8 @@ class UserModel(BaseModel):
         """
         from mcsmapi.apis.user import User
 
-        updated_config = self.model_dump()
-        updated_config.update(config)
-        user_config = UserConfig(**updated_config).model_dump()
+        user_config = self.model_dump()
+        user_config.update(config)
 
         return User().update(self.uuid, user_config)
 
@@ -101,34 +100,3 @@ class SearchUserModel(BaseModel):
     """最大可用页数"""
     data: list[UserModel]
     """用户信息列表"""
-
-
-class UserConfig(BaseModel):
-    """用户配置信息"""
-
-    uuid: str = ""
-    """用户UUID"""
-    userName: str = ""
-    """用户名"""
-    loginTime: str = ""
-    """最后登录时间"""
-    registerTime: str = ""
-    """注册时间"""
-    instances: list[UserInstances] = []
-    """用户拥有的实例列表"""
-    permission: UserPermission = UserPermission.USER
-    """用户权限级别"""
-    passWord: str = ""
-    """用户密码"""
-    open2FA: bool = False
-    """是否启用双因素认证 (2FA)"""
-    apiKey: str = ""
-    """用户 API 密钥"""
-    passWordType: int = 1
-    """密码类型 (已弃用)"""
-    isInit: bool = False
-    """是否为初始化用户 (已弃用)"""
-    secret: str = ""
-    """用户安全密钥 (已弃用)"""
-    salt: str = ""
-    """用户密码盐值 (已弃用)"""

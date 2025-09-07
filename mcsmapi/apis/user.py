@@ -1,7 +1,7 @@
 from typing import Any, Literal
 from mcsmapi.pool import ApiPool
 from mcsmapi.request import send
-from mcsmapi.models.user import SearchUserModel, UserConfig, UserCreateResult
+from mcsmapi.models.user import SearchUserModel, UserCreateResult, UserModel
 
 
 class User:
@@ -60,14 +60,14 @@ class User:
         **不建议直接使用此函数，建议调用search后使用用户对象的update方法按需更新**
 
         :params uuid: 用户的UUID
-        :params config: 新的用户信息，以字典形式提供，缺失内容由 UserConfig 模型提供默认值
+        :params config: 新的用户信息，以字典形式提供，缺失内容由 UserModel 模型提供默认值
 
         :returns: 成功时返回True
         """
         return send(
             "PUT",
             ApiPool.AUTH,
-            data={"uuid": uuid, "config": UserConfig(**config).model_dump()},
+            data={"uuid": uuid, "config": UserModel(**config).model_dump()},
         )
 
     @staticmethod
