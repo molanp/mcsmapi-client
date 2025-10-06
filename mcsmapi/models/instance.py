@@ -119,6 +119,8 @@ class InstanceConfig(BaseModel):
     """服务器 Ping 监测配置(已弃用)"""
     runAs: str = ""
     """运行该实例的系统用户，为空则使用启动面板的系统用户"""
+    basePort: int = 0
+    """分配的起始端口，这个数字对应 到 的变量，每次新增实例都会递增分配"""
 
 
 class InstanceDetail(BaseModel):
