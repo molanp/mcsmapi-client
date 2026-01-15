@@ -4,7 +4,7 @@ api = MCSMAPI("http://localhost:23333")
 
 api.login("admin", "547cABC9bf88@")
 
-userManager = api.user()
+userManager = api.user
 
 users = userManager.search()
 
@@ -13,7 +13,7 @@ for user in users.data:
     print(user.userName)
 
 # 查找第一个管理员账号
-user = api.user().search(role=10).data[0]
+user = userManager.search(role=10).data[0]
 
 # 封禁管理员账号
 user.update({"permission": -1})

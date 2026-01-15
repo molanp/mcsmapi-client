@@ -34,20 +34,26 @@ class MCSMAPI:
         self.authentication = "apikey"
         return self
 
+    @property
     def overview(self):
         return Overview()
 
+    @property
     def instance(self):
         return Instance()
 
+    @property
     def user(self) :
         return User()
 
+    @property
     def daemon(self):
         return Daemon()
 
+    @property
     def file(self):
         return File()
 
+    @property
     def image(self):
         return Image()

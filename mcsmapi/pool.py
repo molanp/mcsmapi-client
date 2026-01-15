@@ -13,3 +13,4 @@ class ApiPool(Enum):
     FILE = "api/files"
     IMAGE = "api/environment"
     LOG = "api/overview/operation_logs"
+    SCHEDULE = "api/protected_schedule"

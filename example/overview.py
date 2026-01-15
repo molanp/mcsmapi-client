@@ -7,7 +7,7 @@ mcsm.login("admin", "547cABC9bf88@")
 # mcsm.login_with_apikey("apikey")
 
 # Get dashboard data
-overview = mcsm.overview()
+overview = mcsm.overview
 overview_data = overview.overview()
 
 mcsm_version = overview_data.version
@@ -19,12 +19,14 @@ for remote in remotes:
     print(remote.ip)
     print(remote.port)
     print(remote.prefix)
-    print(remote.available)
-    print(remote.version)
-    print(remote.process.cpu)
-    print(remote.system.freemem)
-    print(remote.system.hostname)
-    print(remote.system.loadavg)
+    if remote.available:
+        print(remote.version)
+        print(remote.process.cpu) # type: ignore
+        print(remote.system.freemem) # type: ignore
+        print(remote.system.hostname) # type: ignore
+        print(remote.system.loadavg) # type: ignore
+    else:
+        print("Not available")
 
 
 remote = remotes[0]

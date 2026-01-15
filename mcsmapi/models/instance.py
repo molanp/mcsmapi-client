@@ -2,6 +2,7 @@ from enum import IntEnum
 from typing import Any, TypedDict
 from pydantic import BaseModel, field_validator
 from mcsmapi.models.image import DockerConfig
+from mcsmapi.models.schedule import ScheduleDetail, SchedulePostBody
 
 
 class CRLFType(IntEnum):
@@ -274,6 +275,28 @@ class InstanceDetail(BaseModel):
         return File.show(
             self.daemonId, self.instanceUuid, target, page, page_size, file_name
         )
+
+    def list_schedule(self) -> list[ScheduleDetail]:
+        """
+        获取实例的计划任务列表
+
+        :returns: 计划任务列表
+        """
+        from mcsmapi.apis.schedule import Schedule
+
+        return Schedule.list(self.daemonId, self.instanceUuid)
+
+    def create_schedule(self, config: SchedulePostBody) -> bool:
+        """
+        创建计划任务
+
+        :param config: 计划任务配置
+
+        :returns: 是否成功
+        """
+        from mcsmapi.apis.schedule import Schedule
+
+        return Schedule.create(self.daemonId, self.instanceUuid, config)
 
 
 class InstanceCreateResult(BaseModel):

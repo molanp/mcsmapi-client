@@ -59,7 +59,7 @@ class FileItem(BaseModel):
             self.daemonId, self.uuid, [os.path.join(self.target, self.name)]
         )
 
-    def copy2(self, target: str):
+    def copy_to(self, target: str):
         """
         复制该文件或文件夹到目标路径
 

@@ -12,25 +12,22 @@ class Request:
     session = requests.Session()
     apikey: str | None = None
     token: str | None = None
+    """token需和cookie配合使用, 两者有相符性校验"""
 
     @classmethod
     def set_mcsm_url(cls, url: str):
-        """设置类级别的 mcsm_url"""
         cls.mcsm_url = url
 
     @classmethod
     def set_timeout(cls, timeout: int):
-        """设置类级别的 timeout"""
         cls.timeout = timeout
 
     @classmethod
     def set_apikey(cls, apikey: str):
-        """设置类级别的 apikey"""
         cls.apikey = apikey
 
     @classmethod
     def set_token(cls, token: str):
-        """设置类级别的 token"""
         cls.token = token
 
     @classmethod

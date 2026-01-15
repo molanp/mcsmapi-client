@@ -48,23 +48,8 @@ class DaemonSetting(BaseModel):
     """未知"""
     port: int
     """节点监听端口"""
-
-
-class DaemonSystemInfo(BaseModel):
-    """节点系统信息"""
-
-    version: str | None = None
-    """远程节点版本"""
-    process: ProcessInfo | None = None
-    """远程节点的基本信息"""
-    instance: InstanceStat | None = None
-    """远程节点实例基本信息"""
-    system: SystemInfo | None = None
-    """远程节点系统信息"""
-    cpuMemChart: list[CpuMemChart] | None = None
-    """cpu和内存使用趋势"""
-    config: DaemonSetting
-    """节点系统配置信息"""
+    maxDownloadFromUrlFileCount: int
+    """允许同时下载的远程下载任务数量"""
 
 
 class DaemonOperation(BaseModel):
@@ -148,6 +133,33 @@ class DaemonConfig(BaseModel):
     """远程节点的备注"""
     apiKey: str = ""
     """远程节点的apiKey"""
+
+
+class DaemonSystemInfo(DaemonOperation):
+    """节点信息"""
+
+    version: str | None = None
+    """节点版本"""
+    process: ProcessInfo | None = None
+    """节点进程信息"""
+    instance: InstanceStat | None = None
+    """节点实例统计信息"""
+    system: SystemInfo | None = None
+    """节点系统信息"""
+    cpuMemChart: list[CpuMemChart] | None = None
+    """cpu和内存使用趋势"""
+    config: DaemonSetting | None = None
+    """节点配置信息"""
+    available: bool
+    """节点可用状态"""
+    ip: str
+    """节点ip"""
+    port: int
+    """节点端口"""
+    prefix: str
+    """节点路径前缀"""
+    remarks: str
+    """节点备注"""
 
 
 class DaemonStatus(DaemonOperation):

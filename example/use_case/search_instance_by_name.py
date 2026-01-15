@@ -1,5 +1,4 @@
 from mcsmapi import MCSMAPI
-import json
 
 baseurl = "http://localhost:23333" # Change to your MCSM panel address and port(include http or https etc.).
 
@@ -17,7 +16,7 @@ mcsm.login_with_apikey(apikey)
 # Get instance 
 def get_instance(daemon_id: str, instance_name: str):
     # Get specific instance info from the daemon by name
-    instance_object = mcsm.instance()
+    instance_object = mcsm.instance
     instance_list = instance_object.search(daemonId=daemon_id, instance_name=instance_name).data
     
     # Error handling
@@ -41,17 +40,16 @@ instance = get_instance(daemon_id, instance_name)
 # Print instance status
 print(instance.config.nickname)
 print(instance.status)
-print(instance.space)
 
 # Optional:
 # start
-#instance.start()
+instance.start()
 
 # stop
-#instance.stop()
+instance.stop()
 
 # restart
-#instance.restart()
+instance.restart()
 
 # kill
-#instance.kill()
+instance.kill()

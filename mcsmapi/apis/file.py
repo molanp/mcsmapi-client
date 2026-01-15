@@ -126,7 +126,7 @@ class File:
         return True
 
     @staticmethod
-    def copy(daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
+    def copy_to(daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:
         """
         复制多个文件夹或文件到指定位置
 
@@ -156,7 +156,7 @@ class File:
 
         :returns: 操作成功后返回True
         """
-        return File.copy(daemonId, uuid, {source: target})
+        return File.copy_to(daemonId, uuid, {source: target})
 
     @staticmethod
     def move(daemonId: str, uuid: str, copy_map: dict[str, str]) -> bool:

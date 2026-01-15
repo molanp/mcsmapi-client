@@ -51,18 +51,18 @@ class Daemon:
         return [DaemonSystemInfo(**daemon) for daemon in daemons]
 
     @staticmethod
-    def add(config: dict[str, Any]) -> str:
+    def add(config: DaemonConfig) -> str:
         """
         新增一个节点
 
-        :params config: 节点的配置信息，以字典形式提供，缺失内容由DaemonConfig模型补全
+        :params config: 节点的配置信息
 
         :returns: 新增节点的UUID
         """
         return send(
             "POST",
             f"{ApiPool.SERVICE}/remote_service",
-            data=DaemonConfig(**config).model_dump(),
+            data=config.model_dump(),
         )
 
     @staticmethod

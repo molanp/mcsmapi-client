@@ -4,7 +4,7 @@ api = MCSMAPI("http://localhost:23333")
 
 api.login("admin", "547cABC9bf88@")
 
-instance_object = api.instance()
+instance_object = api.instance
 
 instance_list = instance_object.search("xxx")
 
@@ -37,7 +37,7 @@ f = fs[0]
 f.rename("new_name")
 
 # copy file
-f.copy("new_path")
+f.copy_to("new_path")
 # move file
 f.move("new_path")
 
