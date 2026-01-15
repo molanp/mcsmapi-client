@@ -135,7 +135,22 @@ class DaemonConfig(BaseModel):
     """远程节点的apiKey"""
 
 
-class DaemonSystemInfo(DaemonOperation):
+class DaemonStatus(DaemonOperation):
+    """节点状态信息"""
+
+    available: bool
+    """节点可用状态"""
+    ip: str
+    """节点ip"""
+    port: int
+    """节点端口"""
+    prefix: str
+    """节点路径前缀"""
+    remarks: str
+    """节点备注"""
+
+
+class DaemonSystemInfo(DaemonStatus):
     """节点信息"""
 
     version: str | None = None
@@ -150,31 +165,6 @@ class DaemonSystemInfo(DaemonOperation):
     """cpu和内存使用趋势"""
     config: DaemonSetting | None = None
     """节点配置信息"""
-    available: bool
-    """节点可用状态"""
-    ip: str
-    """节点ip"""
-    port: int
-    """节点端口"""
-    prefix: str
-    """节点路径前缀"""
-    remarks: str
-    """节点备注"""
-
-
-class DaemonStatus(DaemonOperation):
-    """节点状态信息"""
-
-    ip: str = "localhost"
-    """远程节点的ip"""
-    port: int = 24444
-    """远程节点的端口"""
-    prefix: str = ""
-    """远程节点的路径前缀"""
-    remarks: str = "Unnamed Node"
-    """远程节点的备注"""
-    available: bool
-    """节点可用状态"""
 
 
 class DaemonInfo(DaemonStatus):
