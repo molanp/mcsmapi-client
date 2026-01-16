@@ -38,6 +38,7 @@ If you need the latest build files, please visit
 - [x] Daemon management (`Daemon`)
 - [x] File management (`File`)
 - [x] Image management (`Image`)
+- [x] Schedule task management (`Schedule`)
 
 ## Supported MCSM Versions
 

@@ -38,6 +38,7 @@ pip install mcsmapi
 - [x] 节点管理(`Daemon`)
 - [x] 文件管理(`File`)
 - [x] 镜像管理(`Image`)
+- [x] 计划任务管理(`Schedule`)
 
 ## 支持的 MCSM 版本
 
